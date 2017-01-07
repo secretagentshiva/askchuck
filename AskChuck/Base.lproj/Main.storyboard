@@ -1,26 +1,83 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AskChuck" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hazelcover3.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ERg-gV-zkc">
+                                <rect key="frame" x="44" y="0.0" width="422" height="745"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="HI! I'M CHUCK." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0r-Rl-Dv7">
+                                <rect key="frame" x="20" y="28" width="374" height="112"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="1"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M5x-zP-Fn8">
+                                <rect key="frame" x="44" y="607" width="326" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ch2-fN-sL4">
+                                <rect key="frame" x="151.66666666666669" y="669" width="111.00000000000006" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="111" id="ibJ-wp-3py"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <state key="normal" title="I'M LEGIT">
+                                    <color key="titleColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sw0-BS-3zd"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ch2-fN-sL4" firstAttribute="top" secondItem="M5x-zP-Fn8" secondAttribute="bottom" constant="32" id="5Tw-nS-em0"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ch2-fN-sL4" secondAttribute="bottom" constant="37" id="BEv-zs-lrU"/>
+                            <constraint firstItem="ERg-gV-zkc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="CRU-cY-rXb"/>
+                            <constraint firstItem="ERg-gV-zkc" firstAttribute="leading" secondItem="M5x-zP-Fn8" secondAttribute="leading" id="KRz-Bk-4uU"/>
+                            <constraint firstItem="Ch2-fN-sL4" firstAttribute="centerX" secondItem="Q0r-Rl-Dv7" secondAttribute="centerX" id="SpR-RA-xXb"/>
+                            <constraint firstItem="M5x-zP-Fn8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TOh-Dw-yr4"/>
+                            <constraint firstItem="M5x-zP-Fn8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="24" id="Uhf-zE-Mpp"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="ERg-gV-zkc" secondAttribute="bottom" constant="-9" id="cPV-Rs-gCB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ERg-gV-zkc" secondAttribute="trailing" constant="-72" id="doX-vp-B9h"/>
+                            <constraint firstAttribute="bottom" secondItem="M5x-zP-Fn8" secondAttribute="bottom" constant="99" id="e0L-lQ-ztE"/>
+                            <constraint firstItem="Ch2-fN-sL4" firstAttribute="centerX" secondItem="M5x-zP-Fn8" secondAttribute="centerX" id="yfl-IO-yCd"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="labelWelcome" destination="Q0r-Rl-Dv7" id="f4R-Ne-l2x"/>
+                        <outlet property="textPassword" destination="M5x-zP-Fn8" id="UkD-Nf-Jra"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="104.34782608695653" y="-89.673913043478265"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="hazelcover3.jpg" width="467" height="623"/>
+    </resources>
 </document>
