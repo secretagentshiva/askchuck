@@ -19,13 +19,15 @@ class ViewController: UIViewController {
         if textPassword.text == "poo" {
             labelWelcome.text = "I'M SO PROUD OF YOU!"
             intLoginAttempts = 0
+            
+            
         }
             
         else {
             intLoginAttempts = intLoginAttempts + 1
             
             if intLoginAttempts > 1 {
-                labelWelcome.text = "POO ON YOU! HELP POO BROTHER!"
+                labelWelcome.text = "POO ON YOU!"
             }
                 
             else {
@@ -36,9 +38,18 @@ class ViewController: UIViewController {
         
     }
     
+    func processTimer() {
+     
+        print("a second has elapsed")
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+
+      
+        
     }
 
     override func didReceiveMemoryWarning() {
