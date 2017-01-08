@@ -10,11 +10,32 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var textName: UITextField!
     @IBOutlet weak var textPassword: UITextField!
     @IBOutlet weak var labelWelcome: UILabel!
+    @IBOutlet weak var labelName: UILabel!
     var intLoginAttempts: UInt! = 0
+    // var userNameKnown: Bool = false
+    var userFriends: Array = ["Sari", "Evie", "Andy", "Poo Brother", "Poo Sister", "Auntie Polly"]
+    
     
     @IBAction func buttonTapped(_ sender: Any) {
+        
+        
+        if textName.isHidden == false {
+            
+            if userFriends.contains(textName.text!) {
+            
+                UserDefaults.standard.set(textName.text, forKey:"name")
+            } else {
+                
+                labelWelcome.text = "STRANGER DANGER!"
+                return
+            }
+            
+            
+        }
+        
         
         if textPassword.text == "poo" {
             labelWelcome.text = "I'M SO PROUD OF YOU!"
@@ -38,17 +59,46 @@ class ViewController: UIViewController {
         
     }
     
-    func processTimer() {
-     
-        print("a second has elapsed")
-        
-    }
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-      
+        
+        textName.isHidden = true
+        labelName.isHidden = true
+        
+        // Testing: wipe UserDefaults name
+        // UserDefaults.standard.removeObject(forKey: "name")
+        
+        let userNameObject = UserDefaults.standard.object(forKey:"name")
+        if let userName = userNameObject as? String {
+            
+            if userName == "Sari" {
+                
+                labelName.text = "HI MOMMY!"
+                labelName.isHidden = false
+                
+            } else if userName == "Andy" {
+                
+                labelName.text = "HI DAD!"
+                labelName.isHidden = false
+                
+            } else {
+            
+            labelName.text = "HI " + userName.uppercased() + " !"
+            labelName.isHidden = false
+                
+            }
+            
+        } else {
+            
+            textName.isHidden = false
+            
+        }
+        
+        
         
     }
 
