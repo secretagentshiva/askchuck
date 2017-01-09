@@ -10,12 +10,32 @@ import UIKit
 
 class QuestionsViewController: UIViewController {
 
+    
+    @IBAction func playAnswer1(_ sender: Any) {
+    }
+    
+    @IBAction func playAnswer2(_ sender: Any) {
+    }
+    
+    @IBAction func playAnswer3(_ sender: Any) {
+    }
+    
+    @IBAction func playAnswer4(_ sender: Any) {
+    }
+    
+    @IBAction func playAnswer5(_ sender: Any) {
+    }
+    
+    @IBAction func playAnswer6(_ sender: Any) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+       
         
-        print("Questions view controller loaded")
+       
     }
 
     override func didReceiveMemoryWarning() {
