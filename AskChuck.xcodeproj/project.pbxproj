@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		584A776C1E232CEB002E9D88 /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584A776B1E232CEB002E9D88 /* QuestionsViewController.swift */; };
 		58A388181E1A057100E1F289 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A388171E1A057100E1F289 /* AppDelegate.swift */; };
 		58A3881A1E1A057100E1F289 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A388191E1A057100E1F289 /* ViewController.swift */; };
 		58A3881D1E1A057100E1F289 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58A3881B1E1A057100E1F289 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		584A776B1E232CEB002E9D88 /* QuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
 		58A388141E1A057100E1F289 /* AskChuck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AskChuck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A388171E1A057100E1F289 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58A388191E1A057100E1F289 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				58A388171E1A057100E1F289 /* AppDelegate.swift */,
 				58A388191E1A057100E1F289 /* ViewController.swift */,
 				58A3881B1E1A057100E1F289 /* Main.storyboard */,
+				584A776B1E232CEB002E9D88 /* QuestionsViewController.swift */,
 				58A3881E1E1A057100E1F289 /* Assets.xcassets */,
 				58A388201E1A057100E1F289 /* LaunchScreen.storyboard */,
 				58A388231E1A057100E1F289 /* Info.plist */,
@@ -165,6 +168,7 @@
 			files = (
 				58A3881A1E1A057100E1F289 /* ViewController.swift in Sources */,
 				58A388181E1A057100E1F289 /* AppDelegate.swift in Sources */,
+				584A776C1E232CEB002E9D88 /* QuestionsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

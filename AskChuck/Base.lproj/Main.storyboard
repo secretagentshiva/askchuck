@@ -94,11 +94,39 @@
                         <outlet property="labelWelcome" destination="Q0r-Rl-Dv7" id="f4R-Ne-l2x"/>
                         <outlet property="textName" destination="GLY-gq-62W" id="m5k-f5-8xh"/>
                         <outlet property="textPassword" destination="M5x-zP-Fn8" id="UkD-Nf-Jra"/>
+                        <segue destination="VgJ-BW-eDB" kind="show" identifier="goToQuestionsUI" id="RXQ-s9-or8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-32.799999999999997" y="-298.2008995502249"/>
+        </scene>
+        <!--Questions View Controller-->
+        <scene sceneID="dOF-Ra-28k">
+            <objects>
+                <viewController id="VgJ-BW-eDB" customClass="QuestionsViewController" customModule="AskChuck" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fuZ-pl-ZL4"/>
+                        <viewControllerLayoutGuide type="bottom" id="Dp8-sl-Fwj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Feh-Cg-bri">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chuck Question 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSJ-ZD-D8G">
+                                <rect key="frame" x="105" y="96" width="198" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yih-Jj-aJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="709.60000000000002" y="-298.2008995502249"/>
         </scene>
     </scenes>
     <resources>

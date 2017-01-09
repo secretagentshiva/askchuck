@@ -18,6 +18,10 @@ class ViewController: UIViewController {
     // var userNameKnown: Bool = false
     var userFriends: Array = ["Sari", "Evie", "Andy", "Poo Brother", "Poo Sister", "Auntie Polly"]
     
+    func loadQuestionsUI() {
+        self.performSegue(withIdentifier: "goToQuestionsUI", sender: self)
+    }
+    
     
     @IBAction func buttonTapped(_ sender: Any) {
         
@@ -41,6 +45,8 @@ class ViewController: UIViewController {
             labelWelcome.text = "I'M SO PROUD OF YOU!"
             intLoginAttempts = 0
             
+            Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(loadQuestionsUI), userInfo: nil, repeats: false)
+        
             
         }
             
