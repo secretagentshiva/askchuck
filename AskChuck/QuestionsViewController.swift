@@ -7,11 +7,24 @@
 //
 
 import UIKit
+import CloudKit
+import AVKit
+import AVFoundation
 
 class QuestionsViewController: UIViewController {
 
     
     @IBAction func playAnswer1(_ sender: Any) {
+        
+        // test video code
+        let videoURL = NSURL(string: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
+        let player = AVPlayer(url: videoURL! as URL)
+        let playerViewController = AVPlayerViewController()
+        playerViewController.player = player
+        self.present(playerViewController, animated: true) {
+            playerViewController.player!.play()
+        }
+        
     }
     
     @IBAction func playAnswer2(_ sender: Any) {
@@ -32,9 +45,39 @@ class QuestionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let questionID: Int64 = 0
+       let container = CKContainer.default()
+       let publicDB = container.publicCloudDatabase
+        
+
+        let predicate = NSPredicate(format: "QuestionID = %ld", questionID)
+       
+        print(predicate)
        
         
+        let query = CKQuery(recordType: "Chuckisms", predicate: predicate)
+        
+        
+        publicDB.perform(query, inZoneWith: nil) { (results, error) -> Void in
+            if error != nil {
+                print(error!)
+                // need some error handling here
+            } else if results?.count == 0 {
+           
+                print("No results for this QuestionID")
+                
+            } else {
+              
+                print(results!)
+                
+            }
+ 
+
+        // Do any additional setup after loading the view.
+       
+        }
+ 
+ 
        
     }
 
