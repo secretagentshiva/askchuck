@@ -18,6 +18,8 @@ class QuestionsViewController: UIViewController {
         
         // test video code
         let videoURL = NSURL(string: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
+        
+       
         let player = AVPlayer(url: videoURL! as URL)
         let playerViewController = AVPlayerViewController()
         playerViewController.player = player
@@ -45,7 +47,7 @@ class QuestionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let questionID: Int64 = 0
+       let questionID: Int64 = 1
        let container = CKContainer.default()
        let publicDB = container.publicCloudDatabase
         
@@ -67,7 +69,8 @@ class QuestionsViewController: UIViewController {
                 print("No results for this QuestionID")
                 
             } else {
-              
+                
+                
                 print(results!)
                 
             }
