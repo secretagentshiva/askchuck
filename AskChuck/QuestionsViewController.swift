@@ -14,6 +14,20 @@ import AVFoundation
 class QuestionsViewController: UIViewController {
 
     
+    func notifyUser(_ title: String, message: String) -> Void
+    {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "OK",
+                                         style: .cancel, handler: nil)
+        
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true,
+                     completion: nil)
+    }
+    
     @IBAction func playAnswer1(_ sender: Any) {
         
         // test video code
@@ -47,40 +61,68 @@ class QuestionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       let questionID: Int64 = 1
-       let container = CKContainer.default()
-       let publicDB = container.publicCloudDatabase
         
-
-        let predicate = NSPredicate(format: "QuestionID = %ld", questionID)
-       
-        print(predicate)
-       
-        
-        let query = CKQuery(recordType: "Chuckisms", predicate: predicate)
-        
-        
-        publicDB.perform(query, inZoneWith: nil) { (results, error) -> Void in
-            if error != nil {
-                print(error!)
-                // need some error handling here
-            } else if results?.count == 0 {
-           
-                print("No results for this QuestionID")
-                
-            } else {
-                
-                
-                print(results!)
-                
-            }
- 
-
         // Do any additional setup after loading the view.
+        
+       let questionID: Int64 = 1
+      // maybe moot -> let container = CKContainer.default()
+      // maybe moot ->  let publicDB = container.publicCloudDatabase
+        
+        
+        var Chuckisms = [Chuckism]()
        
-        }
+        func loadChuckisms() {
+            let predicate = NSPredicate(format: "QuestionID = %ld", questionID)
+            let query = CKQuery(recordType: "Chuckisms", predicate: predicate)
+            let operation = CKQueryOperation(query: query)
+            operation.desiredKeys = ["Question", "Response", "QuestionID", "Thumb"]
+            operation.resultsLimit = 10
+            
+            var newChuckisms = [Chuckism]()
+         
+         operation.recordFetchedBlock = { record in
+            let chuckism = Chuckism()
+            chuckism.recordID = record.recordID
+            chuckism.question = record["Question"] as! String
+            chuckism.questionID = record["QuestionID"] as! Int64!
+            
+            
+            newChuckisms.append(chuckism)
+            
+            
+            
+         }
+        
+         operation.queryCompletionBlock = { [unowned self] (cursor, error) in
+            DispatchQueue.main.async {
+                if error == nil {
+            
+                // note had to take self. out of this line for some reason (vs. tutorial). change if class Chuckism moved to a separate file later per hacking with swift instructions
+                    Chuckisms = newChuckisms
+                    
+                // Debug print final results object array
+                    print(Chuckisms)
+       
+         } else {
+         
+         let ac = UIAlertController(title: "No Chuckisms", message: "There was a problem getting Chuck's wisdom; please try again: \(error!.localizedDescription)", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(ac, animated: true)
+                }
+            }
+         }
+         
+            CKContainer.default().publicCloudDatabase.add(operation)
+            
+           
+            
+         }
  
- 
+      
+       
+        loadChuckisms()
+        
+        
        
     }
 

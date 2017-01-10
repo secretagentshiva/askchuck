@@ -15,6 +15,7 @@
 		58A388221E1A057100E1F289 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58A388201E1A057100E1F289 /* LaunchScreen.storyboard */; };
 		58A3882A1E1A05BA00E1F289 /* hazelcover3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 58A388291E1A05BA00E1F289 /* hazelcover3.jpg */; };
 		58A3882F1E1A158800E1F289 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A3882E1E1A158800E1F289 /* CloudKit.framework */; };
+		58FB5AB91E2586D8009341E8 /* Chuckism.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FB5AB81E2586D8009341E8 /* Chuckism.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		58A388291E1A05BA00E1F289 /* hazelcover3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hazelcover3.jpg; sourceTree = "<group>"; };
 		58A3882C1E1A158100E1F289 /* AskChuck.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AskChuck.entitlements; sourceTree = "<group>"; };
 		58A3882E1E1A158800E1F289 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		58FB5AB81E2586D8009341E8 /* Chuckism.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chuckism.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 		58A388161E1A057100E1F289 /* AskChuck */ = {
 			isa = PBXGroup;
 			children = (
+				58FB5AB81E2586D8009341E8 /* Chuckism.swift */,
 				58A3882C1E1A158100E1F289 /* AskChuck.entitlements */,
 				58A388291E1A05BA00E1F289 /* hazelcover3.jpg */,
 				58A388171E1A057100E1F289 /* AppDelegate.swift */,
@@ -166,6 +169,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58FB5AB91E2586D8009341E8 /* Chuckism.swift in Sources */,
 				58A3881A1E1A057100E1F289 /* ViewController.swift in Sources */,
 				58A388181E1A057100E1F289 /* AppDelegate.swift in Sources */,
 				584A776C1E232CEB002E9D88 /* QuestionsViewController.swift in Sources */,
