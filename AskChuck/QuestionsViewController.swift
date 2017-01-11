@@ -39,7 +39,7 @@ class QuestionsViewController: UIViewController {
         // Debug recording of recordID
         print("tapped it")
         // print(self.chuckism.recordID)
-        
+        print(self.chuckism.recordID)
         
          CKContainer.default().publicCloudDatabase.fetch(withRecordID: self.chuckism.recordID) { record, error in
             if error != nil {
@@ -74,14 +74,25 @@ class QuestionsViewController: UIViewController {
                                 let realURL: URL = self.chuckism.response as URL!
                                 let linkedURL = self.chuckism.response.appendingPathExtension("mov")
                             
+                                // Debug
                                 print("realURL")
                                 print(realURL)
                                 print("linkedURL")
                                 print(linkedURL)
                             
+                            
                                 // Need code here to have this linkedURL tied to actual URL
                                 // syntax???
                                 // FileManager.linkItem(self.chuckism.response: URL, linkedURL: URL)
+                            
+                                let fileManager = FileManager.default
+                                do {
+                                        try fileManager.linkItem(at: realURL, to: linkedURL)
+                                } catch {
+                                    print("linking error")
+                                    print(error)
+                                
+                                }
                             
                                 // Debug - file is set to filename.mov instead of just filename to work
                                 self.chuckism.response = linkedURL as URL!
