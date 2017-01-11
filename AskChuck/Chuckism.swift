@@ -14,7 +14,7 @@ class Chuckism: NSObject {
     var recordID: CKRecordID!
     var question: String!
     var questionID: Int64!
-    // var response: URL!
+    var response: URL!
     // var thumb: URL!
     
     
