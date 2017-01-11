@@ -69,16 +69,23 @@ class QuestionsViewController: UIViewController {
                             
                             
                                 // debug hardcode url
-                                self.chuckism.response = NSURL(string: "file:///Users/shiva/Desktop/chuckisms/movie.mov") as URL!
+                                self.chuckism.response = NSURL(string: "file:///Users/shiva/Desktop/chuckisms/movie") as URL!
                             
-                                // print(self.chuckism.response)
+                                let realURL: URL = self.chuckism.response as URL!
+                                let linkedURL = self.chuckism.response.appendingPathExtension("mov")
                             
-                                // let linkedURL = self.chuckism.response.appendingPathExtension("mov")
-                                // print("Linked URL")
-                                // print(linkedURL)
+                                print("realURL")
+                                print(realURL)
+                                print("linkedURL")
+                                print(linkedURL)
                             
+                                // Need code here to have this linkedURL tied to actual URL
                                 // syntax???
-                                // FileManager.linkItem(atPath self.chuckism.response String, toPath linkedURL: String)
+                                // FileManager.linkItem(self.chuckism.response: URL, linkedURL: URL)
+                            
+                                // Debug - file is set to filename.mov instead of just filename to work
+                                self.chuckism.response = linkedURL as URL!
+                            
                             
                                 // print(self.chuckism.response)
                             
@@ -94,8 +101,8 @@ class QuestionsViewController: UIViewController {
                                 // fileTypeHint AVFileTypeQuickTimeMovie
 
                                 
-                                // older Try code 
-                               //  self.chuckismPlayer = try AVAudioPlayer(contentsOf: self.chuckism.response, fileTypeHint: AVFileTypeQuickTimeMovie)
+                                // older Try code (Do Try capture model)
+                               //  self.chuckismPlayer = try AVAudioPlayer(contentsOf: self.chuckism.response)
                                //     self.chuckismPlayer.play()
          
                             
