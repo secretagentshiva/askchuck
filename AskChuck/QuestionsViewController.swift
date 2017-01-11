@@ -65,7 +65,7 @@ class QuestionsViewController: UIViewController {
                            
                             
                                // Debug
-                               print("now playing...")
+                               // print("now playing...")
                             
                             
                                 // debug hardcode url
