@@ -17,7 +17,8 @@ class QuestionsViewController: UIViewController {
     var chuckisms = [Chuckism]()
     var chuckismPlayer: AVAudioPlayer!
     // Debug single question for testing end to end
-    let questionID: Int64 = 1
+    var questionID: Int64 = 1
+    var indexRecordID: Int = 0
     
     
     func notifyUser(_ title: String, message: String) -> Void
@@ -35,6 +36,10 @@ class QuestionsViewController: UIViewController {
     }
     
     func downloadplayTapped() {
+        
+        indexRecordID = questionID - 1
+        self.chuckism.recordID = chuckisms[indexRecordID].recordID
+        
         
         // Debug recording of recordID
         print("tapped it")
@@ -69,7 +74,7 @@ class QuestionsViewController: UIViewController {
                             
                             
                                 // debug hardcode url
-                                self.chuckism.response = NSURL(string: "file:///Users/shiva/Desktop/chuckisms/movie") as URL!
+                                // self.chuckism.response = NSURL(string: "file:///Users/shiva/Desktop/chuckisms/movie") as URL!
                             
                                 let realURL: URL = self.chuckism.response as URL!
                                 let linkedURL = self.chuckism.response.appendingPathExtension("mov")
@@ -142,7 +147,7 @@ class QuestionsViewController: UIViewController {
     
     @IBAction func playAnswer1(_ sender: Any) {
         
-        
+        questionID = 1
         downloadplayTapped()
         
         // test video code
@@ -159,7 +164,12 @@ class QuestionsViewController: UIViewController {
     }
     
     func loadChuckisms() {
-        let predicate = NSPredicate(format: "QuestionID = %ld", self.questionID)
+        
+        // Need to update predicate to be six questionIDs (random 6)
+        let questionIDArray = [1,2,3,4,5,6]
+        
+        
+        let predicate = NSPredicate(format: "QuestionID IN %@", questionIDArray)
         let query = CKQuery(recordType: "Chuckisms", predicate: predicate)
         let operation = CKQueryOperation(query: query)
         operation.desiredKeys = ["Question", "Response", "QuestionID", "Thumb"]
@@ -208,18 +218,35 @@ class QuestionsViewController: UIViewController {
     }
     
     @IBAction func playAnswer2(_ sender: Any) {
+        
+        questionID = 2
+        downloadplayTapped()
     }
     
     @IBAction func playAnswer3(_ sender: Any) {
+        
+        questionID = 3
+        downloadplayTapped()
     }
     
     @IBAction func playAnswer4(_ sender: Any) {
+        
+        questionID = 4
+        downloadplayTapped()
+        
     }
     
     @IBAction func playAnswer5(_ sender: Any) {
+        
+        questionID = 5
+        downloadplayTapped()
     }
     
     @IBAction func playAnswer6(_ sender: Any) {
+        
+        questionID = 6
+        downloadplayTapped()
+        
     }
     
     override func viewDidLoad() {

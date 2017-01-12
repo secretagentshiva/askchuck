@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,11 +19,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hazelcover3.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ERg-gV-zkc">
-                                <rect key="frame" x="-46.5" y="0.0" width="467" height="667"/>
+                                <rect key="frame" x="-74" y="0.0" width="467" height="568"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HI! I'M CHUCK." lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0r-Rl-Dv7">
                                 <rect key="frame" x="36" y="32" width="312" height="39"/>
@@ -37,19 +37,19 @@
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name please" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GLY-gq-62W">
-                                <rect key="frame" x="136" y="532" width="103" height="30"/>
+                                <rect key="frame" x="108.5" y="433" width="103" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M5x-zP-Fn8">
-                                <rect key="frame" x="127" y="572" width="121" height="30"/>
+                                <rect key="frame" x="99.5" y="473" width="121" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ch2-fN-sL4">
-                                <rect key="frame" x="144.5" y="612" width="86" height="35"/>
+                                <rect key="frame" x="117" y="513" width="86" height="35"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="I'M LEGIT">
@@ -61,7 +61,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HI NAME" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vxo-EG-qTg">
-                                <rect key="frame" x="168" y="121" width="169" height="35"/>
+                                <rect key="frame" x="113" y="121" width="169" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="169" id="I92-aR-Zp6"/>
                                 </constraints>
@@ -110,21 +110,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Dp8-sl-Fwj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Feh-Cg-bri">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BLb-Ah-Uoe">
-                                <rect key="frame" x="59" y="179" width="257" height="48"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <state key="normal" title="Do you love Polly?">
-                                    <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="playAnswer1:" destination="VgJ-BW-eDB" eventType="touchUpInside" id="AA2-aT-gsT"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GEG-lY-FF0">
-                                <rect key="frame" x="73.5" y="257" width="228" height="48"/>
+                                <rect key="frame" x="46" y="115" width="228" height="48"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <state key="normal" title="Can you dance?">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -134,7 +124,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1MD-Mc-2fG">
-                                <rect key="frame" x="88.5" y="335" width="198" height="48"/>
+                                <rect key="frame" x="61" y="194" width="198" height="48"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <state key="normal" title="I need a laugh">
                                     <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -143,18 +133,8 @@
                                     <action selector="playAnswer3:" destination="VgJ-BW-eDB" eventType="touchUpInside" id="Vle-rL-2MZ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zc1-uM-Nlu">
-                                <rect key="frame" x="48" y="569" width="279" height="48"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <state key="normal" title="I'm Feeling Chucky!">
-                                    <color key="titleColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="playAnswer6:" destination="VgJ-BW-eDB" eventType="touchUpInside" id="g8F-Hz-S7B"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWT-Lt-xWh">
-                                <rect key="frame" x="112" y="491" width="151" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWT-Lt-xWh">
+                                <rect key="frame" x="85.5" y="385" width="151" height="48"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <state key="normal" title="I'm hungry">
                                     <color key="titleColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -163,8 +143,18 @@
                                     <action selector="playAnswer5:" destination="VgJ-BW-eDB" eventType="touchUpInside" id="w8J-Sv-teO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qqz-AF-maj">
-                                <rect key="frame" x="136.5" y="413" width="102" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zc1-uM-Nlu">
+                                <rect key="frame" x="20.5" y="470" width="279" height="48"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <state key="normal" title="I'm Feeling Chucky!">
+                                    <color key="titleColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="playAnswer6:" destination="VgJ-BW-eDB" eventType="touchUpInside" id="g8F-Hz-S7B"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qqz-AF-maj">
+                                <rect key="frame" x="109" y="295" width="102" height="48"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <state key="normal" title="I'm sad">
                                     <color key="titleColor" red="0.80000001190000003" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -173,27 +163,37 @@
                                     <action selector="playAnswer4:" destination="VgJ-BW-eDB" eventType="touchUpInside" id="Vx1-zS-GTJ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="BLb-Ah-Uoe">
+                                <rect key="frame" x="38" y="31" width="244" height="48"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <state key="normal" title="Awesome songs!">
+                                    <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="playAnswer1:" destination="VgJ-BW-eDB" eventType="touchUpInside" id="AA2-aT-gsT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="BLb-Ah-Uoe" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="1KR-c8-IoR"/>
-                            <constraint firstItem="1MD-Mc-2fG" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="2kC-Dk-shp"/>
-                            <constraint firstItem="zc1-uM-Nlu" firstAttribute="top" secondItem="ZWT-Lt-xWh" secondAttribute="bottom" constant="30" id="2y9-39-Hp5"/>
-                            <constraint firstItem="Qqz-AF-maj" firstAttribute="top" secondItem="1MD-Mc-2fG" secondAttribute="bottom" constant="30" id="B9k-09-IQC"/>
-                            <constraint firstItem="1MD-Mc-2fG" firstAttribute="top" secondItem="GEG-lY-FF0" secondAttribute="bottom" constant="30" id="BXW-VW-E11"/>
-                            <constraint firstItem="ZWT-Lt-xWh" firstAttribute="top" secondItem="Qqz-AF-maj" secondAttribute="bottom" constant="30" id="BoK-V3-Oje"/>
-                            <constraint firstItem="Dp8-sl-Fwj" firstAttribute="top" secondItem="zc1-uM-Nlu" secondAttribute="bottom" constant="50" id="Csd-Au-Zew"/>
-                            <constraint firstItem="ZWT-Lt-xWh" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="Jvk-yF-kUH"/>
-                            <constraint firstItem="Qqz-AF-maj" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="KiG-tc-BIN"/>
-                            <constraint firstItem="GEG-lY-FF0" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="XYn-8W-bQJ"/>
-                            <constraint firstItem="GEG-lY-FF0" firstAttribute="top" secondItem="BLb-Ah-Uoe" secondAttribute="bottom" constant="30" id="o2I-yB-UrI"/>
-                            <constraint firstItem="zc1-uM-Nlu" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="opV-Lv-MX0"/>
+                            <constraint firstItem="GEG-lY-FF0" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="2tQ-4x-mbk"/>
+                            <constraint firstItem="Qqz-AF-maj" firstAttribute="top" secondItem="1MD-Mc-2fG" secondAttribute="bottom" constant="53" id="3ue-7q-0ca"/>
+                            <constraint firstItem="ZWT-Lt-xWh" firstAttribute="top" secondItem="Qqz-AF-maj" secondAttribute="bottom" constant="42" id="6JR-o3-QuN"/>
+                            <constraint firstItem="Dp8-sl-Fwj" firstAttribute="top" secondItem="zc1-uM-Nlu" secondAttribute="bottom" constant="50" id="FZx-G6-zKm"/>
+                            <constraint firstItem="GEG-lY-FF0" firstAttribute="top" secondItem="BLb-Ah-Uoe" secondAttribute="bottom" constant="36" id="Gkd-Ph-vLx"/>
+                            <constraint firstItem="zc1-uM-Nlu" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="Ums-Oa-q4R"/>
+                            <constraint firstItem="zc1-uM-Nlu" firstAttribute="top" secondItem="ZWT-Lt-xWh" secondAttribute="bottom" constant="37" id="Xbz-On-Mfw"/>
+                            <constraint firstItem="Qqz-AF-maj" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="XlW-Mr-mv3"/>
+                            <constraint firstItem="1MD-Mc-2fG" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="cgQ-9s-vHl"/>
+                            <constraint firstItem="BLb-Ah-Uoe" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="mPP-aL-xJf"/>
+                            <constraint firstItem="1MD-Mc-2fG" firstAttribute="top" secondItem="GEG-lY-FF0" secondAttribute="bottom" constant="31" id="xBo-Nj-bHN"/>
+                            <constraint firstItem="ZWT-Lt-xWh" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" constant="1" id="xTI-U0-GVY"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yih-Jj-aJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="709.60000000000002" y="-298.2008995502249"/>
+            <point key="canvasLocation" x="704.34782608695662" y="-300"/>
         </scene>
     </scenes>
     <resources>
