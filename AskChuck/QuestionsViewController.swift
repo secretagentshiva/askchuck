@@ -80,15 +80,11 @@ class QuestionsViewController: UIViewController {
                                 let linkedURL = self.chuckism.response.appendingPathExtension("mov")
                             
                                 // Debug
-                                print("realURL")
-                                print(realURL)
-                                print("linkedURL")
-                                print(linkedURL)
+                                // print("realURL")
+                                // print(realURL)
+                                // print("linkedURL")
+                                // print(linkedURL)
                             
-                            
-                                // Need code here to have this linkedURL tied to actual URL
-                                // syntax???
-                                // FileManager.linkItem(self.chuckism.response: URL, linkedURL: URL)
                             
                                 let fileManager = FileManager.default
                                 do {
@@ -99,11 +95,8 @@ class QuestionsViewController: UIViewController {
                                 
                                 }
                             
-                                // Debug - file is set to filename.mov instead of just filename to work
+
                                 self.chuckism.response = linkedURL as URL!
-                            
-                            
-                                // print(self.chuckism.response)
                             
                                 let player = AVPlayer(url: self.chuckism.response! as URL)
                                 let playerViewController = AVPlayerViewController()
@@ -114,13 +107,6 @@ class QuestionsViewController: UIViewController {
                                 }
                            
                             
-                                // fileTypeHint AVFileTypeQuickTimeMovie
-
-                                
-                                // older Try code (Do Try capture model)
-                               //  self.chuckismPlayer = try AVAudioPlayer(contentsOf: self.chuckism.response)
-                               //     self.chuckismPlayer.play()
-         
                             
                                 // Error handling for playback failure, need to figure out how to trigger
                                 /*
@@ -150,7 +136,7 @@ class QuestionsViewController: UIViewController {
         questionID = 1
         downloadplayTapped()
         
-        // test video code
+        // hardcoded URL for player testing
         /*
         let videoURL = NSURL(string: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
         let player = AVPlayer(url: videoURL! as URL)
@@ -166,7 +152,7 @@ class QuestionsViewController: UIViewController {
     func loadChuckisms() {
         
         // Need to update predicate to be six questionIDs (random 6)
-        let questionIDArray = [1,2,3,4,5,6]
+        let questionIDArray = [1,2]
         
         
         let predicate = NSPredicate(format: "QuestionID IN %@", questionIDArray)
@@ -194,8 +180,7 @@ class QuestionsViewController: UIViewController {
         operation.queryCompletionBlock = { [unowned self] (cursor, error) in
             DispatchQueue.main.async {
                 if error == nil {
-                    
-                    // note had to take self. out of this line for some reason (vs. tutorial). change if class Chuckism moved to a separate file later per hacking with swift instructions
+                
                     self.chuckisms = newChuckisms
                     
                     // Debug print final results object array
@@ -258,9 +243,6 @@ class QuestionsViewController: UIViewController {
        loadChuckisms()
        
     }
-
-    
-   
 
     
     override func didReceiveMemoryWarning() {
