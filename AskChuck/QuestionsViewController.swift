@@ -38,6 +38,7 @@ class QuestionsViewController: UIViewController {
     func downloadplayTapped() {
         
         indexRecordID = questionID - 1
+        print(questionID)
         self.chuckism.recordID = chuckisms[indexRecordID].recordID
         
         
@@ -149,58 +150,6 @@ class QuestionsViewController: UIViewController {
         
     }
     
-    func loadChuckisms() {
-        
-        // Need to update predicate to be six questionIDs (random 6)
-        let questionIDArray = [1,2]
-        
-        
-        let predicate = NSPredicate(format: "QuestionID IN %@", questionIDArray)
-        let query = CKQuery(recordType: "Chuckisms", predicate: predicate)
-        let operation = CKQueryOperation(query: query)
-        operation.desiredKeys = ["Question", "Response", "QuestionID", "Thumb"]
-        operation.resultsLimit = 10
-        
-        var newChuckisms = [Chuckism]()
-        
-        operation.recordFetchedBlock = { record in
-            // let chuckism = Chuckism()
-            self.chuckism.recordID = record.recordID
-            self.chuckism.question = record["Question"] as! String
-            self.chuckism.questionID = record["QuestionID"] as! Int64!
-            
-            
-            newChuckisms.append(self.chuckism)
-           
-            // debug
-            print(self.chuckism.recordID)
-            
-        }
-        
-        operation.queryCompletionBlock = { [unowned self] (cursor, error) in
-            DispatchQueue.main.async {
-                if error == nil {
-                
-                    self.chuckisms = newChuckisms
-                    
-                    // Debug print final results object array
-                    //    print(chuckisms)
-                    
-                } else {
-                    
-                    let ac = UIAlertController(title: "No Chuckisms!", message: "There was a problem getting Chuck's wisdom; please try again: \(error!.localizedDescription)", preferredStyle: .alert)
-                    ac.addAction(UIAlertAction(title: "OK", style: .default))
-                    self.present(ac, animated: true)
-                }
-            }
-        }
-        
-        
-        CKContainer.default().publicCloudDatabase.add(operation)
-        
-        
-        
-    }
     
     @IBAction func playAnswer2(_ sender: Any) {
         
@@ -233,6 +182,61 @@ class QuestionsViewController: UIViewController {
         downloadplayTapped()
         
     }
+    
+    func loadChuckisms() {
+        
+        // Need to update predicate to be six questionIDs (random 6)
+        let questionIDArray = [1,2]
+        
+        
+        let predicate = NSPredicate(format: "QuestionID IN %@", questionIDArray)
+        let query = CKQuery(recordType: "Chuckisms", predicate: predicate)
+        let operation = CKQueryOperation(query: query)
+        
+        // remove Response here?
+        operation.desiredKeys = ["Question", "Response", "QuestionID", "Thumb"]
+        operation.resultsLimit = 10
+        
+        var newChuckisms = [Chuckism]()
+        
+        operation.recordFetchedBlock = { record in
+            // let chuckism = Chuckism()
+            self.chuckism.recordID = record.recordID
+            self.chuckism.question = record["Question"] as! String
+            self.chuckism.questionID = record["QuestionID"] as! Int64!
+            
+            
+            newChuckisms.append(self.chuckism)
+            
+            // debug
+            print(self.chuckism.recordID)
+            
+        }
+        
+        operation.queryCompletionBlock = { [unowned self] (cursor, error) in
+            DispatchQueue.main.async {
+                if error == nil {
+                    
+                    self.chuckisms = newChuckisms
+                    
+                    // Debug print final results object array
+                    //    print(chuckisms)
+                    
+                } else {
+                    
+                    let ac = UIAlertController(title: "No Chuckisms!", message: "There was a problem getting Chuck's wisdom; please try again: \(error!.localizedDescription)", preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(ac, animated: true)
+                }
+            }
+        }
+        
+        CKContainer.default().publicCloudDatabase.add(operation)
+        
+        
+        
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
