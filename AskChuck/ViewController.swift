@@ -118,9 +118,7 @@ class ViewController: UIViewController {
 
 }
 
-// Save for "I'm feeling chucky" RANDOM selection
-// var countAssets: UInt32 = 10 // will need to populate with lookup of available assets
-// let selectionSurprise = arc4random_uniform(countAssets+1)
+
 
 
 

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		584A776C1E232CEB002E9D88 /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584A776B1E232CEB002E9D88 /* QuestionsViewController.swift */; };
 		58583DC81E2AE988003F76A7 /* ChuckAskMe.png in Resources */ = {isa = PBXBuildFile; fileRef = 58583DC71E2AE988003F76A7 /* ChuckAskMe.png */; };
+		5887C6C91E2BD4C500D816A3 /* chuckLoad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5887C6C81E2BD4C500D816A3 /* chuckLoad.png */; };
 		58A388181E1A057100E1F289 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A388171E1A057100E1F289 /* AppDelegate.swift */; };
 		58A3881A1E1A057100E1F289 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A388191E1A057100E1F289 /* ViewController.swift */; };
 		58A3881D1E1A057100E1F289 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58A3881B1E1A057100E1F289 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		584A776B1E232CEB002E9D88 /* QuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
 		58583DC71E2AE988003F76A7 /* ChuckAskMe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChuckAskMe.png; sourceTree = "<group>"; };
+		5887C6C81E2BD4C500D816A3 /* chuckLoad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chuckLoad.png; sourceTree = "<group>"; };
 		58A388141E1A057100E1F289 /* AskChuck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AskChuck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A388171E1A057100E1F289 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58A388191E1A057100E1F289 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			children = (
 				58FB5AB81E2586D8009341E8 /* Chuckism.swift */,
 				58A3882C1E1A158100E1F289 /* AskChuck.entitlements */,
+				5887C6C81E2BD4C500D816A3 /* chuckLoad.png */,
 				58A388291E1A05BA00E1F289 /* hazelcover3.jpg */,
 				58583DC71E2AE988003F76A7 /* ChuckAskMe.png */,
 				58A388171E1A057100E1F289 /* AppDelegate.swift */,
@@ -160,6 +163,7 @@
 			files = (
 				58A3882A1E1A05BA00E1F289 /* hazelcover3.jpg in Resources */,
 				58A388221E1A057100E1F289 /* LaunchScreen.storyboard in Resources */,
+				5887C6C91E2BD4C500D816A3 /* chuckLoad.png in Resources */,
 				58A3881F1E1A057100E1F289 /* Assets.xcassets in Resources */,
 				58583DC81E2AE988003F76A7 /* ChuckAskMe.png in Resources */,
 				58A3881D1E1A057100E1F289 /* Main.storyboard in Resources */,

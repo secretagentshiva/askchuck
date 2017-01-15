@@ -177,11 +177,14 @@ class QuestionsViewController: UIViewController {
         downloadplayTapped()
     }
     
+    // Save for "I'm feeling chucky" RANDOM selection
+    // var countAssets: UInt32 = 10 // will need to populate with lookup of available assets
+    // let selectionSurprise = arc4random_uniform(countAssets+1)
       
     func loadChuckisms() {
         
         // Need to update predicate to be five questionIDs (random 5 of total if more given UI constraint)
-        let questionIDArray = [1,2,3]
+        let questionIDArray = [1,2] // only 2 Q's in cloud right now
         
         
         let predicate = NSPredicate(format: "QuestionID IN %@", questionIDArray)
@@ -230,6 +233,11 @@ class QuestionsViewController: UIViewController {
         
         CKContainer.default().publicCloudDatabase.add(operation)
         
+    
+        
+        // Need code here to dynamically populate the Question Buttons
+        // Will need to create non-action versions of buttons for reference
+        // Will need to possibly just create and assign them entirely in code?
         
     }
 
