@@ -11,6 +11,33 @@ import CloudKit
 import AVKit
 import AVFoundation
 
+// UIView extension to animate an image spinner
+
+extension UIView {
+    func startRotating() {
+        let kAnimationKey = "rotation"
+        
+        if self.layer.animation(forKey: kAnimationKey) == nil {
+            let animate = CABasicAnimation(keyPath: "transform.rotation")
+            // animate.duration = duration  <- removed duration, unnecessary in this app
+            // if adding back need to add param -> startRotating(duration: Double = 1)
+            animate.repeatCount = Float.infinity
+            animate.fromValue = 0.0
+            animate.toValue = Float(M_PI * 2.0)
+            self.layer.add(animate, forKey: kAnimationKey)
+        }
+    }
+    func stopRotating() {
+        let kAnimationKey = "rotation"
+        
+        if self.layer.animation(forKey: kAnimationKey) != nil {
+            self.layer.removeAnimation(forKey: kAnimationKey)
+        }
+    }
+}
+
+
+
 class QuestionsViewController: UIViewController {
 
     
@@ -22,9 +49,11 @@ class QuestionsViewController: UIViewController {
     // Debug single question for testing end to end
     var questionID: Int64 = 1
     
-    
+    @IBOutlet weak var buttonQuestion1: UIButton!
+    @IBOutlet weak var buttonQuestion2: UIButton!
     @IBOutlet weak var headerImgView: UIImageView!
     
+    @IBOutlet weak var imgSpinner: UIImageView!
     
     func notifyUser(_ title: String, message: String) -> Void
     {
@@ -48,9 +77,9 @@ class QuestionsViewController: UIViewController {
         let imgRect = CGRect(x: 0, y: 0, width: newWidth, height: newHeight)
         
         // debug
-        print(imgSize)
-        print(imgRect)
-        print(scale)
+        // print(imgSize)
+        // print(imgRect)
+        // print(scale)
         
         UIGraphicsBeginImageContext(imgSize)
         image.draw(in: imgRect)
@@ -65,6 +94,7 @@ class QuestionsViewController: UIViewController {
     func downloadplayTapped() {
         
         indexRecordID = questionID - 1
+        
         
         self.chuckism.recordID = self.chuckisms[indexRecordID].recordID
         self.chuckism.questionID = self.chuckisms[indexRecordID].questionID
@@ -156,7 +186,20 @@ class QuestionsViewController: UIViewController {
     @IBAction func playAnswer1(_ sender: Any) {
         
         questionID = 1
-        downloadplayTapped()
+        let indexArray: Int = questionID - 1
+        
+        if self.chuckisms[indexArray].questionID != nil {
+            downloadplayTapped()
+            
+        } else {
+            
+            let ac = UIAlertController(title: "Chuck's a bit busy today.", message: "Try again in one second.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(ac, animated: true)
+
+            
+        }
+        
         
         // hardcoded URL for player testing
         /*
@@ -199,6 +242,7 @@ class QuestionsViewController: UIViewController {
         var newChuckisms = [Chuckism]()
         
        
+       
         // debug for array append issues
         
         operation.recordFetchedBlock = { record in
@@ -207,6 +251,13 @@ class QuestionsViewController: UIViewController {
             tmpChuckism.recordID = record.recordID
             tmpChuckism.question = record["Question"] as! String
             tmpChuckism.questionID = record["QuestionID"] as! Int64!
+            
+            // Debug loading records
+            // print("Loading records")
+            // print(tmpChuckism.recordID)
+            // print(tmpChuckism.questionID)
+            // print(tmpChuckism.question)
+            
             
             
             newChuckisms.append(tmpChuckism)
@@ -220,7 +271,13 @@ class QuestionsViewController: UIViewController {
                 if error == nil {
                     
                     self.chuckisms = newChuckisms
-                   
+                    
+                    // Now that CK records loaded let's unhide the buttons 
+                    // Later we will dynamically produce these buttons based on CK records
+                    self.buttonQuestion1.isHidden = false
+                    self.buttonQuestion2.isHidden = false
+                    self.stopSpinning()
+                    
                     
                     
                 } else {
@@ -231,6 +288,7 @@ class QuestionsViewController: UIViewController {
                 }
             }
         }
+        
         
         CKContainer.default().publicCloudDatabase.add(operation)
         
@@ -243,6 +301,18 @@ class QuestionsViewController: UIViewController {
     }
 
     
+    func startSpinning() {
+        self.imgSpinner.isHidden = false
+        self.imgSpinner.startRotating()
+    }
+    
+    func stopSpinning() {
+        
+        self.imgSpinner.stopRotating()
+        self.imgSpinner.isHidden = true
+    
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -251,18 +321,22 @@ class QuestionsViewController: UIViewController {
         
         
         // Resize image
-        let imgHeader = UIImage(named: "ChuckAskMeFull.jpg")
+        let imgHeader = UIImage(named: "ChuckAskMeFull.JPG")
+        
+        
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
         
         
         self.headerImgView.image = resizeImage(image: imgHeader!, newWidth: screenWidth)
         
+        
+        
+        
         // Load Chuckism responses 
         // Later will automate labels
-        
+        startSpinning()
         loadChuckisms()
-       
         
     }
 

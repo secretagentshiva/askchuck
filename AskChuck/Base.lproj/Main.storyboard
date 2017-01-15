@@ -42,12 +42,18 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="qXQ-Yn-M0b"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M5x-zP-Fn8">
                                 <rect key="frame" x="99.5" y="473" width="121" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="LSM-Yi-Xsd"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ch2-fN-sL4">
                                 <rect key="frame" x="117" y="513" width="86" height="35"/>
@@ -117,7 +123,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ChuckAskMeFull.JPG" translatesAutoresizingMaskIntoConstraints="NO" id="0ox-DH-6uH">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GEG-lY-FF0">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GEG-lY-FF0">
                                 <rect key="frame" x="32" y="328" width="256" height="40"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
@@ -129,7 +135,7 @@
                                     <action selector="playAnswer2:" destination="VgJ-BW-eDB" eventType="touchUpInside" id="Q10-eM-0Fb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="BLb-Ah-Uoe">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="BLb-Ah-Uoe">
                                 <rect key="frame" x="-1" y="256" width="322" height="40"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
@@ -141,6 +147,10 @@
                                     <action selector="playAnswer1:" destination="VgJ-BW-eDB" eventType="touchUpInside" id="AA2-aT-gsT"/>
                                 </connections>
                             </button>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="WoodchuckSpinner.png" translatesAutoresizingMaskIntoConstraints="NO" id="0B2-jN-OJN">
+                                <rect key="frame" x="135" y="198" width="48" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.91434425119999996" green="0.24562284349999999" blue="0.21347567440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -156,7 +166,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttonQuestion1" destination="BLb-Ah-Uoe" id="n5p-d6-1JH"/>
+                        <outlet property="buttonQuestion2" destination="GEG-lY-FF0" id="D1X-gy-lVh"/>
                         <outlet property="headerImgView" destination="0ox-DH-6uH" id="YgC-KF-Nxa"/>
+                        <outlet property="imgSpinner" destination="0B2-jN-OJN" id="zow-Vg-a4T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yih-Jj-aJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -166,6 +179,7 @@
     </scenes>
     <resources>
         <image name="ChuckAskMeFull.JPG" width="455" height="607"/>
+        <image name="WoodchuckSpinner.png" width="48" height="48"/>
         <image name="hazelcover3.jpg" width="467" height="623"/>
     </resources>
 </document>
