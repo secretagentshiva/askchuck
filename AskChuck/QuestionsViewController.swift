@@ -25,6 +25,7 @@ class QuestionsViewController: UIViewController {
     
     @IBOutlet weak var headerImgView: UIImageView!
     
+    
     func notifyUser(_ title: String, message: String) -> Void
     {
         let alert = UIAlertController(title: title,
@@ -250,7 +251,7 @@ class QuestionsViewController: UIViewController {
         
         
         // Resize image
-        let imgHeader = UIImage(named: "ChuckAskMe.png")
+        let imgHeader = UIImage(named: "ChuckAskMeFull.jpg")
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
         

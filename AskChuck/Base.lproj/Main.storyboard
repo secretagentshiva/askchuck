@@ -34,7 +34,7 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="shadowColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name please" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GLY-gq-62W">
@@ -54,8 +54,8 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="I'M LEGIT">
-                                    <color key="titleColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sw0-BS-3zd"/>
@@ -67,9 +67,9 @@
                                     <constraint firstAttribute="width" constant="169" id="I92-aR-Zp6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
-                                <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="shadowColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
                         </subviews>
@@ -114,51 +114,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="BLb-Ah-Uoe">
-                                <rect key="frame" x="10" y="224" width="300" height="40"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
-                                <state key="normal" title="Where do get those songs?">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="playAnswer1:" destination="VgJ-BW-eDB" eventType="touchUpInside" id="AA2-aT-gsT"/>
-                                </connections>
-                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ChuckAskMeFull.JPG" translatesAutoresizingMaskIntoConstraints="NO" id="0ox-DH-6uH">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GEG-lY-FF0">
                                 <rect key="frame" x="32" y="328" width="256" height="40"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="Do you love Aunt Polly?">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="playAnswer2:" destination="VgJ-BW-eDB" eventType="touchUpInside" id="Q10-eM-0Fb"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ChuckAskMe.png" translatesAutoresizingMaskIntoConstraints="NO" id="WTL-gP-ZIb">
-                                <rect key="frame" x="-47" y="0.0" width="414" height="184"/>
-                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="BLb-Ah-Uoe">
+                                <rect key="frame" x="-1" y="256" width="322" height="40"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                <size key="titleShadowOffset" width="0.0" height="1"/>
+                                <state key="normal" title="Where are those songs from?">
+                                    <color key="titleColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playAnswer1:" destination="VgJ-BW-eDB" eventType="touchUpInside" id="AA2-aT-gsT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.91434425119999996" green="0.24562284349999999" blue="0.21347567440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="BLb-Ah-Uoe" firstAttribute="top" secondItem="WTL-gP-ZIb" secondAttribute="bottom" constant="40" id="4M8-e7-KJQ"/>
+                            <constraint firstItem="0ox-DH-6uH" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="8N4-yz-oRo"/>
+                            <constraint firstAttribute="trailing" secondItem="0ox-DH-6uH" secondAttribute="trailing" id="HbA-d4-gcI"/>
+                            <constraint firstItem="Dp8-sl-Fwj" firstAttribute="top" secondItem="0ox-DH-6uH" secondAttribute="bottom" id="Lsg-NG-IbR"/>
                             <constraint firstItem="GEG-lY-FF0" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="UQB-UH-5nY"/>
-                            <constraint firstItem="WTL-gP-ZIb" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="YHK-yR-uMF"/>
-                            <constraint firstItem="WTL-gP-ZIb" firstAttribute="top" secondItem="fuZ-pl-ZL4" secondAttribute="bottom" constant="-20" id="cey-fm-E3G"/>
-                            <constraint firstItem="BLb-Ah-Uoe" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="hYh-UR-BvT"/>
-                            <constraint firstItem="GEG-lY-FF0" firstAttribute="top" secondItem="BLb-Ah-Uoe" secondAttribute="bottom" constant="64" id="nw0-mX-VqD"/>
+                            <constraint firstItem="0ox-DH-6uH" firstAttribute="top" secondItem="Feh-Cg-bri" secondAttribute="top" id="eNf-4J-u1y"/>
+                            <constraint firstItem="BLb-Ah-Uoe" firstAttribute="centerX" secondItem="GEG-lY-FF0" secondAttribute="centerX" id="pnj-YG-Czm"/>
+                            <constraint firstItem="Dp8-sl-Fwj" firstAttribute="top" secondItem="GEG-lY-FF0" secondAttribute="bottom" constant="200" id="tUP-xW-1jD"/>
+                            <constraint firstItem="GEG-lY-FF0" firstAttribute="top" secondItem="BLb-Ah-Uoe" secondAttribute="bottom" constant="32" id="yCj-da-oyD"/>
+                            <constraint firstItem="0ox-DH-6uH" firstAttribute="leading" secondItem="Feh-Cg-bri" secondAttribute="leading" id="yJB-DL-FHK"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="headerImgView" destination="WTL-gP-ZIb" id="UlI-jN-rnN"/>
+                        <outlet property="headerImgView" destination="0ox-DH-6uH" id="YgC-KF-Nxa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yih-Jj-aJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="704.34782608695662" y="-300"/>
+            <point key="canvasLocation" x="703.125" y="-300"/>
         </scene>
     </scenes>
     <resources>
-        <image name="ChuckAskMe.png" width="414" height="184"/>
+        <image name="ChuckAskMeFull.JPG" width="455" height="607"/>
         <image name="hazelcover3.jpg" width="467" height="623"/>
     </resources>
 </document>
