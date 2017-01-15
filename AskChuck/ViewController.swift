@@ -16,7 +16,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var labelName: UILabel!
     var intLoginAttempts: UInt! = 0
     // var userNameKnown: Bool = false
-    var userFriends: Array = ["Sari", "Evie", "Andy", "Poo Brother", "Poo Sister", "Auntie Polly"]
+    let userFriends: Array = ["Sari","sari","sarah","Sarah","Evie","eve","evie","Andy","andy","Poo Brother","poo brother", "Poo Sister","chuck","turtle","felix","Felix","Chuck","Turtle","Auntie Polly","polly","auntie polly"]
+    
+    let userMoms: Array = ["Sari","sari","sarah","Sarah"]
+    let userDads: Array = ["Andy","andy"]
     
     func loadQuestionsUI() {
         self.performSegue(withIdentifier: "goToQuestionsUI", sender: self)
@@ -65,7 +68,6 @@ class ViewController: UIViewController {
         
     }
     
-   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,12 +83,12 @@ class ViewController: UIViewController {
         let userNameObject = UserDefaults.standard.object(forKey:"name")
         if let userName = userNameObject as? String {
             
-            if userName == "Sari" {
+            if userMoms.contains(userName)  {
                 
                 labelName.text = "HI MOMMY!"
                 labelName.isHidden = false
                 
-            } else if userName == "Andy" {
+            } else if userDads.contains(userName) {
                 
                 labelName.text = "HI DAD!"
                 labelName.isHidden = false

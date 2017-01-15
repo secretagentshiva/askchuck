@@ -23,6 +23,8 @@ class QuestionsViewController: UIViewController {
     var questionID: Int64 = 1
     
     
+    @IBOutlet weak var headerImgView: UIImageView!
+    
     func notifyUser(_ title: String, message: String) -> Void
     {
         let alert = UIAlertController(title: title,
@@ -240,12 +242,12 @@ class QuestionsViewController: UIViewController {
         
         
         // Resize image
-        var imgHeader = UIImage(named: "ChuckAskMe.png")
+        let imgHeader = UIImage(named: "ChuckAskMe.png")
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
         
         
-       imgHeader = resizeImage(image: imgHeader!, newWidth: screenWidth)
+        self.headerImgView.image = resizeImage(image: imgHeader!, newWidth: screenWidth)
         
         // Load Chuckism responses 
         // Later will automate labels
