@@ -13,31 +13,6 @@ import AVFoundation
 
 // UIView extension to animate an image spinner
 
-extension UIView {
-    func startRotating() {
-        let kAnimationKey = "rotation"
-        
-        if self.layer.animation(forKey: kAnimationKey) == nil {
-            let animate = CABasicAnimation(keyPath: "transform.rotation")
-            // animate.duration = duration  <- removed duration, unnecessary in this app
-            // if adding back need to add param -> startRotating(duration: Double = 1)
-            animate.repeatCount = Float.infinity
-            animate.fromValue = 0.0
-            animate.toValue = Float(M_PI * 2.0)
-            self.layer.add(animate, forKey: kAnimationKey)
-        }
-    }
-    func stopRotating() {
-        let kAnimationKey = "rotation"
-        
-        if self.layer.animation(forKey: kAnimationKey) != nil {
-            self.layer.removeAnimation(forKey: kAnimationKey)
-        }
-    }
-}
-
-
-
 class QuestionsViewController: UIViewController {
 
     
@@ -46,13 +21,15 @@ class QuestionsViewController: UIViewController {
     var chuckismPlayer: AVAudioPlayer!
     var indexRecordID: Int = 0
     
+    
     // Debug single question for testing end to end
     var questionID: Int64 = 1
+    
+    // Outlets
     
     @IBOutlet weak var buttonQuestion1: UIButton!
     @IBOutlet weak var buttonQuestion2: UIButton!
     @IBOutlet weak var headerImgView: UIImageView!
-    
     @IBOutlet weak var imgSpinner: UIImageView!
     
     func notifyUser(_ title: String, message: String) -> Void
@@ -227,6 +204,7 @@ class QuestionsViewController: UIViewController {
       
     func loadChuckisms() {
         
+        
         // Need to update predicate to be five questionIDs (random 5 of total if more given UI constraint)
         let questionIDArray = [1,2] // only 2 Q's in cloud right now
         
@@ -240,7 +218,6 @@ class QuestionsViewController: UIViewController {
         operation.resultsLimit = 5
         
         var newChuckisms = [Chuckism]()
-        
        
        
         // debug for array append issues
@@ -277,7 +254,7 @@ class QuestionsViewController: UIViewController {
                     self.buttonQuestion1.isHidden = false
                     self.buttonQuestion2.isHidden = false
                     self.stopSpinning()
-                    
+                
                     
                     
                 } else {
@@ -303,7 +280,7 @@ class QuestionsViewController: UIViewController {
     
     func startSpinning() {
         self.imgSpinner.isHidden = false
-        self.imgSpinner.startRotating()
+        self.imgSpinner.startRotating(duration: 1)
     }
     
     func stopSpinning() {
@@ -318,7 +295,7 @@ class QuestionsViewController: UIViewController {
         
         
         // Do any additional setup after loading the view.
-        
+       
         
         // Resize image
         let imgHeader = UIImage(named: "ChuckAskMeFull.JPG")
@@ -329,17 +306,21 @@ class QuestionsViewController: UIViewController {
         
         
         self.headerImgView.image = resizeImage(image: imgHeader!, newWidth: screenWidth)
-        
-        
-        
-        
-        // Load Chuckism responses 
-        // Later will automate labels
-        startSpinning()
-        loadChuckisms()
+       
+       //  loadChuckisms()
         
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if self.isBeingPresented || self.isMovingToParentViewController {
+            // Perform an action that will only be done once
+            startSpinning()
+            
+        }
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

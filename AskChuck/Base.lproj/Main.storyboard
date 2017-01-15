@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,11 +19,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hazelcover3.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ERg-gV-zkc">
-                                <rect key="frame" x="-74" y="0.0" width="467" height="568"/>
+                                <rect key="frame" x="-46.5" y="0.0" width="467" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HI! I'M CHUCK. I SEE YOU!" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0r-Rl-Dv7">
                                 <rect key="frame" x="32" y="32" width="237" height="82"/>
@@ -38,7 +38,7 @@
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name please" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GLY-gq-62W">
-                                <rect key="frame" x="108.5" y="433" width="103" height="30"/>
+                                <rect key="frame" x="136" y="532" width="103" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -47,7 +47,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M5x-zP-Fn8">
-                                <rect key="frame" x="99.5" y="473" width="121" height="30"/>
+                                <rect key="frame" x="127" y="572" width="121" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -56,7 +56,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ch2-fN-sL4">
-                                <rect key="frame" x="117" y="513" width="86" height="35"/>
+                                <rect key="frame" x="144.5" y="612" width="86" height="35"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="I'M LEGIT">
@@ -68,7 +68,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HI NAME" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vxo-EG-qTg">
-                                <rect key="frame" x="113" y="121" width="169" height="35"/>
+                                <rect key="frame" x="168" y="121" width="169" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="169" id="I92-aR-Zp6"/>
                                 </constraints>
@@ -117,14 +117,17 @@
                         <viewControllerLayoutGuide type="bottom" id="Dp8-sl-Fwj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleAspectFit" id="Feh-Cg-bri">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ChuckAskMeFull.JPG" translatesAutoresizingMaskIntoConstraints="NO" id="0ox-DH-6uH">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WoodchuckSpinner.png" translatesAutoresizingMaskIntoConstraints="NO" id="0B2-jN-OJN">
+                                <rect key="frame" x="163" y="277" width="48" height="48"/>
                             </imageView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GEG-lY-FF0">
-                                <rect key="frame" x="32" y="328" width="256" height="40"/>
+                                <rect key="frame" x="59.5" y="427" width="256" height="40"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="Do you love Aunt Polly?">
@@ -136,7 +139,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="BLb-Ah-Uoe">
-                                <rect key="frame" x="-1" y="256" width="322" height="40"/>
+                                <rect key="frame" x="26.5" y="355" width="322" height="40"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="Where are those songs from?">
@@ -147,15 +150,13 @@
                                     <action selector="playAnswer1:" destination="VgJ-BW-eDB" eventType="touchUpInside" id="AA2-aT-gsT"/>
                                 </connections>
                             </button>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="WoodchuckSpinner.png" translatesAutoresizingMaskIntoConstraints="NO" id="0B2-jN-OJN">
-                                <rect key="frame" x="135" y="198" width="48" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.91434425119999996" green="0.24562284349999999" blue="0.21347567440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="0ox-DH-6uH" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="8N4-yz-oRo"/>
+                            <constraint firstItem="0B2-jN-OJN" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="G3E-1s-gll"/>
                             <constraint firstAttribute="trailing" secondItem="0ox-DH-6uH" secondAttribute="trailing" id="HbA-d4-gcI"/>
+                            <constraint firstItem="BLb-Ah-Uoe" firstAttribute="top" secondItem="0B2-jN-OJN" secondAttribute="bottom" constant="30" id="KsL-od-R5t"/>
                             <constraint firstItem="Dp8-sl-Fwj" firstAttribute="top" secondItem="0ox-DH-6uH" secondAttribute="bottom" id="Lsg-NG-IbR"/>
                             <constraint firstItem="GEG-lY-FF0" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="UQB-UH-5nY"/>
                             <constraint firstItem="0ox-DH-6uH" firstAttribute="top" secondItem="Feh-Cg-bri" secondAttribute="top" id="eNf-4J-u1y"/>
