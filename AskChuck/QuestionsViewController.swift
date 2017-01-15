@@ -2,7 +2,7 @@
 //  QuestionsViewController.swift
 //  AskChuck
 //
-//  Created by Shiva Rajaraman on 1/8/17.
+//  Created by Litter Box Labs on 1/8/17.
 //  Copyright © 2017 Chucklet Labs. All rights reserved.
 //
 
@@ -13,12 +13,14 @@ import AVFoundation
 
 class QuestionsViewController: UIViewController {
 
+    
     var chuckism = Chuckism()
     var chuckisms = [Chuckism]()
     var chuckismPlayer: AVAudioPlayer!
+    var indexRecordID: Int = 0
+    
     // Debug single question for testing end to end
     var questionID: Int64 = 1
-    var indexRecordID: Int = 0
     
     
     func notifyUser(_ title: String, message: String) -> Void
@@ -35,17 +37,29 @@ class QuestionsViewController: UIViewController {
                      completion: nil)
     }
     
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+        
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        let imgSize = CGSize(width: newWidth, height: newHeight)
+        let imgRect = CGRect(x: 0, y: 0, width: newWidth, height: newHeight)
+        UIGraphicsBeginImageContext(imgSize)
+        image.draw(in: imgRect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
+    }
+
+    
+    
     func downloadplayTapped() {
         
         indexRecordID = questionID - 1
-        print(questionID)
-        self.chuckism.recordID = chuckisms[indexRecordID].recordID
         
-        
-        // Debug recording of recordID
-        print("tapped it")
-        // print(self.chuckism.recordID)
-        print(self.chuckism.recordID)
+        self.chuckism.recordID = self.chuckisms[indexRecordID].recordID
+        self.chuckism.questionID = self.chuckisms[indexRecordID].questionID
+       
         
          CKContainer.default().publicCloudDatabase.fetch(withRecordID: self.chuckism.recordID) { record, error in
             if error != nil {
@@ -70,11 +84,7 @@ class QuestionsViewController: UIViewController {
                         DispatchQueue.main.async {
                            
                             
-                               // Debug
-                               // print("now playing...")
-                            
-                            
-                                // debug hardcode url
+                                // debug hardcode localfile MacOS url
                                 // self.chuckism.response = NSURL(string: "file:///Users/shiva/Desktop/chuckisms/movie") as URL!
                             
                                 let realURL: URL = self.chuckism.response as URL!
@@ -96,9 +106,11 @@ class QuestionsViewController: UIViewController {
                                 
                                 }
                             
+                                // debug linkedURL correct
+                                print(linkedURL)
+                            
 
                                 self.chuckism.response = linkedURL as URL!
-                            
                                 let player = AVPlayer(url: self.chuckism.response! as URL)
                                 let playerViewController = AVPlayerViewController()
                                 playerViewController.player = player
@@ -157,36 +169,11 @@ class QuestionsViewController: UIViewController {
         downloadplayTapped()
     }
     
-    @IBAction func playAnswer3(_ sender: Any) {
-        
-        questionID = 3
-        downloadplayTapped()
-    }
-    
-    @IBAction func playAnswer4(_ sender: Any) {
-        
-        questionID = 4
-        downloadplayTapped()
-        
-    }
-    
-    @IBAction func playAnswer5(_ sender: Any) {
-        
-        questionID = 5
-        downloadplayTapped()
-    }
-    
-    @IBAction func playAnswer6(_ sender: Any) {
-        
-        questionID = 6
-        downloadplayTapped()
-        
-    }
-    
+      
     func loadChuckisms() {
         
-        // Need to update predicate to be six questionIDs (random 6)
-        let questionIDArray = [1,2]
+        // Need to update predicate to be five questionIDs (random 5 of total if more given UI constraint)
+        let questionIDArray = [1,2,3]
         
         
         let predicate = NSPredicate(format: "QuestionID IN %@", questionIDArray)
@@ -194,22 +181,25 @@ class QuestionsViewController: UIViewController {
         let operation = CKQueryOperation(query: query)
         
         // remove Response here?
-        operation.desiredKeys = ["Question", "Response", "QuestionID", "Thumb"]
-        operation.resultsLimit = 10
+        operation.desiredKeys = ["Question", "Response", "QuestionID"]
+        operation.resultsLimit = 5
         
         var newChuckisms = [Chuckism]()
         
+       
+        // debug for array append issues
+        
         operation.recordFetchedBlock = { record in
-            // let chuckism = Chuckism()
-            self.chuckism.recordID = record.recordID
-            self.chuckism.question = record["Question"] as! String
-            self.chuckism.questionID = record["QuestionID"] as! Int64!
+            
+            let tmpChuckism = Chuckism()
+            tmpChuckism.recordID = record.recordID
+            tmpChuckism.question = record["Question"] as! String
+            tmpChuckism.questionID = record["QuestionID"] as! Int64!
             
             
-            newChuckisms.append(self.chuckism)
+            newChuckisms.append(tmpChuckism)
             
-            // debug
-            print(self.chuckism.recordID)
+            
             
         }
         
@@ -218,9 +208,8 @@ class QuestionsViewController: UIViewController {
                 if error == nil {
                     
                     self.chuckisms = newChuckisms
+                   
                     
-                    // Debug print final results object array
-                    //    print(chuckisms)
                     
                 } else {
                     
@@ -234,18 +223,30 @@ class QuestionsViewController: UIViewController {
         CKContainer.default().publicCloudDatabase.add(operation)
         
         
-        
     }
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
-      // Do any additional setup after loading the view.
         
-       loadChuckisms()
+        // Do any additional setup after loading the view.
+        
+        
+        // Resize image
+        var imgHeader = UIImage(named: "ChuckAskMe.png")
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        
+        
+       imgHeader = resizeImage(image: imgHeader!, newWidth: screenWidth)
+        
+        // Load Chuckism responses 
+        // Later will automate labels
+        
+        loadChuckisms()
        
+        
     }
 
     

@@ -2,7 +2,7 @@
 //  Chuckism.swift
 //  AskChuck
 //
-//  Created by Shiva Rajaraman on 1/10/17.
+//  Created by Litterbox Labs on 1/10/17.
 //  Copyright © 2017 Chucklet Labs. All rights reserved.
 //
 
@@ -15,7 +15,7 @@ class Chuckism: NSObject {
     var question: String!
     var questionID: Int64!
     var response: URL!
-    // var thumb: URL!
+    var thumb: URL!
     
     
 }

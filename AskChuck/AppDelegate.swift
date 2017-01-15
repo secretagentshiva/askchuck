@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  AskChuck
 //
-//  Created by Shiva Rajaraman on 1/1/17.
+//  Created by Litter Box Labs on 1/1/17.
 //  Copyright © 2017 Chucklet Labs. All rights reserved.
 //
 
