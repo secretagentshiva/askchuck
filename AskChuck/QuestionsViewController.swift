@@ -43,6 +43,12 @@ class QuestionsViewController: UIViewController {
         let newHeight = image.size.height * scale
         let imgSize = CGSize(width: newWidth, height: newHeight)
         let imgRect = CGRect(x: 0, y: 0, width: newWidth, height: newHeight)
+        
+        // debug
+        print(imgSize)
+        print(imgRect)
+        print(scale)
+        
         UIGraphicsBeginImageContext(imgSize)
         image.draw(in: imgRect)
         let newImage = UIGraphicsGetImageFromCurrentImageContext()

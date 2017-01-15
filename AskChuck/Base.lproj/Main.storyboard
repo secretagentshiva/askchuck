@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,11 +19,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hazelcover3.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ERg-gV-zkc">
-                                <rect key="frame" x="-74" y="0.0" width="467" height="568"/>
+                                <rect key="frame" x="-74" y="0.0" width="467" height="480"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HI! I'M CHUCK. I SEE YOU!" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0r-Rl-Dv7">
                                 <rect key="frame" x="32" y="32" width="237" height="82"/>
@@ -38,19 +38,19 @@
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name please" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GLY-gq-62W">
-                                <rect key="frame" x="108.5" y="433" width="103" height="30"/>
+                                <rect key="frame" x="108.5" y="345" width="103" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M5x-zP-Fn8">
-                                <rect key="frame" x="99.5" y="473" width="121" height="30"/>
+                                <rect key="frame" x="99.5" y="385" width="121" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ch2-fN-sL4">
-                                <rect key="frame" x="117" y="513" width="86" height="35"/>
+                                <rect key="frame" x="117" y="425" width="86" height="35"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="I'M LEGIT">
@@ -111,11 +111,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Dp8-sl-Fwj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleAspectFit" id="Feh-Cg-bri">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="BLb-Ah-Uoe">
-                                <rect key="frame" x="10" y="228" width="300" height="40"/>
+                                <rect key="frame" x="10" y="224" width="300" height="40"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                 <state key="normal" title="Where do get those songs?">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -125,7 +125,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GEG-lY-FF0">
-                                <rect key="frame" x="32" y="332" width="256" height="40"/>
+                                <rect key="frame" x="32" y="328" width="256" height="40"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                 <state key="normal" title="Do you love Aunt Polly?">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -134,19 +134,18 @@
                                     <action selector="playAnswer2:" destination="VgJ-BW-eDB" eventType="touchUpInside" id="Q10-eM-0Fb"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ChuckAskMe.png" translatesAutoresizingMaskIntoConstraints="NO" id="WTL-gP-ZIb">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="184"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ChuckAskMe.png" translatesAutoresizingMaskIntoConstraints="NO" id="WTL-gP-ZIb">
+                                <rect key="frame" x="-47" y="0.0" width="414" height="184"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.91434425119999996" green="0.24562284349999999" blue="0.21347567440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="GEG-lY-FF0" firstAttribute="centerX" secondItem="BLb-Ah-Uoe" secondAttribute="centerX" id="K61-bA-JdG"/>
-                            <constraint firstItem="WTL-gP-ZIb" firstAttribute="leading" secondItem="Feh-Cg-bri" secondAttribute="leading" id="OcE-yI-mwZ"/>
-                            <constraint firstAttribute="trailing" secondItem="WTL-gP-ZIb" secondAttribute="trailing" id="Tev-de-29Q"/>
+                            <constraint firstItem="BLb-Ah-Uoe" firstAttribute="top" secondItem="WTL-gP-ZIb" secondAttribute="bottom" constant="40" id="4M8-e7-KJQ"/>
                             <constraint firstItem="GEG-lY-FF0" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="UQB-UH-5nY"/>
-                            <constraint firstItem="BLb-Ah-Uoe" firstAttribute="top" secondItem="WTL-gP-ZIb" secondAttribute="bottom" constant="44" id="UTl-5l-csN"/>
+                            <constraint firstItem="WTL-gP-ZIb" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="YHK-yR-uMF"/>
+                            <constraint firstItem="WTL-gP-ZIb" firstAttribute="top" secondItem="fuZ-pl-ZL4" secondAttribute="bottom" constant="-20" id="cey-fm-E3G"/>
+                            <constraint firstItem="BLb-Ah-Uoe" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="hYh-UR-BvT"/>
                             <constraint firstItem="GEG-lY-FF0" firstAttribute="top" secondItem="BLb-Ah-Uoe" secondAttribute="bottom" constant="64" id="nw0-mX-VqD"/>
-                            <constraint firstItem="WTL-gP-ZIb" firstAttribute="top" secondItem="Feh-Cg-bri" secondAttribute="top" id="pS3-jz-gKM"/>
                         </constraints>
                     </view>
                 </viewController>
