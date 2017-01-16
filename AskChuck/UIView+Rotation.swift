@@ -18,7 +18,6 @@ extension UIView {
         
         if self.layer.animation(forKey: kAnimationKey) == nil {
             
-            print("rotating")
             let animationRotate = CABasicAnimation(keyPath: "transform.rotation")
             animationRotate.duration = duration
             animationRotate.repeatCount = Float.infinity

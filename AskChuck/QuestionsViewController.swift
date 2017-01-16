@@ -123,7 +123,7 @@ class QuestionsViewController: UIViewController {
                                 }
                             
                                 // debug linkedURL correct
-                                print(linkedURL)
+                                // print(linkedURL)
                             
 
                                 self.chuckism.response = linkedURL as URL!
@@ -131,8 +131,12 @@ class QuestionsViewController: UIViewController {
                                 let playerViewController = AVPlayerViewController()
                                 playerViewController.player = player
                                 self.present(playerViewController, animated: true) {
+                                    
+                                    playerViewController.videoGravity = AVLayerVideoGravityResizeAspectFill
                                     playerViewController.player!.play()
- 
+                                    
+                                    
+                                    
                                 }
                            
                             
@@ -307,7 +311,7 @@ class QuestionsViewController: UIViewController {
         
         self.headerImgView.image = resizeImage(image: imgHeader!, newWidth: screenWidth)
        
-       //  loadChuckisms()
+       loadChuckisms()
         
     }
 
