@@ -20,6 +20,7 @@ class QuestionsViewController: UIViewController {
     var chuckisms = [Chuckism]()
     var chuckismPlayer: AVAudioPlayer!
     var indexRecordID: Int = 0
+    let playerViewController = AVPlayerViewController()
     
     
     // Debug single question for testing end to end
@@ -67,6 +68,17 @@ class QuestionsViewController: UIViewController {
     }
 
     
+    func playerDidFinishPlaying(note: NSNotification){
+        //Called when player finished playing
+        print("done playing")
+        
+        // Dismiss AVPlayerViewController given video finished
+        self.playerViewController.dismiss(animated: true, completion: nil)
+        
+        // remove observer waiting for AVPlayer to finish
+        NotificationCenter.default.removeObserver(self)
+        
+    }
     
     func downloadplayTapped() {
         
@@ -128,18 +140,24 @@ class QuestionsViewController: UIViewController {
 
                                 self.chuckism.response = linkedURL as URL!
                                 let player = AVPlayer(url: self.chuckism.response! as URL)
-                                let playerViewController = AVPlayerViewController()
-                                playerViewController.player = player
-                                self.present(playerViewController, animated: true) {
+                            
+                                self.playerViewController.player = player
+                                self.present(self.playerViewController, animated: true) {
                                     
-                                    playerViewController.videoGravity = AVLayerVideoGravityResizeAspectFill
-                                    playerViewController.player!.play()
+
+                                    self.playerViewController.videoGravity = AVLayerVideoGravityResizeAspectFill
                                     
+                                    self.playerViewController.player!.play()
+                                    
+                                    NotificationCenter.default.addObserver(self, selector:#selector(self.playerDidFinishPlaying(note:)),name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player.currentItem)
+                                    
+                                    
+                                    // may need deinit()
                                     
                                     
                                 }
                            
-                            
+                           
                             
                                 // Error handling for playback failure, need to figure out how to trigger
                                 /*
@@ -324,6 +342,8 @@ class QuestionsViewController: UIViewController {
             
         }
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
