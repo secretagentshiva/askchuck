@@ -11,7 +11,7 @@ import CloudKit
 import AVKit
 import AVFoundation
 
-// UIView extension to animate an image spinner
+
 
 class QuestionsViewController: UIViewController {
 
@@ -70,7 +70,6 @@ class QuestionsViewController: UIViewController {
     
     func playerDidFinishPlaying(note: NSNotification){
         //Called when player finished playing
-        print("done playing")
         
         // Dismiss AVPlayerViewController given video finished
         self.playerViewController.dismiss(animated: true, completion: nil)
@@ -112,30 +111,22 @@ class QuestionsViewController: UIViewController {
                         DispatchQueue.main.async {
                            
                             
-                                // debug hardcode localfile MacOS url
-                                // self.chuckism.response = NSURL(string: "file:///Users/shiva/Desktop/chuckisms/movie") as URL!
+                                // debug hardcode localfile
+                                // self.chuckism.response = NSURL(string: "file:///Users/shiva/Desktop/filepath.mov") as URL!
                             
                                 let realURL: URL = self.chuckism.response as URL!
                                 let linkedURL = self.chuckism.response.appendingPathExtension("mov")
-                            
-                                // Debug
-                                // print("realURL")
-                                // print(realURL)
-                                // print("linkedURL")
-                                // print(linkedURL)
                             
                             
                                 let fileManager = FileManager.default
                                 do {
                                         try fileManager.linkItem(at: realURL, to: linkedURL)
-                                } catch {
-                                    print("linking error")
-                                    print(error)
                                 
+                                        } catch {
+                                    
+                                            print("linking error")
+                                            print(error)
                                 }
-                            
-                                // debug linkedURL correct
-                                // print(linkedURL)
                             
 
                                 self.chuckism.response = linkedURL as URL!
@@ -152,15 +143,9 @@ class QuestionsViewController: UIViewController {
                                     NotificationCenter.default.addObserver(self, selector:#selector(self.playerDidFinishPlaying(note:)),name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player.currentItem)
                                     
                                     
-                                    // may need deinit()
-                                    
-                                    
                                 }
                            
-                           
-                            
-                                // Error handling for playback failure, need to figure out how to trigger
-                                /*
+                                // Error handling for playback failure, unclear if below ever triggers
                             
                                if player.error != nil {
                              
@@ -169,13 +154,12 @@ class QuestionsViewController: UIViewController {
                                 self.present(ac, animated: true)
                              
                                 }
-                                */
                             
                         }
                         
          
                         
-                        }
+                    }
                 }
             }
          }
@@ -196,20 +180,7 @@ class QuestionsViewController: UIViewController {
             ac.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(ac, animated: true)
 
-            
         }
-        
-        
-        // hardcoded URL for player testing
-        /*
-        let videoURL = NSURL(string: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
-        let player = AVPlayer(url: videoURL! as URL)
-        let playerViewController = AVPlayerViewController()
-        playerViewController.player = player
-        self.present(playerViewController, animated: true) {
-            playerViewController.player!.play()
-        }
-        */
         
     }
     
@@ -227,8 +198,7 @@ class QuestionsViewController: UIViewController {
     func loadChuckisms() {
         
         
-        // Need to update predicate to be five questionIDs (random 5 of total if more given UI constraint)
-        let questionIDArray = [1,2] // only 2 Q's in cloud right now
+        let questionIDArray = [1,2] // only 2 Q's in cloud right now so hardcoding for testing purposes
         
         
         let predicate = NSPredicate(format: "QuestionID IN %@", questionIDArray)
@@ -237,7 +207,7 @@ class QuestionsViewController: UIViewController {
         
         // remove Response here?
         operation.desiredKeys = ["Question", "Response", "QuestionID"]
-        operation.resultsLimit = 5
+        operation.resultsLimit = 5 // capping this during testing + removed cursor code; add later
         
         var newChuckisms = [Chuckism]()
        
@@ -250,18 +220,8 @@ class QuestionsViewController: UIViewController {
             tmpChuckism.recordID = record.recordID
             tmpChuckism.question = record["Question"] as! String
             tmpChuckism.questionID = record["QuestionID"] as! Int64!
-            
-            // Debug loading records
-            // print("Loading records")
-            // print(tmpChuckism.recordID)
-            // print(tmpChuckism.questionID)
-            // print(tmpChuckism.question)
-            
-            
-            
+    
             newChuckisms.append(tmpChuckism)
-            
-            
             
         }
         
@@ -276,8 +236,6 @@ class QuestionsViewController: UIViewController {
                     self.buttonQuestion1.isHidden = false
                     self.buttonQuestion2.isHidden = false
                     self.stopSpinning()
-                
-                    
                     
                 } else {
                     
@@ -321,15 +279,11 @@ class QuestionsViewController: UIViewController {
         
         // Resize image
         let imgHeader = UIImage(named: "ChuckAskMeFull.JPG")
-        
-        
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
-        
-        
         self.headerImgView.image = resizeImage(image: imgHeader!, newWidth: screenWidth)
        
-       loadChuckisms()
+        loadChuckisms()
         
     }
 
@@ -344,22 +298,10 @@ class QuestionsViewController: UIViewController {
     }
     
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
         
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

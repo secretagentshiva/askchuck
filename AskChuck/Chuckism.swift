@@ -2,7 +2,7 @@
 //  Chuckism.swift
 //  AskChuck
 //
-//  Created by Litterbox Labs on 1/10/17.
+//  Created by Litter Box Labs on 1/10/17.
 //  Copyright © 2017 Chucklet Labs. All rights reserved.
 //
 
