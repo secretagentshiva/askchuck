@@ -15,7 +15,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var labelWelcome: UILabel!
     @IBOutlet weak var labelName: UILabel!
     var intLoginAttempts: UInt! = 0
-    // var userNameKnown: Bool = false
+    
+    // Hardcoded family who can use the app; later can provision through User DB for identities+roles
     let userFriends: Array = ["Sari","sari","sarah","Sarah","Evie","eve","evie","Andy","andy","Poo Brother","poo brother", "Poo Sister","chuck","turtle","felix","Felix","Chuck","Turtle","Auntie Polly","polly","auntie polly"]
     
     let userMoms: Array = ["Sari","sari","sarah","Sarah"]
@@ -34,12 +35,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
             if userFriends.contains(textName.text!) {
             
                 UserDefaults.standard.set(textName.text, forKey:"name")
+                
             } else {
                 
                 labelWelcome.text = "STRANGER DANGER!"
                 return
             }
-            
             
         }
         
@@ -49,7 +50,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             intLoginAttempts = 0
             
             Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(loadQuestionsUI), userInfo: nil, repeats: false)
-        
             
         }
             
@@ -77,7 +77,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textName.isHidden = true
         labelName.isHidden = true
         
-        // Testing: wipe UserDefaults name
+        // Debug and tetsting: wipe UserDefaults local storage for username
         // UserDefaults.standard.removeObject(forKey: "name")
         
         let userNameObject = UserDefaults.standard.object(forKey:"name")

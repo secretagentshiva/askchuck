@@ -11,8 +11,6 @@ import CloudKit
 import AVKit
 import AVFoundation
 
-
-
 class QuestionsViewController: UIViewController {
 
     
@@ -27,59 +25,15 @@ class QuestionsViewController: UIViewController {
     var questionID: Int64 = 1
     
     // Outlets
-    
+    // Future version has these dynamically rendered but for testing with limited content hardcoded for now
     @IBOutlet weak var buttonQuestion1: UIButton!
     @IBOutlet weak var buttonQuestion2: UIButton!
     @IBOutlet weak var headerImgView: UIImageView!
     @IBOutlet weak var imgSpinner: UIImageView!
     
-    func notifyUser(_ title: String, message: String) -> Void
-    {
-        let alert = UIAlertController(title: title,
-                                      message: message,
-                                      preferredStyle: .alert)
-        
-        let cancelAction = UIAlertAction(title: "OK",
-                                         style: .cancel, handler: nil)
-        
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true,
-                     completion: nil)
-    }
-    
-    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
-        
-        let scale = newWidth / image.size.width
-        let newHeight = image.size.height * scale
-        let imgSize = CGSize(width: newWidth, height: newHeight)
-        let imgRect = CGRect(x: 0, y: 0, width: newWidth, height: newHeight)
-        
-        // debug
-        // print(imgSize)
-        // print(imgRect)
-        // print(scale)
-        
-        UIGraphicsBeginImageContext(imgSize)
-        image.draw(in: imgRect)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return newImage!
-    }
-
-    
-    func playerDidFinishPlaying(note: NSNotification){
-        //Called when player finished playing
-        
-        // Dismiss AVPlayerViewController given video finished
-        self.playerViewController.dismiss(animated: true, completion: nil)
-        
-        // remove observer waiting for AVPlayer to finish
-        NotificationCenter.default.removeObserver(self)
-        
-    }
     
     func downloadplayTapped() {
+        
         
         indexRecordID = questionID - 1
         
@@ -166,22 +120,13 @@ class QuestionsViewController: UIViewController {
     }
     
     
+    // Future version dynamically creates these Question Play buttons based on CK lookup
+    // Hardcoded for testing currently
+    
     @IBAction func playAnswer1(_ sender: Any) {
         
         questionID = 1
-        let indexArray: Int = questionID - 1
-        
-        if self.chuckisms[indexArray].questionID != nil {
-            downloadplayTapped()
-            
-        } else {
-            
-            let ac = UIAlertController(title: "Chuck's a bit busy today.", message: "Try again in one second.", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(ac, animated: true)
-
-        }
-        
+        downloadplayTapped()
     }
     
     
@@ -191,14 +136,13 @@ class QuestionsViewController: UIViewController {
         downloadplayTapped()
     }
     
-    // Save for "I'm feeling chucky" RANDOM selection
+    // Save for "I'm feeling Chucky" RANDOM selection
     // var countAssets: UInt32 = 10 // will need to populate with lookup of available assets
     // let selectionSurprise = arc4random_uniform(countAssets+1)
       
     func loadChuckisms() {
         
-        
-        let questionIDArray = [1,2] // only 2 Q's in cloud right now so hardcoding for testing purposes
+        let questionIDArray = [1,2] // only 2 Q&A's in cloud right now so hardcoding for testing purposes
         
         
         let predicate = NSPredicate(format: "QuestionID IN %@", questionIDArray)
@@ -257,6 +201,54 @@ class QuestionsViewController: UIViewController {
         
     }
 
+    
+    func notifyUser(_ title: String, message: String) -> Void
+    {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "OK",
+                                         style: .cancel, handler: nil)
+        
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true,
+                     completion: nil)
+    }
+    
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+        
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        let imgSize = CGSize(width: newWidth, height: newHeight)
+        let imgRect = CGRect(x: 0, y: 0, width: newWidth, height: newHeight)
+        
+        // debug
+        // print(imgSize)
+        // print(imgRect)
+        // print(scale)
+        
+        UIGraphicsBeginImageContext(imgSize)
+        image.draw(in: imgRect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
+    }
+    
+    
+    func playerDidFinishPlaying(note: NSNotification){
+        //Called when player finished playing
+        
+        // Dismiss AVPlayerViewController given video finished
+        self.playerViewController.dismiss(animated: true, completion: nil)
+        
+        // remove observer waiting for AVPlayer to finish
+        NotificationCenter.default.removeObserver(self)
+        
+    }
+
+    
     
     func startSpinning() {
         self.imgSpinner.isHidden = false
