@@ -124,51 +124,22 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WoodchuckSpinner.png" translatesAutoresizingMaskIntoConstraints="NO" id="0B2-jN-OJN">
-                                <rect key="frame" x="163" y="277" width="48" height="48"/>
+                                <rect key="frame" x="163" y="309.5" width="48" height="48"/>
                             </imageView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GEG-lY-FF0">
-                                <rect key="frame" x="59.5" y="427" width="256" height="40"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
-                                <size key="titleShadowOffset" width="0.0" height="1"/>
-                                <state key="normal" title="Do you love Aunt Polly?">
-                                    <color key="titleColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="playAnswer2:" destination="VgJ-BW-eDB" eventType="touchUpInside" id="Q10-eM-0Fb"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="BLb-Ah-Uoe">
-                                <rect key="frame" x="26.5" y="355" width="322" height="40"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
-                                <size key="titleShadowOffset" width="0.0" height="1"/>
-                                <state key="normal" title="Where are those songs from?">
-                                    <color key="titleColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="playAnswer1:" destination="VgJ-BW-eDB" eventType="touchUpInside" id="AA2-aT-gsT"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.91434425119999996" green="0.24562284349999999" blue="0.21347567440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="0B2-jN-OJN" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="2oh-Lp-0fD"/>
+                            <constraint firstItem="0B2-jN-OJN" firstAttribute="centerY" secondItem="Feh-Cg-bri" secondAttribute="centerY" id="4gY-Qr-8o7"/>
                             <constraint firstItem="0ox-DH-6uH" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="8N4-yz-oRo"/>
                             <constraint firstItem="0B2-jN-OJN" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="G3E-1s-gll"/>
                             <constraint firstAttribute="trailing" secondItem="0ox-DH-6uH" secondAttribute="trailing" id="HbA-d4-gcI"/>
-                            <constraint firstItem="BLb-Ah-Uoe" firstAttribute="top" secondItem="0B2-jN-OJN" secondAttribute="bottom" constant="30" id="KsL-od-R5t"/>
                             <constraint firstItem="Dp8-sl-Fwj" firstAttribute="top" secondItem="0ox-DH-6uH" secondAttribute="bottom" id="Lsg-NG-IbR"/>
-                            <constraint firstItem="GEG-lY-FF0" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="UQB-UH-5nY"/>
                             <constraint firstItem="0ox-DH-6uH" firstAttribute="top" secondItem="Feh-Cg-bri" secondAttribute="top" id="eNf-4J-u1y"/>
-                            <constraint firstItem="BLb-Ah-Uoe" firstAttribute="centerX" secondItem="GEG-lY-FF0" secondAttribute="centerX" id="pnj-YG-Czm"/>
-                            <constraint firstItem="Dp8-sl-Fwj" firstAttribute="top" secondItem="GEG-lY-FF0" secondAttribute="bottom" constant="200" id="tUP-xW-1jD"/>
-                            <constraint firstItem="GEG-lY-FF0" firstAttribute="top" secondItem="BLb-Ah-Uoe" secondAttribute="bottom" constant="32" id="yCj-da-oyD"/>
                             <constraint firstItem="0ox-DH-6uH" firstAttribute="leading" secondItem="Feh-Cg-bri" secondAttribute="leading" id="yJB-DL-FHK"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="buttonQuestion1" destination="BLb-Ah-Uoe" id="n5p-d6-1JH"/>
-                        <outlet property="buttonQuestion2" destination="GEG-lY-FF0" id="D1X-gy-lVh"/>
                         <outlet property="headerImgView" destination="0ox-DH-6uH" id="YgC-KF-Nxa"/>
                         <outlet property="imgSpinner" destination="0B2-jN-OJN" id="zow-Vg-a4T"/>
                     </connections>

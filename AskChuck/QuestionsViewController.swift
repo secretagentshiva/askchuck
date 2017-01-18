@@ -22,7 +22,7 @@ class QuestionsViewController: UIViewController {
     
     
     // Debug single question for testing end to end
-    var questionID: Int64 = 1
+    // var questionID: Int64 = 1
     
     // Outlets
     // Future version has these dynamically rendered but for testing with limited content hardcoded for now
@@ -32,9 +32,9 @@ class QuestionsViewController: UIViewController {
     @IBOutlet weak var imgSpinner: UIImageView!
     
     
-    func downloadplayTapped() {
+    func downloadplayTapped(sender:UIButton) {
         
-        
+        let questionID = sender.tag
         indexRecordID = questionID - 1
         
         
@@ -78,8 +78,9 @@ class QuestionsViewController: UIViewController {
                                 
                                         } catch {
                                     
-                                            print("linking error")
-                                            print(error)
+                                            let ac = UIAlertController(title: "Having trouble saving Chuck's wisdom for your viewing pleasure", message: "Please try again later.", preferredStyle: .alert)
+                                            ac.addAction(UIAlertAction(title: "OK", style: .default))
+                                            self.present(ac, animated: true)
                                 }
                             
 
@@ -120,21 +121,7 @@ class QuestionsViewController: UIViewController {
     }
     
     
-    // Future version dynamically creates these Question Play buttons based on CK lookup
-    // Hardcoded for testing currently
     
-    @IBAction func playAnswer1(_ sender: Any) {
-        
-        questionID = 1
-        downloadplayTapped()
-    }
-    
-    
-    @IBAction func playAnswer2(_ sender: Any) {
-        
-        questionID = 2
-        downloadplayTapped()
-    }
     
     // Save for "I'm feeling Chucky" RANDOM selection
     // var countAssets: UInt32 = 10 // will need to populate with lookup of available assets
@@ -175,10 +162,39 @@ class QuestionsViewController: UIViewController {
                     
                     self.chuckisms = newChuckisms
                     
-                    // Now that CK records loaded let's unhide the buttons 
-                    // Later we will dynamically produce these buttons based on CK records
-                    self.buttonQuestion1.isHidden = false
-                    self.buttonQuestion2.isHidden = false
+                    // list out questions as buttons
+                    
+                    var buttonY: CGFloat = 100
+                    let screenSize = UIScreen.main.bounds
+                    let widthButton = screenSize.width - 10
+                   
+                    
+                    for chuckQuestion in self.chuckisms {
+                        
+                        let questionButton = UIButton(frame: CGRect(x: 0, y: buttonY, width: widthButton, height: 30))
+                        buttonY = buttonY + 50
+                        questionButton.setTitle("\(chuckQuestion.question!)",for: UIControlState.normal)
+                        questionButton.setTitleColor(UIColor.magenta, for: UIControlState.normal)
+                        questionButton.setTitleColor(UIColor.white, for: UIControlState.highlighted)
+                        // Need to set font
+                        // Need to set bold
+                        
+                        
+                        questionButton.tag = Int(chuckQuestion.questionID)
+                        questionButton.addTarget(self, action: #selector(self.downloadplayTapped), for: .touchUpInside)
+                        
+                        
+                        self.view.addSubview(questionButton)
+                        
+                        let horizontalConstraint = NSLayoutConstraint(item: questionButton, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
+                        
+                        // add constraints to view
+                        self.view.addConstraints([horizontalConstraint])
+                    
+                        
+                        
+                    }
+                    
                     self.stopSpinning()
                     
                 } else {
@@ -223,11 +239,6 @@ class QuestionsViewController: UIViewController {
         let imgSize = CGSize(width: newWidth, height: newHeight)
         let imgRect = CGRect(x: 0, y: 0, width: newWidth, height: newHeight)
         
-        // debug
-        // print(imgSize)
-        // print(imgRect)
-        // print(scale)
-        
         UIGraphicsBeginImageContext(imgSize)
         image.draw(in: imgRect)
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
@@ -268,7 +279,6 @@ class QuestionsViewController: UIViewController {
         
         // Do any additional setup after loading the view.
        
-        
         // Resize image
         let imgHeader = UIImage(named: "ChuckAskMeFull.JPG")
         let screenSize = UIScreen.main.bounds
@@ -283,7 +293,8 @@ class QuestionsViewController: UIViewController {
         super.viewDidAppear(animated)
         
         if self.isBeingPresented || self.isMovingToParentViewController {
-            // Perform an action that will only be done once
+       
+            // Spinner during initial CK load
             startSpinning()
             
         }
