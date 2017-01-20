@@ -192,27 +192,6 @@ class QuestionsViewController: UIViewController {
                         questionButton.addTarget(self, action: #selector(self.downloadplayTapped), for: .touchUpInside)
                         
                         
-                        // self.view.addSubview(questionButton)
-                        
-                        
-                        // let horizontalConstraint = NSLayoutConstraint(item: questionButton, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
-                        
-                        
-                        // add constraints to view
-                        // self.view.addConstraints([horizontalConstraint])
-                    
-                        
-                        // add vertical contraint to last button
-                        
-                        // if chuckQuestion == self.chuckisms.last {
-                            
-                          
-                           //  questionButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100).isActive = true
-
-                            
-                        // }
-                       
-                        
                     }
                     
                     // create stackView of buttons
@@ -220,20 +199,23 @@ class QuestionsViewController: UIViewController {
                     let stackView = UIStackView(arrangedSubviews: buttons)
                     stackView.axis = .vertical
                     stackView.distribution = .fillEqually
-                    stackView.alignment = .fill
-                    stackView.spacing = 5
+                    stackView.alignment = .center
+                    stackView.spacing = 1
                     stackView.translatesAutoresizingMaskIntoConstraints = false
                     self.view.addSubview(stackView)
                     
-                    //autolayout the stack view - pin 30 up 20 left 20 right 30 down
+                    //autolayout the stack view - pin 100 up 20 left 20 right 50 down
                     let viewsDictionary = ["stackView":stackView]
                     let stackView_H = NSLayoutConstraint.constraints(
                         withVisualFormat: "H:|-10-[stackView]-10-|",  //horizontal constraint 10 points from left and right side
                         options: NSLayoutFormatOptions(rawValue: 0),
                         metrics: nil,
                         views: viewsDictionary)
+                    
+                    // need to play with this constraint - hardcoded setting ideal as will need to vary w/ number of questions but also don't want <3 question edge case to break
+                    
                     let stackView_V = NSLayoutConstraint.constraints(
-                        withVisualFormat: "V:|-200-[stackView]-100-|", //vertical constraint 100 points from top and bottom
+                        withVisualFormat: "V:|-100-[stackView]-50-|", //vertical constraint 100 points from top and bottom
                         options: NSLayoutFormatOptions(rawValue:0),
                         metrics: nil,
                         views: viewsDictionary)
