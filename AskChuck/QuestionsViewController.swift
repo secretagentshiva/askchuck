@@ -21,6 +21,8 @@ class QuestionsViewController: UIViewController {
     let playerViewController = AVPlayerViewController()
     
     
+    
+    
     // Debug single question for testing end to end
     // var questionID: Int64 = 1
     
@@ -163,50 +165,80 @@ class QuestionsViewController: UIViewController {
                     self.chuckisms = newChuckisms
                     
                     // list out questions as buttons
-                   // var buttonY: CGFloat = 100
                     let screenSize = UIScreen.main.bounds
-                    
-                    // Doing some hacky placement here pending establishing autolayout constraints
+                    var buttons = [UIButton()]
                     let widthButton = screenSize.width - 20
-                    var buttonY: CGFloat = screenSize.height - 400
-                    
                     
                     for chuckQuestion in self.chuckisms {
                         
                         // create and format buttons
-                        let questionButton = UIButton(frame: CGRect(x: 0, y: buttonY, width: widthButton, height: 30))
-                        buttonY = buttonY + 50
+                        let questionButton = UIButton(frame: CGRect(x: 0, y: 0, width: widthButton, height: 30))
+                        // questionButton.translatesAutoresizingMaskIntoConstraints = false
+                       
+                        // add to buttons array for stackview
+                        buttons.append(questionButton)
+                
+                        // format buttons
                         questionButton.setTitle("\(chuckQuestion.question!)",for: UIControlState.normal)
                         questionButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-                        questionButton.setTitleColor(UIColor.purple, for: UIControlState.normal)
-                        questionButton.setTitleColor(UIColor.white, for: UIControlState.highlighted)
+                        questionButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+                        questionButton.setTitleColor(UIColor.purple, for: UIControlState.highlighted)
                         questionButton.setTitleShadowColor(UIColor.magenta, for: UIControlState.normal)
                         questionButton.titleLabel?.shadowOffset = CGSize(width: 0, height: 1)
                         
                         
-                        // Need to add item to item vertical layout constraints
-                        // Need to add last item to bottom of view vertical constraint outside! of loop
-                      
-                    
-                        
-                        // employ tag to pass question ID parameter and set target
+                        // employ tag property to pass question ID and set target
                         questionButton.tag = Int(chuckQuestion.questionID)
                         questionButton.addTarget(self, action: #selector(self.downloadplayTapped), for: .touchUpInside)
                         
                         
-                        self.view.addSubview(questionButton)
+                        // self.view.addSubview(questionButton)
                         
-                        let horizontalConstraint = NSLayoutConstraint(item: questionButton, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
                         
+                        // let horizontalConstraint = NSLayoutConstraint(item: questionButton, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
                         
                         
                         // add constraints to view
-                        self.view.addConstraints([horizontalConstraint])
+                        // self.view.addConstraints([horizontalConstraint])
                     
                         
+                        // add vertical contraint to last button
+                        
+                        // if chuckQuestion == self.chuckisms.last {
+                            
+                          
+                           //  questionButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100).isActive = true
+
+                            
+                        // }
+                       
                         
                     }
                     
+                    // create stackView of buttons
+                   
+                    let stackView = UIStackView(arrangedSubviews: buttons)
+                    stackView.axis = .vertical
+                    stackView.distribution = .fillEqually
+                    stackView.alignment = .fill
+                    stackView.spacing = 5
+                    stackView.translatesAutoresizingMaskIntoConstraints = false
+                    self.view.addSubview(stackView)
+                    
+                    //autolayout the stack view - pin 30 up 20 left 20 right 30 down
+                    let viewsDictionary = ["stackView":stackView]
+                    let stackView_H = NSLayoutConstraint.constraints(
+                        withVisualFormat: "H:|-10-[stackView]-10-|",  //horizontal constraint 10 points from left and right side
+                        options: NSLayoutFormatOptions(rawValue: 0),
+                        metrics: nil,
+                        views: viewsDictionary)
+                    let stackView_V = NSLayoutConstraint.constraints(
+                        withVisualFormat: "V:|-200-[stackView]-100-|", //vertical constraint 100 points from top and bottom
+                        options: NSLayoutFormatOptions(rawValue:0),
+                        metrics: nil,
+                        views: viewsDictionary)
+                    self.view.addConstraints(stackView_H)
+                    self.view.addConstraints(stackView_V)
                     
                     
                     self.stopSpinning()
@@ -293,6 +325,8 @@ class QuestionsViewController: UIViewController {
         
         // Do any additional setup after loading the view.
        
+        
+        
         // Resize image
         let imgHeader = UIImage(named: "ChuckAskMeFull.JPG")
         let screenSize = UIScreen.main.bounds
