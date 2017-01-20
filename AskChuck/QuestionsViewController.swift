@@ -163,23 +163,33 @@ class QuestionsViewController: UIViewController {
                     self.chuckisms = newChuckisms
                     
                     // list out questions as buttons
-                    
-                    var buttonY: CGFloat = 100
+                   // var buttonY: CGFloat = 100
                     let screenSize = UIScreen.main.bounds
-                    let widthButton = screenSize.width - 10
-                   
+                    
+                    // Doing some hacky placement here pending establishing autolayout constraints
+                    let widthButton = screenSize.width - 20
+                    var buttonY: CGFloat = screenSize.height - 400
+                    
                     
                     for chuckQuestion in self.chuckisms {
                         
+                        // create and format buttons
                         let questionButton = UIButton(frame: CGRect(x: 0, y: buttonY, width: widthButton, height: 30))
                         buttonY = buttonY + 50
                         questionButton.setTitle("\(chuckQuestion.question!)",for: UIControlState.normal)
-                        questionButton.setTitleColor(UIColor.magenta, for: UIControlState.normal)
+                        questionButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+                        questionButton.setTitleColor(UIColor.purple, for: UIControlState.normal)
                         questionButton.setTitleColor(UIColor.white, for: UIControlState.highlighted)
-                        // Need to set font
-                        // Need to set bold
+                        questionButton.setTitleShadowColor(UIColor.magenta, for: UIControlState.normal)
+                        questionButton.titleLabel?.shadowOffset = CGSize(width: 0, height: 1)
                         
                         
+                        // Need to add item to item vertical layout constraints
+                        // Need to add last item to bottom of view vertical constraint outside! of loop
+                      
+                    
+                        
+                        // employ tag to pass question ID parameter and set target
                         questionButton.tag = Int(chuckQuestion.questionID)
                         questionButton.addTarget(self, action: #selector(self.downloadplayTapped), for: .touchUpInside)
                         
@@ -188,12 +198,16 @@ class QuestionsViewController: UIViewController {
                         
                         let horizontalConstraint = NSLayoutConstraint(item: questionButton, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
                         
+                        
+                        
                         // add constraints to view
                         self.view.addConstraints([horizontalConstraint])
                     
                         
                         
                     }
+                    
+                    
                     
                     self.stopSpinning()
                     
