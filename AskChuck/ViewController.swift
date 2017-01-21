@@ -16,11 +16,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var labelName: UILabel!
     var intLoginAttempts: UInt! = 0
     
-    // Hardcoded family who can use the app; later can provision through User DB for identities+roles
-    let userFriends: Array = ["Sari","sari","sarah","Sarah","Evie","eve","evie","Andy","andy","Poo Brother","poo brother", "Poo Sister","chuck","turtle","felix","Felix","Chuck","Turtle","Auntie Polly","polly","auntie polly"]
+    // Hardcoded family who can use the app; later can provision through PublicDB for identities+roles
+    let userFriends: Array = ["sari","sarah","eve","evie","andy","shiva","chuck","turtle","felix","polly"]
     
-    let userMoms: Array = ["Sari","sari","sarah","Sarah"]
-    let userDads: Array = ["Andy","andy"]
+    let userMoms: Array = ["sari","sarah"]
+    let userDads: Array = ["andy"]
+    let userPoo: Array = ["shiva"]
     
     func loadQuestionsUI() {
         self.performSegue(withIdentifier: "goToQuestionsUI", sender: self)
@@ -32,9 +33,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         if textName.isHidden == false {
             
-            if userFriends.contains(textName.text!) {
             
-                UserDefaults.standard.set(textName.text, forKey:"name")
+            if userFriends.contains((textName.text?.lowercased())!) {
+            
+                UserDefaults.standard.set(textName.text?.lowercased(), forKey:"name")
                 
             } else {
                 
@@ -47,6 +49,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         if textPassword.text == "poo" {
             labelWelcome.text = "I'M SO PROUD OF YOU!"
+            labelWelcome.textColor = UIColor.cyan
             intLoginAttempts = 0
             
             Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(loadQuestionsUI), userInfo: nil, repeats: false)
@@ -93,7 +96,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 labelName.text = "HI DAD!"
                 labelName.isHidden = false
                 
-            } else {
+            } else if userPoo.contains(userName) {
+                
+                labelName.text = "POO BROTHER!"
+                labelName.isHidden = false
+                
+            }   else {
             
             labelName.text = "HI " + userName.uppercased() + " !"
             labelName.isHidden = false

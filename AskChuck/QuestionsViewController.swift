@@ -180,10 +180,11 @@ class QuestionsViewController: UIViewController {
                 
                         // format buttons
                         questionButton.setTitle("\(chuckQuestion.question!)",for: UIControlState.normal)
-                        questionButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+                        questionButton.titleLabel?.font =  UIFont(name: "AvenirNext-Heavy", size: 20)
                         questionButton.setTitleColor(UIColor.white, for: UIControlState.normal)
                         questionButton.setTitleColor(UIColor.purple, for: UIControlState.highlighted)
-                        questionButton.setTitleShadowColor(UIColor.magenta, for: UIControlState.normal)
+                        questionButton.setTitleShadowColor(UIColor.purple, for: UIControlState.normal)
+                        questionButton.setTitleShadowColor(UIColor.white, for: UIControlState.highlighted)
                         questionButton.titleLabel?.shadowOffset = CGSize(width: 0, height: 1)
                         
                         
@@ -194,17 +195,48 @@ class QuestionsViewController: UIViewController {
                         
                     }
                     
+                    
+                    
+                    // MANUAL QUESTION TESTING -- BEG BLOCK
+                    // Testing auto layout, creating manual buttons for testing constraints
+                    /*
+                    // Note: CK records not disabled so these are in addition to those in CK PublicDB
+                    // 3 more questions
+                    // let testQuestions = ["Another great question","And yet another one","And one more!"]
+                    // 1 more question
+                    let testQuestions = ["Another great question"]
+                    
+                    for testQuestion in testQuestions {
+                        
+                        let testQuestionButton = UIButton(frame: CGRect(x: 0, y: 0, width: widthButton, height: 30))
+                        // questionButton.translatesAutoresizingMaskIntoConstraints = false
+                        
+                        testQuestionButton.setTitle("\(testQuestion)",for: UIControlState.normal)
+                        testQuestionButton.titleLabel?.font =  UIFont(name: "AvenirNext-Heavy", size: 20)
+                        testQuestionButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+                        testQuestionButton.setTitleColor(UIColor.purple, for: UIControlState.highlighted)
+                        testQuestionButton.setTitleShadowColor(UIColor.purple, for: UIControlState.normal)
+                        testQuestionButton.setTitleShadowColor(UIColor.white, for: UIControlState.highlighted)
+                        testQuestionButton.titleLabel?.shadowOffset = CGSize(width: 0, height: 1)
+                        buttons.append(testQuestionButton)
+                    
+                    }
+                    */ 
+                    // MANUAL QUESTION TESTING -- END BLOCK
+                    
+                    
                     // create stackView of buttons
                    
                     let stackView = UIStackView(arrangedSubviews: buttons)
                     stackView.axis = .vertical
                     stackView.distribution = .fillEqually
-                    stackView.alignment = .center
+                    stackView.alignment = .fill
                     stackView.spacing = 1
                     stackView.translatesAutoresizingMaskIntoConstraints = false
+                    
                     self.view.addSubview(stackView)
                     
-                    //autolayout the stack view - pin 100 up 20 left 20 right 50 down
+                    //autolayout the stack view - pin 10 left 10 right 50 down
                     let viewsDictionary = ["stackView":stackView]
                     let stackView_H = NSLayoutConstraint.constraints(
                         withVisualFormat: "H:|-10-[stackView]-10-|",  //horizontal constraint 10 points from left and right side
@@ -214,11 +246,7 @@ class QuestionsViewController: UIViewController {
                     
                     // need to play with this constraint - hardcoded setting ideal as will need to vary w/ number of questions but also don't want <3 question edge case to break
                     
-                    let stackView_V = NSLayoutConstraint.constraints(
-                        withVisualFormat: "V:|-100-[stackView]-50-|", //vertical constraint 100 points from top and bottom
-                        options: NSLayoutFormatOptions(rawValue:0),
-                        metrics: nil,
-                        views: viewsDictionary)
+                    let stackView_V = NSLayoutConstraint.constraints(withVisualFormat: "V:|[stackView]-0-|",                   options: NSLayoutFormatOptions(rawValue:0),metrics: nil, views: viewsDictionary)
                     self.view.addConstraints(stackView_H)
                     self.view.addConstraints(stackView_V)
                     
