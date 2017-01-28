@@ -120,17 +120,45 @@ class QuestionsViewController: UIViewController {
          }
     }
     
-    
-    
-    
-    // Save for "I'm feeling Chucky" RANDOM selection
-    // var countAssets: UInt32 = 10 // will need to populate with lookup of available assets
-    // let selectionSurprise = arc4random_uniform(countAssets+1)
+
       
     func loadChuckisms() {
         
-        let questionIDArray = [1,2,3] // only 3 Q&A's in cloud right now so hardcoding for testing purposes
+        // Capping questions to display but picking from PublicDB a random set of what is available 
         
+        var questionIDArray: [Int] = []
+        
+        // max questions on screen
+        // currently set to be max 6 questions
+        let countMaxQuestions = 3
+        
+        // total questions to pick from
+        // should be total count of questions in PublicDB
+        // hardcoded for now but will eventually be dynamic based on avail questions in Public DB
+        // note: a bit brittle, because if question IDs are not continuous to totalAvailQuestion, you may generate random question IDs that aren't in the DB so # of questions you display will be less than countMaxQuestions
+        
+        let totalAvailQuestions = 3
+        var count = 1
+        var randomQuestionID = 1
+        
+        while count <= countMaxQuestions {
+            
+                print("looping ", count)
+                randomQuestionID = Int(arc4random_uniform(UInt32(totalAvailQuestions)))
+                // eliminating 0 value (question IDs start with 1)
+                randomQuestionID += 1
+            
+                if !questionIDArray.contains(randomQuestionID) {
+                    questionIDArray.append(randomQuestionID)
+                
+                    count += 1
+                    print("appended ", randomQuestionID)
+                    
+                }
+        }
+        
+       
+        print(questionIDArray)
         
         let predicate = NSPredicate(format: "QuestionID IN %@", questionIDArray)
         let query = CKQuery(recordType: "Chuckisms", predicate: predicate)
