@@ -21,8 +21,6 @@ class QuestionsViewController: UIViewController {
     let playerViewController = AVPlayerViewController()
     
     
-    
-    
     // Debug single question for testing end to end
     // var questionID: Int64 = 1
     
@@ -131,7 +129,7 @@ class QuestionsViewController: UIViewController {
       
     func loadChuckisms() {
         
-        let questionIDArray = [1,2] // only 2 Q&A's in cloud right now so hardcoding for testing purposes
+        let questionIDArray = [1,2,3] // only 3 Q&A's in cloud right now so hardcoding for testing purposes
         
         
         let predicate = NSPredicate(format: "QuestionID IN %@", questionIDArray)
