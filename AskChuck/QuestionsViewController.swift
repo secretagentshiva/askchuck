@@ -183,7 +183,7 @@ class QuestionsViewController: UIViewController {
                         questionButton.titleLabel?.font =  UIFont(name: "AvenirNext-Heavy", size: 20)
                         questionButton.setTitleColor(UIColor.white, for: UIControlState.normal)
                         questionButton.setTitleColor(UIColor.purple, for: UIControlState.highlighted)
-                        questionButton.setTitleShadowColor(UIColor.cyan, for: UIControlState.normal)
+                        questionButton.setTitleShadowColor(UIColor.red, for: UIControlState.normal)
                         questionButton.setTitleShadowColor(UIColor.magenta, for: UIControlState.highlighted)
                         questionButton.titleLabel?.shadowOffset = CGSize(width: 0, height: 1)
                         
@@ -332,10 +332,7 @@ class QuestionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         // Do any additional setup after loading the view.
-       
-        
         
         // Resize image
         let imgHeader = UIImage(named: "ChuckAskMeFull.JPG")
