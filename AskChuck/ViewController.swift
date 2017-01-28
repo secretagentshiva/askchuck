@@ -80,7 +80,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textName.isHidden = true
         labelName.isHidden = true
         
-        // Debug and tetsting: wipe UserDefaults local storage for username
+        // Debug and testing: wipe UserDefaults local storage for username
         // UserDefaults.standard.removeObject(forKey: "name")
         
         let userNameObject = UserDefaults.standard.object(forKey:"name")

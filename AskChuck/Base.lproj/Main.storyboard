@@ -121,7 +121,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ChuckAskMeFull.JPG" translatesAutoresizingMaskIntoConstraints="NO" id="0ox-DH-6uH">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="674"/>
                             </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WoodchuckSpinner.png" translatesAutoresizingMaskIntoConstraints="NO" id="0B2-jN-OJN">
                                 <rect key="frame" x="163" y="310" width="48" height="48"/>
@@ -133,7 +133,7 @@
                             <constraint firstItem="0B2-jN-OJN" firstAttribute="centerY" secondItem="Feh-Cg-bri" secondAttribute="centerY" id="4gY-Qr-8o7"/>
                             <constraint firstItem="0ox-DH-6uH" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="8N4-yz-oRo"/>
                             <constraint firstAttribute="trailing" secondItem="0ox-DH-6uH" secondAttribute="trailing" id="HbA-d4-gcI"/>
-                            <constraint firstItem="Dp8-sl-Fwj" firstAttribute="top" secondItem="0ox-DH-6uH" secondAttribute="bottom" id="Lsg-NG-IbR"/>
+                            <constraint firstItem="Dp8-sl-Fwj" firstAttribute="top" secondItem="0ox-DH-6uH" secondAttribute="bottom" constant="-7" id="Lsg-NG-IbR"/>
                             <constraint firstItem="0ox-DH-6uH" firstAttribute="top" secondItem="Feh-Cg-bri" secondAttribute="top" id="eNf-4J-u1y"/>
                             <constraint firstItem="0ox-DH-6uH" firstAttribute="leading" secondItem="Feh-Cg-bri" secondAttribute="leading" id="yJB-DL-FHK"/>
                         </constraints>
