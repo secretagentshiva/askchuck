@@ -124,7 +124,7 @@ class QuestionsViewController: UIViewController {
       
     func loadChuckisms() {
         
-        // Capping questions to display but picking from PublicDB a random set of what is available 
+        // Capping questions to display but picking from PublicDB a random set of what is available
         
         var questionIDArray: [Int] = []
         
@@ -143,7 +143,7 @@ class QuestionsViewController: UIViewController {
         
         while count <= countMaxQuestions {
             
-                print("looping ", count)
+            
                 randomQuestionID = Int(arc4random_uniform(UInt32(totalAvailQuestions)))
                 // eliminating 0 value (question IDs start with 1)
                 randomQuestionID += 1
@@ -152,13 +152,13 @@ class QuestionsViewController: UIViewController {
                     questionIDArray.append(randomQuestionID)
                 
                     count += 1
-                    print("appended ", randomQuestionID)
+                    
                     
                 }
         }
         
        
-        print(questionIDArray)
+       
         
         let predicate = NSPredicate(format: "QuestionID IN %@", questionIDArray)
         let query = CKQuery(recordType: "Chuckisms", predicate: predicate)
