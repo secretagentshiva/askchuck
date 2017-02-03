@@ -57,20 +57,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             // animate unicorn upon successful login
             imageUnicorn.isHidden = false
-            // let orgX = self.imageUnicorn.center.x
-            let destX = view.bounds.width + imageUnicorn.frame.width
+            imageUnicorn.center.y = 0
             let begX = 1 - imageUnicorn.frame.width
+            let destX = view.bounds.width + imageUnicorn.frame.width
             self.imageUnicorn.center.x = begX
-           //  self.imageUnicorn.center.y -= view.bounds.height
-            
-          UIView.animate(withDuration: 1.0, delay: 0.0, animations: {
+          
+            UIView.animate(withDuration: 1.0, delay: 0.0, animations: {
                 
                 self.imageUnicorn.center.x = destX
                  
             }, completion: nil)
             
-         
-            
+            // increment login attempt counter for mockery
             intLoginAttempts = 0
             
             
