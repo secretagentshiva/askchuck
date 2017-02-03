@@ -133,7 +133,6 @@
                                 <rect key="frame" x="163" y="310" width="48" height="48"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.91434425119999996" green="0.24562284349999999" blue="0.21347567440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="0B2-jN-OJN" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="2oh-Lp-0fD"/>
                             <constraint firstItem="0B2-jN-OJN" firstAttribute="centerY" secondItem="Feh-Cg-bri" secondAttribute="centerY" id="4gY-Qr-8o7"/>
