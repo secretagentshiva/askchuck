@@ -78,6 +78,10 @@
                                 <color key="shadowColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pixelunicorn.png" translatesAutoresizingMaskIntoConstraints="NO" id="5oY-qL-7dS">
+                                <rect key="frame" x="67" y="269" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -98,6 +102,7 @@
                     </view>
                     <connections>
                         <outlet property="buttonLegit" destination="Ch2-fN-sL4" id="4IV-bT-Boo"/>
+                        <outlet property="imageUnicorn" destination="5oY-qL-7dS" id="k8k-hK-tDL"/>
                         <outlet property="labelName" destination="Vxo-EG-qTg" id="vUp-bH-Rno"/>
                         <outlet property="labelWelcome" destination="Q0r-Rl-Dv7" id="f4R-Ne-l2x"/>
                         <outlet property="textName" destination="GLY-gq-62W" id="m5k-f5-8xh"/>
@@ -153,5 +158,6 @@
         <image name="ChuckAskMeFull.JPG" width="455" height="607"/>
         <image name="WoodchuckSpinner.png" width="48" height="48"/>
         <image name="hazelcover3.jpg" width="467" height="623"/>
+        <image name="pixelunicorn.png" width="960" height="708"/>
     </resources>
 </document>

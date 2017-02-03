@@ -15,6 +15,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var labelWelcome: UILabel!
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var buttonLegit: UIButton!
+    @IBOutlet weak var imageUnicorn: UIImageView!
     
     var intLoginAttempts: UInt! = 0
     
@@ -51,7 +52,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         if textPassword.text == "poo" {
             labelWelcome.text = "I'M SO PROUD OF YOU!"
+            imageUnicorn.isHidden = false
             labelWelcome.textColor = UIColor.cyan
+            
+            
+           
+            
             intLoginAttempts = 0
             
             
@@ -73,6 +79,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         
     }
+    
+    
+    
     
     
     override func viewDidLoad() {
