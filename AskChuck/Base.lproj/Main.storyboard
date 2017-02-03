@@ -97,6 +97,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttonLegit" destination="Ch2-fN-sL4" id="4IV-bT-Boo"/>
                         <outlet property="labelName" destination="Vxo-EG-qTg" id="vUp-bH-Rno"/>
                         <outlet property="labelWelcome" destination="Q0r-Rl-Dv7" id="f4R-Ne-l2x"/>
                         <outlet property="textName" destination="GLY-gq-62W" id="m5k-f5-8xh"/>

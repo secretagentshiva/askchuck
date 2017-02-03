@@ -14,6 +14,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var textPassword: UITextField!
     @IBOutlet weak var labelWelcome: UILabel!
     @IBOutlet weak var labelName: UILabel!
+    @IBOutlet weak var buttonLegit: UIButton!
+    
     var intLoginAttempts: UInt! = 0
     
     // Hardcoded family who can use the app; later can provision through PublicDB for identities+roles
@@ -79,6 +81,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         textName.isHidden = true
         labelName.isHidden = true
+        buttonLegit.alpha = 0
+        
+        UIView.animate(withDuration: 4.0, delay: 0.0, options: .curveEaseOut, animations: {
+                self.buttonLegit.alpha = 1
+        }, completion: nil)
         
         // Debug and testing: wipe UserDefaults local storage for username
         // UserDefaults.standard.removeObject(forKey: "name")
