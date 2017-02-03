@@ -49,6 +49,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
         }
         
+        // successful login
         
         if textPassword.text == "poo" {
             labelWelcome.text = "I'M SO PROUD OF YOU!"
@@ -56,6 +57,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             labelWelcome.textColor = UIColor.cyan
             
             // animate unicorn upon successful login
+            
             imageUnicorn.isHidden = false
             imageUnicorn.center.y = view.bounds.midY
             let begX = 1 - imageUnicorn.frame.width
@@ -69,6 +71,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }, completion: nil)
             
             // increment login attempt counter for mockery
+            
             intLoginAttempts = 0
             
             
