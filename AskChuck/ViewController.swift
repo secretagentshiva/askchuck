@@ -58,17 +58,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
             // animate unicorn upon successful login
             imageUnicorn.isHidden = false
             // let orgX = self.imageUnicorn.center.x
-            let orgX = view.bounds.width + imageUnicorn.frame.width
-            let adjX = view.bounds.width + 100
-            self.imageUnicorn.center.x -= adjX
+            let destX = view.bounds.width + imageUnicorn.frame.width
+            let begX = 1 - imageUnicorn.frame.width
+            self.imageUnicorn.center.x = begX
            //  self.imageUnicorn.center.y -= view.bounds.height
-            UIView.animate(withDuration: 1.0, delay: 0.0, animations: {
+            
+          UIView.animate(withDuration: 1.0, delay: 0.0, animations: {
                 
-                self.imageUnicorn.center.x = orgX
+                self.imageUnicorn.center.x = destX
                  
             }, completion: nil)
             
-            
+         
             
             intLoginAttempts = 0
             
@@ -105,7 +106,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         labelName.isHidden = true
         buttonLegit.alpha = 0
         
-        UIView.animate(withDuration: 4.0, delay: 0.0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 3.0, delay: 0.0, options: .curveEaseOut, animations: {
                 self.buttonLegit.alpha = 1
         }, completion: nil)
         
