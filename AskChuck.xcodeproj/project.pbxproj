@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		580BEA491E44453D001920DC /* imagePixelUnicornMedium.png in Resources */ = {isa = PBXBuildFile; fileRef = 580BEA481E44453D001920DC /* imagePixelUnicornMedium.png */; };
 		58106F1D1E2C30030013683A /* UIView+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58106F1C1E2C30030013683A /* UIView+Rotation.swift */; };
 		584A776C1E232CEB002E9D88 /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584A776B1E232CEB002E9D88 /* QuestionsViewController.swift */; };
 		58583DC81E2AE988003F76A7 /* ChuckAskMe.png in Resources */ = {isa = PBXBuildFile; fileRef = 58583DC71E2AE988003F76A7 /* ChuckAskMe.png */; };
@@ -20,11 +21,11 @@
 		58A388221E1A057100E1F289 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58A388201E1A057100E1F289 /* LaunchScreen.storyboard */; };
 		58A3882A1E1A05BA00E1F289 /* hazelcover3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 58A388291E1A05BA00E1F289 /* hazelcover3.jpg */; };
 		58A3882F1E1A158800E1F289 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A3882E1E1A158800E1F289 /* CloudKit.framework */; };
-		58E786A51E4414750047FA65 /* pixelunicorn.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E786A41E4414750047FA65 /* pixelunicorn.png */; };
 		58FB5AB91E2586D8009341E8 /* Chuckism.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FB5AB81E2586D8009341E8 /* Chuckism.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		580BEA481E44453D001920DC /* imagePixelUnicornMedium.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagePixelUnicornMedium.png; sourceTree = "<group>"; };
 		58106F1C1E2C30030013683A /* UIView+Rotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Rotation.swift"; sourceTree = "<group>"; };
 		584A776B1E232CEB002E9D88 /* QuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
 		58583DC71E2AE988003F76A7 /* ChuckAskMe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChuckAskMe.png; sourceTree = "<group>"; };
@@ -41,7 +42,6 @@
 		58A388291E1A05BA00E1F289 /* hazelcover3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hazelcover3.jpg; sourceTree = "<group>"; };
 		58A3882C1E1A158100E1F289 /* AskChuck.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AskChuck.entitlements; sourceTree = "<group>"; };
 		58A3882E1E1A158800E1F289 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		58E786A41E4414750047FA65 /* pixelunicorn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pixelunicorn.png; sourceTree = "<group>"; };
 		58FB5AB81E2586D8009341E8 /* Chuckism.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chuckism.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,7 +85,7 @@
 				58A388291E1A05BA00E1F289 /* hazelcover3.jpg */,
 				58583DC71E2AE988003F76A7 /* ChuckAskMe.png */,
 				5887C6CC1E2BFF0600D816A3 /* WoodchuckSpinner.png */,
-				58E786A41E4414750047FA65 /* pixelunicorn.png */,
+				580BEA481E44453D001920DC /* imagePixelUnicornMedium.png */,
 				58A388171E1A057100E1F289 /* AppDelegate.swift */,
 				58A388191E1A057100E1F289 /* ViewController.swift */,
 				584A776B1E232CEB002E9D88 /* QuestionsViewController.swift */,
@@ -176,11 +176,11 @@
 				58A3882A1E1A05BA00E1F289 /* hazelcover3.jpg in Resources */,
 				58A388221E1A057100E1F289 /* LaunchScreen.storyboard in Resources */,
 				5887C6C91E2BD4C500D816A3 /* chuckLoad.png in Resources */,
-				58E786A51E4414750047FA65 /* pixelunicorn.png in Resources */,
 				58A3881F1E1A057100E1F289 /* Assets.xcassets in Resources */,
 				58583DC81E2AE988003F76A7 /* ChuckAskMe.png in Resources */,
 				5887C6CD1E2BFF0700D816A3 /* WoodchuckSpinner.png in Resources */,
 				58A3881D1E1A057100E1F289 /* Main.storyboard in Resources */,
+				580BEA491E44453D001920DC /* imagePixelUnicornMedium.png in Resources */,
 				5887C6CB1E2BD6F000D816A3 /* ChuckAskMeFull.JPG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

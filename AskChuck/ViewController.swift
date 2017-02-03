@@ -52,11 +52,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         if textPassword.text == "poo" {
             labelWelcome.text = "I'M SO PROUD OF YOU!"
-            imageUnicorn.isHidden = false
+            
             labelWelcome.textColor = UIColor.cyan
             
+            // animate unicorn upon successful login
+            imageUnicorn.isHidden = false
+            let orgX = self.imageUnicorn.center.x
+            self.imageUnicorn.center.x -= view.bounds.width
+           //  self.imageUnicorn.center.y -= view.bounds.height
+            UIView.animate(withDuration: 1.0, delay: 0.0, animations: {
+                
+                self.imageUnicorn.center.x = orgX
+                 
+            }, completion: nil)
             
-           
+            
             
             intLoginAttempts = 0
             
