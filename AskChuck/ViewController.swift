@@ -64,7 +64,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             let destX = view.bounds.width + imageUnicorn.frame.width
             self.imageUnicorn.center.x = begX
           
-            UIView.animate(withDuration: 1.0, delay: 0.0, animations: {
+            UIView.animate(withDuration: 1.5, delay: 0.0, animations: {
                 
                 self.imageUnicorn.center.x = destX
                  
@@ -93,9 +93,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         
     }
-    
-    
-    
     
     
     override func viewDidLoad() {

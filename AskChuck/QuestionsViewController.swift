@@ -205,8 +205,8 @@ class QuestionsViewController: UIViewController {
                         buttons.append(questionButton)
                 
                         // format buttons
-                        questionButton.setTitle("\(chuckQuestion.question!)",for: UIControlState.normal)
-                        questionButton.titleLabel?.font =  UIFont(name: "AvenirNext-Heavy", size: 20)
+                        questionButton.setTitle("\(chuckQuestion.question!.uppercased())",for: UIControlState.normal)
+                        questionButton.titleLabel?.font =  UIFont(name: "AvenirNext-Heavy", size: 16)
                         questionButton.setTitleColor(UIColor.white, for: UIControlState.normal)
                         questionButton.setTitleColor(UIColor.purple, for: UIControlState.highlighted)
                         questionButton.setTitleShadowColor(UIColor.red, for: UIControlState.normal)
@@ -291,11 +291,6 @@ class QuestionsViewController: UIViewController {
         
         CKContainer.default().publicCloudDatabase.add(operation)
         
-    
-        
-        // Need code here to dynamically populate the Question Buttons
-        // Will need to create non-action versions of buttons for reference
-        // Will need to possibly just create and assign them entirely in code?
         
     }
 
