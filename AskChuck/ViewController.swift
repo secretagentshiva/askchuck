@@ -54,8 +54,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if textPassword.text == "poo" {
             labelWelcome.text = "I'M SO PROUD OF YOU!"
             
-            labelWelcome.textColor = UIColor.cyan
-            labelName.textColor = UIColor.orange
+            labelWelcome.textColor = UIColor.magenta
+            labelName.textColor = UIColor.cyan
             
             // animate unicorn upon successful login
             
