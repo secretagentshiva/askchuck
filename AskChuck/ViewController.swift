@@ -55,6 +55,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             labelWelcome.text = "I'M SO PROUD OF YOU!"
             
             labelWelcome.textColor = UIColor.cyan
+            labelName.textColor = UIColor.orange
             
             // animate unicorn upon successful login
             
@@ -74,7 +75,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             intLoginAttempts = 0
             
-            
+            // load Question View
             Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(loadQuestionsUI), userInfo: nil, repeats: false)
             
         }
