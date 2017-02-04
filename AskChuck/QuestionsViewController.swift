@@ -210,7 +210,6 @@ class QuestionsViewController: UIViewController {
                         questionButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
                         questionButton.titleLabel?.numberOfLines = 2
                         questionButton.titleLabel?.textAlignment = NSTextAlignment.center
-                        
                         questionButton.setTitleColor(UIColor.white, for: UIControlState.normal)
                         questionButton.setTitleColor(UIColor.purple, for: UIControlState.highlighted)
                         questionButton.setTitleShadowColor(UIColor.red, for: UIControlState.normal)
