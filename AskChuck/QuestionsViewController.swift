@@ -207,6 +207,10 @@ class QuestionsViewController: UIViewController {
                         // format buttons
                         questionButton.setTitle("\(chuckQuestion.question!.uppercased())",for: UIControlState.normal)
                         questionButton.titleLabel?.font =  UIFont(name: "AvenirNext-Heavy", size: 16)
+                        questionButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+                        questionButton.titleLabel?.numberOfLines = 2
+                        questionButton.titleLabel?.textAlignment = NSTextAlignment.center
+                        
                         questionButton.setTitleColor(UIColor.white, for: UIControlState.normal)
                         questionButton.setTitleColor(UIColor.purple, for: UIControlState.highlighted)
                         questionButton.setTitleShadowColor(UIColor.red, for: UIControlState.normal)
