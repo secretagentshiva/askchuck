@@ -70,24 +70,26 @@ class QuestionsViewController: UIViewController {
             
             for view in (stackViewButtons?.subviews)!  {
                 // print("Button found: ", view.tag)
-                if view.tag != questionID && view.tag != 0 {
+                if view.tag != questionID  {
                     
-                //    print("Button matched: ", view.tag)
-                    view.isHidden = true
-                //    print("I'm Feeling Chucky revealed!")
+                    //    print("Button matched: ", view.tag)
+                        view.isHidden = true
+                    //    print("I'm Feeling Chucky revealed!")
                     
-                } else {
+                    } else {
                     
-                    // set random question chosen to selected color scheme
-                    if let button = view as? UIButton {
-                        button.setTitleColor(UIColor.purple, for: UIControlState.highlighted)
-                        button.setTitleShadowColor(UIColor.magenta, for: UIControlState.highlighted)
-                  //      print("I'm Feeling Chucky Highlighted!")
+                        // set random question chosen to selected color scheme
+                        if let button = view as? UIButton {
+                            button.setTitleColor(UIColor.purple, for: UIControlState.highlighted)
+                            button.setTitleShadowColor(UIColor.magenta, for: UIControlState.highlighted)
+                            //      print("I'm Feeling Chucky Highlighted!")
                     }
                     
                 }
             }
            
+            
+            
             
             delayWithSeconds(2) {
                 // just hanging out for 2 second so you can see altered questions
@@ -153,6 +155,23 @@ class QuestionsViewController: UIViewController {
                                     self.playerViewController.videoGravity = AVLayerVideoGravityResizeAspectFill
                                     
                                     self.playerViewController.player!.play()
+                                    
+                                    
+                                    if self.resetQuestionsView == true {
+                                        
+                                        // make invisible non-selected Question IDs visible again if hidden prior to playback for I'm Feeling Chucky use case
+                                        let stackViewButtons = self.view.viewWithTag(self.tagStackView)
+                                        
+                                        for view in (stackViewButtons?.subviews)!  {
+                                            
+                                            view.isHidden = false
+                                            
+                                        }
+                                        
+                                        self.resetQuestionsView = false
+                                        
+                                    }
+
                                     
                                     NotificationCenter.default.addObserver(self, selector:#selector(self.playerDidFinishPlaying(note:)),name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player.currentItem)
                                     
@@ -316,12 +335,12 @@ class QuestionsViewController: UIViewController {
                     // Create I'm Feeling Chucky Unicorn buton
                     
                     let questionButton = UIButton(frame: CGRect(x: 0, y: 0, width: widthButton, height: 30))
-                    let imageUnicornButton = UIImage(named: "imageUnicornButton.png") as UIImage?
-                    let imageUnicornButtonPressed = UIImage(named: "imageUnicornButtonPressed.png") as UIImage?
+                    let imageChuckyButton = UIImage(named: "WoodchuckImFeelingLuckyNormal.png") as UIImage?
+                    let imageChuckyButtonSelected = UIImage(named: "WoodchuckImFeelingLuckySelected.png") as UIImage?
                    
                     buttons.append(questionButton)
-                    questionButton.setImage(imageUnicornButton, for: .normal)
-                    questionButton.setImage(imageUnicornButtonPressed, for: .selected)
+                    questionButton.setImage(imageChuckyButton, for: .normal)
+                    questionButton.setImage(imageChuckyButtonSelected, for: .highlighted)
                     
                     // employ tag property to pass question ID and set target
                     // note for I'm Feeling Chucky action, tag set to 0
@@ -408,6 +427,7 @@ class QuestionsViewController: UIViewController {
     func playerDidFinishPlaying(note: NSNotification){
         //Called when player finished playing
         
+      
         // Dismiss AVPlayerViewController given video finished
         self.playerViewController.dismiss(animated: true, completion: nil)
         
@@ -456,20 +476,6 @@ class QuestionsViewController: UIViewController {
         }
         
        
-        if self.resetQuestionsView == true {
-            
-            // make invisible non-selected Question IDs visible again
-            let stackViewButtons = self.view.viewWithTag(tagStackView)
-            
-            for view in (stackViewButtons?.subviews)!  {
-                
-                    view.isHidden = false
-                
-            }
-            
-            self.resetQuestionsView = false
-            
-        }
         
     }
     

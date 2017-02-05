@@ -22,8 +22,8 @@
 		58A3882A1E1A05BA00E1F289 /* hazelcover3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 58A388291E1A05BA00E1F289 /* hazelcover3.jpg */; };
 		58A3882F1E1A158800E1F289 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A3882E1E1A158800E1F289 /* CloudKit.framework */; };
 		58B5B74C1E4798E9007DEE10 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B5B74B1E4798E9007DEE10 /* ArrayExtensions.swift */; };
-		58B5B74E1E479BEA007DEE10 /* imageUnicornButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 58B5B74D1E479BEA007DEE10 /* imageUnicornButton.png */; };
-		58B5B7501E479C24007DEE10 /* imageUnicornButtonPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 58B5B74F1E479C24007DEE10 /* imageUnicornButtonPressed.png */; };
+		58B5B7541E47B037007DEE10 /* WoodchuckImFeelingLuckySelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 58B5B7531E47B037007DEE10 /* WoodchuckImFeelingLuckySelected.png */; };
+		58B5B7561E47B1E4007DEE10 /* WoodchuckImFeelingLuckyNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 58B5B7551E47B1E4007DEE10 /* WoodchuckImFeelingLuckyNormal.png */; };
 		58FB5AB91E2586D8009341E8 /* Chuckism.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FB5AB81E2586D8009341E8 /* Chuckism.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,8 +46,8 @@
 		58A3882C1E1A158100E1F289 /* AskChuck.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AskChuck.entitlements; sourceTree = "<group>"; };
 		58A3882E1E1A158800E1F289 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		58B5B74B1E4798E9007DEE10 /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
-		58B5B74D1E479BEA007DEE10 /* imageUnicornButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageUnicornButton.png; sourceTree = "<group>"; };
-		58B5B74F1E479C24007DEE10 /* imageUnicornButtonPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageUnicornButtonPressed.png; sourceTree = "<group>"; };
+		58B5B7531E47B037007DEE10 /* WoodchuckImFeelingLuckySelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WoodchuckImFeelingLuckySelected.png; sourceTree = "<group>"; };
+		58B5B7551E47B1E4007DEE10 /* WoodchuckImFeelingLuckyNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WoodchuckImFeelingLuckyNormal.png; sourceTree = "<group>"; };
 		58FB5AB81E2586D8009341E8 /* Chuckism.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chuckism.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,8 +93,8 @@
 				58583DC71E2AE988003F76A7 /* ChuckAskMe.png */,
 				5887C6CC1E2BFF0600D816A3 /* WoodchuckSpinner.png */,
 				580BEA481E44453D001920DC /* imagePixelUnicornMedium.png */,
-				58B5B74D1E479BEA007DEE10 /* imageUnicornButton.png */,
-				58B5B74F1E479C24007DEE10 /* imageUnicornButtonPressed.png */,
+				58B5B7551E47B1E4007DEE10 /* WoodchuckImFeelingLuckyNormal.png */,
+				58B5B7531E47B037007DEE10 /* WoodchuckImFeelingLuckySelected.png */,
 				58A388171E1A057100E1F289 /* AppDelegate.swift */,
 				58A388191E1A057100E1F289 /* ViewController.swift */,
 				584A776B1E232CEB002E9D88 /* QuestionsViewController.swift */,
@@ -185,12 +185,12 @@
 				58A3882A1E1A05BA00E1F289 /* hazelcover3.jpg in Resources */,
 				58A388221E1A057100E1F289 /* LaunchScreen.storyboard in Resources */,
 				5887C6C91E2BD4C500D816A3 /* chuckLoad.png in Resources */,
+				58B5B7541E47B037007DEE10 /* WoodchuckImFeelingLuckySelected.png in Resources */,
+				58B5B7561E47B1E4007DEE10 /* WoodchuckImFeelingLuckyNormal.png in Resources */,
 				58A3881F1E1A057100E1F289 /* Assets.xcassets in Resources */,
 				58583DC81E2AE988003F76A7 /* ChuckAskMe.png in Resources */,
 				5887C6CD1E2BFF0700D816A3 /* WoodchuckSpinner.png in Resources */,
-				58B5B74E1E479BEA007DEE10 /* imageUnicornButton.png in Resources */,
 				58A3881D1E1A057100E1F289 /* Main.storyboard in Resources */,
-				58B5B7501E479C24007DEE10 /* imageUnicornButtonPressed.png in Resources */,
 				580BEA491E44453D001920DC /* imagePixelUnicornMedium.png in Resources */,
 				5887C6CB1E2BD6F000D816A3 /* ChuckAskMeFull.JPG in Resources */,
 			);
