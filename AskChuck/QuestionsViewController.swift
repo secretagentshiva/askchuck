@@ -21,6 +21,12 @@ class QuestionsViewController: UIViewController {
     var selectedQuestionIDs: [Int] = []
     let playerViewController = AVPlayerViewController()
     
+    // adding identifier tag for StackView to access later w/ I'm Feeling Chucky
+    let tagStackView: Int = 1000
+    
+    // boolean in case we need to expose all buttons again in case I'm Feeling Chucky selected
+    // given that will hide some questions
+    var resetQuestionsView = false
     
     // Debug single question for testing end to end
     // var questionID: Int64 = 1
@@ -33,6 +39,14 @@ class QuestionsViewController: UIViewController {
     @IBOutlet weak var imgSpinner: UIImageView!
     
     
+    // Delay function
+    func delayWithSeconds(_ seconds: Double, completion: @escaping () -> ()) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            completion()
+        }
+    }
+    
+    
     func downloadplayTapped(sender:UIButton) {
         
         var questionID = sender.tag
@@ -43,9 +57,41 @@ class QuestionsViewController: UIViewController {
 
         if questionID == 0 {
             
+            // need to reset view with questions given I'm Feeling Chucky will hide some questions
+            resetQuestionsView = true
+            
             // I'm Feeling Chucky random video
            //  Select a random Question ID from selectedQuestionIDs populated earlier
             questionID = selectedQuestionIDs.randomElement()!
+            
+            // make invisible non-selected Question IDs so you know which one you were 'lucky with'
+            let stackViewButtons = self.view.viewWithTag(tagStackView)
+            
+            
+            for view in (stackViewButtons?.subviews)!  {
+                // print("Button found: ", view.tag)
+                if view.tag != questionID && view.tag != 0 {
+                    
+                //    print("Button matched: ", view.tag)
+                    view.isHidden = true
+                //    print("I'm Feeling Chucky revealed!")
+                    
+                } else {
+                    
+                    // set random question chosen to selected color scheme
+                    if let button = view as? UIButton {
+                        button.setTitleColor(UIColor.purple, for: UIControlState.highlighted)
+                        button.setTitleShadowColor(UIColor.magenta, for: UIControlState.highlighted)
+                  //      print("I'm Feeling Chucky Highlighted!")
+                    }
+                    
+                }
+            }
+           
+            
+            delayWithSeconds(2) {
+                // just hanging out for 2 second so you can see altered questions
+            }
             
         }
     
@@ -274,7 +320,6 @@ class QuestionsViewController: UIViewController {
                     let imageUnicornButtonPressed = UIImage(named: "imageUnicornButtonPressed.png") as UIImage?
                    
                     buttons.append(questionButton)
-                    questionButton.setTitle("ImFeelingChucky",for: UIControlState.normal)
                     questionButton.setImage(imageUnicornButton, for: .normal)
                     questionButton.setImage(imageUnicornButtonPressed, for: .selected)
                     
@@ -288,6 +333,7 @@ class QuestionsViewController: UIViewController {
                     // create stackView of buttons
                    
                     let stackView = UIStackView(arrangedSubviews: buttons)
+                    stackView.tag = self.tagStackView
                     stackView.axis = .vertical
                     stackView.distribution = .fillEqually
                     stackView.alignment = .fill
@@ -295,7 +341,7 @@ class QuestionsViewController: UIViewController {
                     stackView.translatesAutoresizingMaskIntoConstraints = false
                     
                     self.view.addSubview(stackView)
-                    
+                   
                     //autolayout the stack view - pin 10 left 10 right 50 down
                     let viewsDictionary = ["stackView":stackView]
                     let stackView_H = NSLayoutConstraint.constraints(
@@ -408,6 +454,23 @@ class QuestionsViewController: UIViewController {
             startSpinning()
             
         }
+        
+       
+        if self.resetQuestionsView == true {
+            
+            // make invisible non-selected Question IDs visible again
+            let stackViewButtons = self.view.viewWithTag(tagStackView)
+            
+            for view in (stackViewButtons?.subviews)!  {
+                
+                    view.isHidden = false
+                
+            }
+            
+            self.resetQuestionsView = false
+            
+        }
+        
     }
     
     
