@@ -335,12 +335,26 @@ class QuestionsViewController: UIViewController {
                     // Create I'm Feeling Chucky Unicorn buton
                     
                     let questionButton = UIButton(frame: CGRect(x: 0, y: 0, width: widthButton, height: 30))
-                    let imageChuckyButton = UIImage(named: "WoodchuckImFeelingLuckyNormal.png") as UIImage?
-                    let imageChuckyButtonSelected = UIImage(named: "WoodchuckImFeelingLuckySelected.png") as UIImage?
+                    let imageChuckyButton = UIImage(named: "WoodchuckHead.png") as UIImage?
+                    let imageChuckyButtonSelected = UIImage(named: "WoodchuckHead.png") as UIImage?
                    
                     buttons.append(questionButton)
+                    
+                    // currently same image for normal and highlighted, may switch up
                     questionButton.setImage(imageChuckyButton, for: .normal)
                     questionButton.setImage(imageChuckyButtonSelected, for: .highlighted)
+                    questionButton.setTitle(String("I'm feeling chucky?")?.uppercased(), for:UIControlState.normal)
+                    questionButton.titleLabel?.font =  UIFont(name: "AvenirNext-Heavy", size: 16)
+                    questionButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+                    questionButton.titleLabel?.numberOfLines = 2
+                    questionButton.titleLabel?.textAlignment = NSTextAlignment.center
+                    questionButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+                    questionButton.setTitleColor(UIColor.purple, for: UIControlState.highlighted)
+                    questionButton.setTitleShadowColor(UIColor.red, for: UIControlState.normal)
+                    questionButton.setTitleShadowColor(UIColor.magenta, for: UIControlState.highlighted)
+                    questionButton.titleLabel?.shadowOffset = CGSize(width: 0, height: 1)
+
+                   
                     
                     // employ tag property to pass question ID and set target
                     // note for I'm Feeling Chucky action, tag set to 0
