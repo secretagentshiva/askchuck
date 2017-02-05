@@ -58,7 +58,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             labelName.textColor = UIColor.cyan
             
             // animate unicorn upon successful login
+            // Removed unicorn animation sticking with next screen I'm Feeling Chucky unicorn button
             
+            /*
             imageUnicorn.isHidden = false
             imageUnicorn.center.y = view.bounds.midY
             let begX = 1 - imageUnicorn.frame.width
@@ -70,6 +72,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 self.imageUnicorn.center.x = destX
                  
             }, completion: nil)
+            */
             
             // increment login attempt counter for mockery
             

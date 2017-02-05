@@ -18,6 +18,7 @@ class QuestionsViewController: UIViewController {
     var chuckisms = [Chuckism]()
     var chuckismPlayer: AVAudioPlayer!
     var indexRecordID: Int = 0
+    var selectedQuestionIDs: [Int] = []
     let playerViewController = AVPlayerViewController()
     
     
@@ -34,10 +35,22 @@ class QuestionsViewController: UIViewController {
     
     func downloadplayTapped(sender:UIButton) {
         
-        let questionID = sender.tag
+        var questionID = sender.tag
+        
+        // questionIDs start at 1 with the exception of the I'm Feeling Chucky special questionID==0
+        // for correct array indexing, substracting 1; however, special I'm Feeling Chucky, already handled above
+        // I'm Feeling Chucky action will instead just be assigned to a random available Question ID
+
+        if questionID == 0 {
+            
+            // I'm Feeling Chucky random video
+           //  Select a random Question ID from selectedQuestionIDs populated earlier
+            questionID = selectedQuestionIDs.randomElement()!
+            
+        }
+    
         indexRecordID = questionID - 1
-        
-        
+    
         self.chuckism.recordID = self.chuckisms[indexRecordID].recordID
         self.chuckism.questionID = self.chuckisms[indexRecordID].questionID
        
@@ -129,7 +142,7 @@ class QuestionsViewController: UIViewController {
         var questionIDArray: [Int] = []
         
         // max questions on screen
-        // currently set to be max 6 questions
+        // currently set to be max 3 questions
         let countMaxQuestions = 3
         
         // total questions to pick from
@@ -157,7 +170,8 @@ class QuestionsViewController: UIViewController {
                 }
         }
         
-       
+        // storing selected Question IDs into a global var for I'm Feeling Chuck access later
+        selectedQuestionIDs = questionIDArray
        
         
         let predicate = NSPredicate(format: "QuestionID IN %@", questionIDArray)
@@ -253,6 +267,23 @@ class QuestionsViewController: UIViewController {
                     */ 
                     // MANUAL QUESTION TESTING -- END BLOCK
                     
+                    // Create I'm Feeling Chucky Unicorn buton
+                    
+                    let questionButton = UIButton(frame: CGRect(x: 0, y: 0, width: widthButton, height: 30))
+                    let imageUnicornButton = UIImage(named: "imageUnicornButton.png") as UIImage?
+                    let imageUnicornButtonPressed = UIImage(named: "imageUnicornButtonPressed.png") as UIImage?
+                   
+                    buttons.append(questionButton)
+                    questionButton.setTitle("ImFeelingChucky",for: UIControlState.normal)
+                    questionButton.setImage(imageUnicornButton, for: .normal)
+                    questionButton.setImage(imageUnicornButtonPressed, for: .selected)
+                    
+                    // employ tag property to pass question ID and set target
+                    // note for I'm Feeling Chucky action, tag set to 0
+                    // make sure Question ID != 0 for any question
+                    questionButton.tag = 0
+                    questionButton.addTarget(self, action: #selector(self.downloadplayTapped), for: .touchUpInside)
+                
                     
                     // create stackView of buttons
                    
