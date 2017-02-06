@@ -23,6 +23,7 @@ class QuestionsViewController: UIViewController {
     
     // spinner image view
     let imgSpinnerView = UIImageView(frame: CGRect(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY, width: 48, height: 48))
+    
 
     
     // adding identifier tag for StackView to access later w/ I'm Feeling Chucky
@@ -468,29 +469,38 @@ class QuestionsViewController: UIViewController {
         
         // animate chuck spinner graphic to bottom of screen
        
-        // Need to remove constrainst before animating
-        // self.imgSpinnerView.removeConstraints(imgSpinnerView.constraints)
-        
+        // Need to remove constraints before animating
+        self.imgSpinnerView.translatesAutoresizingMaskIntoConstraints = false
         self.imgSpinnerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = false
         self.imgSpinnerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = false
+        self.imgSpinnerView.widthAnchor.constraint(equalToConstant: 48).isActive = false
+        self.imgSpinnerView.heightAnchor.constraint(equalToConstant: 48).isActive = false
+        // self.imgSpinnerView.removeConstraints(imgSpinnerView.constraints)
+        self.imgSpinnerView.frame.size.width = 48
+        self.imgSpinnerView.frame.size.height = 48
+        
+        let stackViewButtons = self.view.viewWithTag(tagStackView)
+        
+        let destX = stackViewButtons?.frame.minX
+        let destY = stackViewButtons?.frame.minY
+        
         
         self.imgSpinnerView.isHidden = false
        
-        // let origY = self.imgSpinnerView.center.y
         
-        // self.imgSpinnerView.center.y = self.view.bounds.midY
-        // self.imgSpinnerView.center.x = self.view.bounds.midX
-        // self.view.bringSubview(toFront: self.imgSpinnerView)
+        self.imgSpinnerView.center.y = self.view.bounds.midY
+        self.imgSpinnerView.center.x = self.view.bounds.midX
         
-        let destY = CGFloat(1 - (view.bounds.height - self.imgSpinnerView.frame.height))
-        print(destY)
         
-        UIView.animate(withDuration: 1, delay: 0, animations: {
+        // let destY = self.view.bounds.maxX
+        
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             
-            self.imgSpinnerView.center.y = 0
+            self.imgSpinnerView.frame = CGRect(x: destX!, y: destY!, width: 48, height: 48)
             
             
-        }, completion: nil)
+            
+            }, completion: nil)
         
         
         
@@ -559,3 +569,17 @@ class QuestionsViewController: UIViewController {
     }
 
 }
+
+/* Cheat Sheets
+ 
+ Constraints 
+ 
+ func setupConstraints() {
+ let centerX = NSLayoutConstraint(item: self.cenBut, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
+ let centerY = NSLayoutConstraint(item: self.cenBut, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
+ let height = NSLayoutConstraint(item: self.cenBut, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 22)
+ self.cenBut.translatesAutoresizingMaskIntoConstraints = false
+ self.view.addConstraints([centerX, centerY, height])
+ }
+ 
+ */
