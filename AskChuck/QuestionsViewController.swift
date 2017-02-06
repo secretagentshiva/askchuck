@@ -19,6 +19,9 @@ class QuestionsViewController: UIViewController {
     var chuckismPlayer: AVAudioPlayer!
     var indexRecordID: Int = 0
     var selectedQuestionIDs: [Int] = []
+    
+    
+    
     let playerViewController = AVPlayerViewController()
     
     // spinner image view
@@ -394,12 +397,15 @@ class QuestionsViewController: UIViewController {
                     let stackView_V = NSLayoutConstraint.constraints(withVisualFormat: "V:|[stackView]-0-|",                   options: NSLayoutFormatOptions(rawValue:0),metrics: nil, views: viewsDictionary)
                     self.view.addConstraints(stackView_H)
                     self.view.addConstraints(stackView_V)
+                    stackView.isHidden = false
                     
                     self.stopSpinning()
                    
-                    self.animateSpinnerToBottomCenter()
+                    self.animateFeelingChucky()
                    
-                    stackView.isHidden = false
+                 
+                   
+                    
                     
                 } else {
                     
@@ -463,44 +469,27 @@ class QuestionsViewController: UIViewController {
     }
 
     
-    func animateSpinnerToBottomCenter() {
+    func animateFeelingChucky() {
         
         
-        
-        // animate chuck spinner graphic to bottom of screen
-       
-        // Need to remove constraints before animating
-        self.imgSpinnerView.translatesAutoresizingMaskIntoConstraints = false
-        self.imgSpinnerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = false
-        self.imgSpinnerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = false
-        self.imgSpinnerView.widthAnchor.constraint(equalToConstant: 48).isActive = false
-        self.imgSpinnerView.heightAnchor.constraint(equalToConstant: 48).isActive = false
-        // self.imgSpinnerView.removeConstraints(imgSpinnerView.constraints)
-        self.imgSpinnerView.frame.size.width = 48
-        self.imgSpinnerView.frame.size.height = 48
+        // animate I'm Feeling Chucky button in UIStackView
         
         let stackViewButtons = self.view.viewWithTag(tagStackView)
+        let buttonToAnimate = stackViewButtons?.viewWithTag(0) as! UIButton
         
-        let destX = stackViewButtons?.frame.minX
-        let destY = stackViewButtons?.frame.minY
-        
-        
-        self.imgSpinnerView.isHidden = false
-       
-        
-        self.imgSpinnerView.center.y = self.view.bounds.midY
-        self.imgSpinnerView.center.x = self.view.bounds.midX
+        print(buttonToAnimate.titleLabel!)
+        // fails as nil
+        print(buttonToAnimate.title(for: UIControlState.normal)!)
         
         
-        // let destY = self.view.bounds.maxX
+        let bounds = buttonToAnimate.bounds
+      
         
-        UIView.animate(withDuration: 1.0, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 2.0, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10,  animations: {
+            buttonToAnimate.bounds = CGRect(x: (bounds.origin.x), y: (bounds.origin.y), width: (bounds.size.width) + 60, height: (bounds.size.height))
             
-            self.imgSpinnerView.frame = CGRect(x: destX!, y: destY!, width: 48, height: 48)
-            
-            
-            
-            }, completion: nil)
+        }, completion: nil)
+        
         
         
         
@@ -516,7 +505,7 @@ class QuestionsViewController: UIViewController {
     func stopSpinning() {
         
         self.imgSpinnerView.stopRotating()
-        // self.imgSpinnerView.isHidden = true
+        self.imgSpinnerView.isHidden = true
     
     }
     
@@ -557,8 +546,6 @@ class QuestionsViewController: UIViewController {
             
         }
         
-       
-        
     }
     
     
@@ -581,5 +568,16 @@ class QuestionsViewController: UIViewController {
  self.cenBut.translatesAutoresizingMaskIntoConstraints = false
  self.view.addConstraints([centerX, centerY, height])
  }
+ 
+ // Other random settings
+ self.imgSpinnerView.translatesAutoresizingMaskIntoConstraints = false
+ self.imgSpinnerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = false
+ self.imgSpinnerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = false
+ self.imgSpinnerView.widthAnchor.constraint(equalToConstant: 48).isActive = false
+ self.imgSpinnerView.heightAnchor.constraint(equalToConstant: 48).isActive = false
+ self.imgSpinnerView.removeConstraints(imgSpinnerView.constraints)
+ self.imgSpinnerView.frame.size.width = 48
+ self.imgSpinnerView.frame.size.height = 48
+
  
  */
