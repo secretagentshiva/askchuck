@@ -78,10 +78,6 @@
                                 <color key="shadowColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="imagePixelUnicornMedium.png" translatesAutoresizingMaskIntoConstraints="NO" id="5oY-qL-7dS">
-                                <rect key="frame" x="88" y="259" width="200" height="148"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -102,7 +98,6 @@
                     </view>
                     <connections>
                         <outlet property="buttonLegit" destination="Ch2-fN-sL4" id="4IV-bT-Boo"/>
-                        <outlet property="imageUnicorn" destination="5oY-qL-7dS" id="k8k-hK-tDL"/>
                         <outlet property="labelName" destination="Vxo-EG-qTg" id="vUp-bH-Rno"/>
                         <outlet property="labelWelcome" destination="Q0r-Rl-Dv7" id="f4R-Ne-l2x"/>
                         <outlet property="textName" destination="GLY-gq-62W" id="m5k-f5-8xh"/>
@@ -129,13 +124,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ChuckAskMeFull.JPG" translatesAutoresizingMaskIntoConstraints="NO" id="0ox-DH-6uH">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="674"/>
                             </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WoodchuckSpinner.png" translatesAutoresizingMaskIntoConstraints="NO" id="0B2-jN-OJN">
-                                <rect key="frame" x="163" y="310" width="48" height="48"/>
-                            </imageView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="0B2-jN-OJN" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="2oh-Lp-0fD"/>
-                            <constraint firstItem="0B2-jN-OJN" firstAttribute="centerY" secondItem="Feh-Cg-bri" secondAttribute="centerY" id="4gY-Qr-8o7"/>
                             <constraint firstItem="0ox-DH-6uH" firstAttribute="centerX" secondItem="Feh-Cg-bri" secondAttribute="centerX" id="8N4-yz-oRo"/>
                             <constraint firstAttribute="trailing" secondItem="0ox-DH-6uH" secondAttribute="trailing" id="HbA-d4-gcI"/>
                             <constraint firstItem="Dp8-sl-Fwj" firstAttribute="top" secondItem="0ox-DH-6uH" secondAttribute="bottom" constant="-7" id="Lsg-NG-IbR"/>
@@ -145,7 +135,6 @@
                     </view>
                     <connections>
                         <outlet property="headerImgView" destination="0ox-DH-6uH" id="YgC-KF-Nxa"/>
-                        <outlet property="imgSpinner" destination="0B2-jN-OJN" id="zow-Vg-a4T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yih-Jj-aJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -155,8 +144,6 @@
     </scenes>
     <resources>
         <image name="ChuckAskMeFull.JPG" width="455" height="607"/>
-        <image name="WoodchuckSpinner.png" width="48" height="48"/>
         <image name="hazelcover3.jpg" width="467" height="623"/>
-        <image name="imagePixelUnicornMedium.png" width="200" height="148"/>
     </resources>
 </document>

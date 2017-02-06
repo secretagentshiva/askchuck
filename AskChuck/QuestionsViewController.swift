@@ -21,12 +21,17 @@ class QuestionsViewController: UIViewController {
     var selectedQuestionIDs: [Int] = []
     let playerViewController = AVPlayerViewController()
     
+    // spinner image view
+    let imgSpinnerView = UIImageView(frame: CGRect(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY, width: 48, height: 48))
+
+    
     // adding identifier tag for StackView to access later w/ I'm Feeling Chucky
     let tagStackView: Int = 1000
     
     // boolean in case we need to expose all buttons again in case I'm Feeling Chucky selected
     // given that will hide some questions
     var resetQuestionsView = false
+    
     
     // Debug single question for testing end to end
     // var questionID: Int64 = 1
@@ -36,7 +41,6 @@ class QuestionsViewController: UIViewController {
     @IBOutlet weak var buttonQuestion1: UIButton!
     @IBOutlet weak var buttonQuestion2: UIButton!
     @IBOutlet weak var headerImgView: UIImageView!
-    @IBOutlet weak var imgSpinner: UIImageView!
     
     
     // Delay function
@@ -366,6 +370,7 @@ class QuestionsViewController: UIViewController {
                     // create stackView of buttons
                    
                     let stackView = UIStackView(arrangedSubviews: buttons)
+                    stackView.isHidden = true
                     stackView.tag = self.tagStackView
                     stackView.axis = .vertical
                     stackView.distribution = .fillEqually
@@ -389,10 +394,16 @@ class QuestionsViewController: UIViewController {
                     self.view.addConstraints(stackView_H)
                     self.view.addConstraints(stackView_V)
                     
-                    
                     self.stopSpinning()
+                   
+                    self.animateSpinnerToBottomCenter()
+                   
+                    stackView.isHidden = false
                     
                 } else {
+                    
+                    self.stopSpinning()
+                    self.imgSpinnerView.isHidden = true
                     
                     let ac = UIAlertController(title: "No Chuckisms!", message: "There was a problem getting Chuck's wisdom; please try again: \(error!.localizedDescription)", preferredStyle: .alert)
                     ac.addAction(UIAlertAction(title: "OK", style: .default))
@@ -451,16 +462,51 @@ class QuestionsViewController: UIViewController {
     }
 
     
+    func animateSpinnerToBottomCenter() {
+        
+        
+        
+        // animate chuck spinner graphic to bottom of screen
+       
+        // Need to remove constrainst before animating
+        // self.imgSpinnerView.removeConstraints(imgSpinnerView.constraints)
+        
+        self.imgSpinnerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = false
+        self.imgSpinnerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = false
+        
+        self.imgSpinnerView.isHidden = false
+       
+        // let origY = self.imgSpinnerView.center.y
+        
+        // self.imgSpinnerView.center.y = self.view.bounds.midY
+        // self.imgSpinnerView.center.x = self.view.bounds.midX
+        // self.view.bringSubview(toFront: self.imgSpinnerView)
+        
+        let destY = CGFloat(1 - (view.bounds.height - self.imgSpinnerView.frame.height))
+        print(destY)
+        
+        UIView.animate(withDuration: 1, delay: 0, animations: {
+            
+            self.imgSpinnerView.center.y = 0
+            
+            
+        }, completion: nil)
+        
+        
+        
+    }
+    
     
     func startSpinning() {
-        self.imgSpinner.isHidden = false
-        self.imgSpinner.startRotating(duration: 1)
+        
+        self.imgSpinnerView.isHidden = false
+        self.imgSpinnerView.startRotating(duration: 1)
     }
     
     func stopSpinning() {
         
-        self.imgSpinner.stopRotating()
-        self.imgSpinner.isHidden = true
+        self.imgSpinnerView.stopRotating()
+        // self.imgSpinnerView.isHidden = true
     
     }
     
@@ -475,6 +521,18 @@ class QuestionsViewController: UIViewController {
         let screenWidth = screenSize.width
         self.headerImgView.image = resizeImage(image: imgHeader!, newWidth: screenWidth)
        
+        // Render imgSpinner view
+        self.imgSpinnerView.image = UIImage(named: "WoodchuckSpinner.png")
+        self.view.addSubview(imgSpinnerView)
+        self.imgSpinnerView.translatesAutoresizingMaskIntoConstraints = false
+        self.imgSpinnerView.widthAnchor.constraint(equalToConstant: 48).isActive = true
+        self.imgSpinnerView.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        self.imgSpinnerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        self.imgSpinnerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+
+        self.imgSpinnerView.isHidden = true
+        
+        
         loadChuckisms()
         
     }
