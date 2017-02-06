@@ -349,6 +349,7 @@ class QuestionsViewController: UIViewController {
                     buttons.append(questionButton)
                     
                     // currently same image for normal and highlighted, may switch up
+                    questionButton.translatesAutoresizingMaskIntoConstraints = false
                     questionButton.setImage(imageChuckyButton, for: .normal)
                     questionButton.setImage(imageChuckyButtonSelected, for: .highlighted)
                     questionButton.setTitle(String("I'm feeling chucky?")?.uppercased(), for:UIControlState.normal)
@@ -361,6 +362,9 @@ class QuestionsViewController: UIViewController {
                     questionButton.setTitleShadowColor(UIColor.red, for: UIControlState.normal)
                     questionButton.setTitleShadowColor(UIColor.magenta, for: UIControlState.highlighted)
                     questionButton.titleLabel?.shadowOffset = CGSize(width: 0, height: 1)
+                    
+                    // these are to enable animateFeelingChucky transition effect
+                    questionButton.alpha = 0
 
                    
                     
@@ -475,22 +479,18 @@ class QuestionsViewController: UIViewController {
         // animate I'm Feeling Chucky button in UIStackView
         
         let stackViewButtons = self.view.viewWithTag(tagStackView)
-        let buttonToAnimate = stackViewButtons?.viewWithTag(0) as! UIButton
-        
-        print(buttonToAnimate.titleLabel!)
-        // fails as nil
-        print(buttonToAnimate.title(for: UIControlState.normal)!)
-        
-        
-        let bounds = buttonToAnimate.bounds
-      
-        
-        UIView.animate(withDuration: 2.0, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 10,  animations: {
-            buttonToAnimate.bounds = CGRect(x: (bounds.origin.x), y: (bounds.origin.y), width: (bounds.size.width) + 60, height: (bounds.size.height))
+       
+        for button in (stackViewButtons?.subviews)! {
             
-        }, completion: nil)
+            if button.alpha == 0 {
+                UIView.animate(withDuration: 2.0) {
+                    
+                    button.alpha = 1
+                    
+                }
+            }
         
-        
+        }
         
         
     }
