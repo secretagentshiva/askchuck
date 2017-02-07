@@ -21,6 +21,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // Hardcoded family who can use the app; later can provision through PublicDB for identities+roles
     let userFriends: Array = ["sari","sarah","eve","evie","andy","shiva","chuck","turtle","felix","polly"]
+    let textPasswords: Array = ["poo","💩"]
     
     let userMoms: Array = ["sari","sarah"]
     let userDads: Array = ["andy"]
@@ -51,7 +52,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         // successful login
         
-        if textPassword.text == "poo" {
+        
+        
+        if textPasswords.contains((textPassword.text?.lowercased())!) {
+            
             labelWelcome.text = "I'M SO PROUD OF YOU!"
             
             labelWelcome.textColor = UIColor.magenta
