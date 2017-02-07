@@ -493,21 +493,32 @@ class QuestionsViewController: UIViewController {
                 print("button height ", button.frame.height)
                
                 let destX = UIScreen.main.bounds.minX + 100
-                let destY = UIScreen.main.bounds.maxY + 100
+                let destY = UIScreen.main.bounds.maxY + 150
                
+                
                 
                 UIView.animate(withDuration: 0.5, animations: {
                     
                     // animate chuck to new destination
                    imgAnimatingSpinnerView.frame = CGRect(x: destX , y: destY , width: 48, height: 48)
                    imgAnimatingSpinnerView.alpha = 0
+                   // button.alpha = 1
                     
                 }) {_ in
                     // closure called post-animation
-                    button.alpha = 1
-                    
-                    
+                    // not using but animation sync choppy so may use later.
+                    // button.alpha = 1
+                
                 }
+                
+                UIView.animate(withDuration: 1.0, animations: {
+                    
+                    // reveal I'm Feeling Chucky Button
+                        button.alpha = 1
+                  
+                })
+                
+                
             }
         
         }
