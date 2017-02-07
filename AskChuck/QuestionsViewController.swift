@@ -490,8 +490,7 @@ class QuestionsViewController: UIViewController {
             
             if button.alpha == 0 {
                 
-                print("button height ", button.frame.height)
-               
+                
                 let destX = UIScreen.main.bounds.minX + 30
                 let destY = UIScreen.main.bounds.maxY + 150
                
