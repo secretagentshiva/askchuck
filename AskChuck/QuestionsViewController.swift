@@ -41,10 +41,7 @@ class QuestionsViewController: UIViewController {
     // var questionID: Int64 = 1
     
     // Outlets
-    // Future version has these dynamically rendered but for testing with limited content hardcoded for now
-    @IBOutlet weak var buttonQuestion1: UIButton!
-    @IBOutlet weak var buttonQuestion2: UIButton!
-    @IBOutlet weak var headerImgView: UIImageView!
+   @IBOutlet weak var headerImgView: UIImageView!
     
     
     // Delay function
@@ -352,7 +349,7 @@ class QuestionsViewController: UIViewController {
                     questionButton.translatesAutoresizingMaskIntoConstraints = false
                     questionButton.setImage(imageChuckyButton, for: .normal)
                     questionButton.setImage(imageChuckyButtonSelected, for: .highlighted)
-                    questionButton.setTitle(String("I'm feeling chucky?")?.uppercased(), for:UIControlState.normal)
+                    questionButton.setTitle(String("I'm feeling chucky!")?.uppercased(), for:UIControlState.normal)
                     questionButton.titleLabel?.font =  UIFont(name: "AvenirNext-Heavy", size: 16)
                     questionButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
                     questionButton.titleLabel?.numberOfLines = 2
@@ -476,22 +473,44 @@ class QuestionsViewController: UIViewController {
     func animateFeelingChucky() {
         
         
+        // animate Chuck Spinner to I'm Feeling Chucky button (middle to bottom left)
+        // and
         // animate I'm Feeling Chucky button in UIStackView
         
+        // create new instance of image to animate, original spinner for some reason is buggy and flies to center
+        let imgAnimatingSpinnerView = UIImageView(frame: CGRect(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY, width: 48, height: 48))
+        imgAnimatingSpinnerView.image = UIImage(named: "WoodchuckSpinner.png")
+        self.view.addSubview(imgAnimatingSpinnerView)
+        
+        // Identify stack view containing all buttons
         let stackViewButtons = self.view.viewWithTag(tagStackView)
-       
+        
+        // Identify I'm Feeling chucky button to fade in
         for button in (stackViewButtons?.subviews)! {
             
             if button.alpha == 0 {
-                UIView.animate(withDuration: 2.0) {
+                
+                print("button height ", button.frame.height)
+               
+                let destX = UIScreen.main.bounds.minX + 100
+                let destY = UIScreen.main.bounds.maxY + 100
+               
+                
+                UIView.animate(withDuration: 0.5, animations: {
                     
+                    // animate chuck to new destination
+                   imgAnimatingSpinnerView.frame = CGRect(x: destX , y: destY , width: 48, height: 48)
+                   imgAnimatingSpinnerView.alpha = 0
+                    
+                }) {_ in
+                    // closure called post-animation
                     button.alpha = 1
+                    
                     
                 }
             }
         
         }
-        
         
     }
     
@@ -520,6 +539,7 @@ class QuestionsViewController: UIViewController {
         let screenWidth = screenSize.width
         self.headerImgView.image = resizeImage(image: imgHeader!, newWidth: screenWidth)
        
+        
         // Render imgSpinner view
         self.imgSpinnerView.image = UIImage(named: "WoodchuckSpinner.png")
         self.view.addSubview(imgSpinnerView)

@@ -61,7 +61,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             // Removed unicorn animation sticking with next screen I'm Feeling Chucky unicorn button
             
             /*
-            imageUnicorn.isHidden = false
+            imageUnicorn.alpha = 1  // note used imageUnicorn.isHidden = false before but create anim. bug
             imageUnicorn.center.y = view.bounds.midY
             let begX = 1 - imageUnicorn.frame.width
             let destX = view.bounds.width + imageUnicorn.frame.width
