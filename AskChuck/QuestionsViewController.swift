@@ -414,7 +414,7 @@ class QuestionsViewController: UIViewController {
                 } else {
                     
                     self.stopSpinning()
-                    self.imgSpinnerView.isHidden = true
+                    
                     
                     let ac = UIAlertController(title: "No Chuckisms!", message: "There was a problem getting Chuck's wisdom; please try again: \(error!.localizedDescription)", preferredStyle: .alert)
                     ac.addAction(UIAlertAction(title: "OK", style: .default))
@@ -498,14 +498,14 @@ class QuestionsViewController: UIViewController {
     
     func startSpinning() {
         
-        self.imgSpinnerView.isHidden = false
+        self.imgSpinnerView.alpha = 1
         self.imgSpinnerView.startRotating(duration: 1)
     }
     
     func stopSpinning() {
         
         self.imgSpinnerView.stopRotating()
-        self.imgSpinnerView.isHidden = true
+        self.imgSpinnerView.alpha = 0
     
     }
     
@@ -529,7 +529,7 @@ class QuestionsViewController: UIViewController {
         self.imgSpinnerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         self.imgSpinnerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
 
-        self.imgSpinnerView.isHidden = true
+        self.imgSpinnerView.alpha = 0
         
         
         loadChuckisms()
