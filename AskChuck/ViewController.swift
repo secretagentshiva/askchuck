@@ -14,8 +14,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var textPassword: UITextField!
     @IBOutlet weak var labelWelcome: UILabel!
     @IBOutlet weak var labelName: UILabel!
-    @IBOutlet weak var buttonLegit: UIButton!
     @IBOutlet weak var imageUnicorn: UIImageView!
+    @IBOutlet weak var constraintTextPasswordOriginal: NSLayoutConstraint!
+    
+    let buttonLegit = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
+   
     
     var intLoginAttempts: UInt! = 0
     
@@ -35,7 +38,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func buttonTapped(_ sender: Any) {
         
         
-        if textName.isHidden == false {
+        if textName.alpha == 1 {
             
             
             if userFriends.contains((textName.text?.lowercased())!) {
@@ -61,22 +64,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             labelWelcome.textColor = UIColor.magenta
             labelName.textColor = UIColor.cyan
             
-            // animate unicorn upon successful login
-            // Removed unicorn animation sticking with next screen I'm Feeling Chucky unicorn button
-            
-            /*
-            imageUnicorn.alpha = 1  // note used imageUnicorn.isHidden = false before but create anim. bug
-            imageUnicorn.center.y = view.bounds.midY
-            let begX = 1 - imageUnicorn.frame.width
-            let destX = view.bounds.width + imageUnicorn.frame.width
-            self.imageUnicorn.center.x = begX
-          
-            UIView.animate(withDuration: 1.5, delay: 0.0, animations: {
-                
-                self.imageUnicorn.center.x = destX
-                 
-            }, completion: nil)
-            */
             
             // increment login attempt counter for mockery
             
@@ -106,15 +93,66 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
         
-        textName.isHidden = true
-        labelName.isHidden = true
-        buttonLegit.alpha = 0
         
-        UIView.animate(withDuration: 3.0, delay: 0.0, options: .curveEaseOut, animations: {
-                self.buttonLegit.alpha = 1
+        textName.alpha = 0
+        labelName.alpha = 0
+        
+        
+        buttonLegit.setTitle("I'M LEGIT", for: UIControlState.normal)
+        buttonLegit.titleLabel?.font =  UIFont(name: "System-Bold", size: 19)
+        buttonLegit.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        buttonLegit.titleLabel?.numberOfLines = 2
+        buttonLegit.titleLabel?.textAlignment = NSTextAlignment.center
+        buttonLegit.setTitleColor(UIColor.yellow, for: UIControlState.normal)
+        buttonLegit.setTitleColor(UIColor.purple, for: UIControlState.highlighted)
+        buttonLegit.setTitleShadowColor(UIColor.orange, for: UIControlState.normal)
+        buttonLegit.setTitleShadowColor(UIColor.magenta, for: UIControlState.highlighted)
+        buttonLegit.titleLabel?.shadowOffset = CGSize(width: 0, height: 1)
+        self.view.addSubview(buttonLegit)
+        buttonLegit.center.y = UIScreen.main.bounds.maxY + 100
+        buttonLegit.center.x = UIScreen.main.bounds.midX
+        buttonLegit.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
+        
+        // declare vertical spacing constraint between textPassword and buttonLegit
+        
+        /*
+        let verticalSpacingConstraintButton = NSLayoutConstraint(item: buttonLegit, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: textPassword, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 5)
+       
+        let verticalSpacingConstraintBottom = NSLayoutConstraint(item: buttonLegit, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: bottomLayoutGuide, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 10)
+        
+        // maybe need this at view level too?
+        buttonLegit.translatesAutoresizingMaskIntoConstraints = false
+        self.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        // remove existing constraints
+        self.buttonLegit.removeConstraints(self.buttonLegit.constraints)
+        self.view.removeConstraint(self.constraintTextPasswordOriginal)
+        
+        */
+        
+       
+        
+        UIView.animate(withDuration: 1.5, delay: 0.5,
+                                   usingSpringWithDamping: 0.3,
+                                   initialSpringVelocity: 0.5,
+                                   options: [], animations: {
+                                    
+                                    
+                                    // need to do this with constraints for different screen sizes
+                                    
+                                   //  UIScreen.main.bounds.maxY - (self.buttonLegit.frame.height + 5)
+                                    
+                                    self.buttonLegit.center.y = self.textPassword.frame.maxY + 20
+                                    self.buttonLegit.center.x = UIScreen.main.bounds.midX
+                                    
+                                    
+                                    // NSLayoutConstraint.activate([verticalSpacingConstraintButton])
+                                    
+                                    
         }, completion: nil)
+        
+        
         
         // Debug and testing: wipe UserDefaults local storage for username
         // UserDefaults.standard.removeObject(forKey: "name")
@@ -125,28 +163,28 @@ class ViewController: UIViewController, UITextFieldDelegate {
             if userMoms.contains(userName)  {
                 
                 labelName.text = "HI MOMMY!"
-                labelName.isHidden = false
+                labelName.alpha = 1
                 
             } else if userDads.contains(userName) {
                 
                 labelName.text = "HI DAD!"
-                labelName.isHidden = false
+                labelName.alpha = 1
                 
             } else if userPoo.contains(userName) {
                 
                 labelName.text = "POO BROTHER!"
-                labelName.isHidden = false
+                labelName.alpha = 1
                 
             }   else {
             
             labelName.text = "HI " + userName.uppercased() + " !"
-            labelName.isHidden = false
+            labelName.alpha = 1
                 
             }
             
         } else {
             
-            textName.isHidden = false
+            textName.alpha = 1
             
         }
         
@@ -154,6 +192,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
 
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

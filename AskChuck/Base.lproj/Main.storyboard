@@ -55,18 +55,6 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="LSM-Yi-Xsd"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ch2-fN-sL4">
-                                <rect key="frame" x="145" y="612" width="86" height="35"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <size key="titleShadowOffset" width="0.0" height="1"/>
-                                <state key="normal" title="I'M LEGIT">
-                                    <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sw0-BS-3zd"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HI NAME" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vxo-EG-qTg">
                                 <rect key="frame" x="168" y="121" width="169" height="35"/>
                                 <constraints>
@@ -81,23 +69,21 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Ch2-fN-sL4" firstAttribute="top" secondItem="M5x-zP-Fn8" secondAttribute="bottom" priority="750" constant="10" id="10f-Ce-pwc"/>
                             <constraint firstItem="M5x-zP-Fn8" firstAttribute="top" secondItem="GLY-gq-62W" secondAttribute="bottom" constant="10" id="6nD-zR-b4F"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="M5x-zP-Fn8" secondAttribute="bottom" constant="65" id="9yz-ma-HzX"/>
                             <constraint firstItem="Q0r-Rl-Dv7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="12" id="EEW-Kb-6uq"/>
+                            <constraint firstItem="ERg-gV-zkc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Fvi-b6-8eg"/>
                             <constraint firstItem="ERg-gV-zkc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="GZC-ma-Dqc"/>
                             <constraint firstItem="Q0r-Rl-Dv7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="16" id="HI0-c2-cg4"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ch2-fN-sL4" secondAttribute="bottom" constant="20" id="Hyi-sV-dzJ"/>
-                            <constraint firstItem="Ch2-fN-sL4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="J2F-Ty-78l"/>
                             <constraint firstItem="M5x-zP-Fn8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ymf-jt-iRg"/>
                             <constraint firstItem="ERg-gV-zkc" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="lX5-Hi-per"/>
                             <constraint firstItem="GLY-gq-62W" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mX6-Uo-8L6"/>
                             <constraint firstItem="Vxo-EG-qTg" firstAttribute="top" secondItem="Q0r-Rl-Dv7" secondAttribute="bottom" constant="7" id="vjy-ZA-Kr9"/>
-                            <constraint firstItem="ERg-gV-zkc" firstAttribute="centerX" secondItem="Ch2-fN-sL4" secondAttribute="centerX" id="weK-jX-5lJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Vxo-EG-qTg" secondAttribute="trailing" constant="22" id="z0t-oh-M3I"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="buttonLegit" destination="Ch2-fN-sL4" id="4IV-bT-Boo"/>
+                        <outlet property="constraintTextPasswordOriginal" destination="9yz-ma-HzX" id="Kp6-Di-XPa"/>
                         <outlet property="labelName" destination="Vxo-EG-qTg" id="vUp-bH-Rno"/>
                         <outlet property="labelWelcome" destination="Q0r-Rl-Dv7" id="f4R-Ne-l2x"/>
                         <outlet property="textName" destination="GLY-gq-62W" id="m5k-f5-8xh"/>
