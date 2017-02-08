@@ -135,7 +135,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         UIView.animate(withDuration: 1.5, delay: 0.5,
                                    usingSpringWithDamping: 0.3,
-                                   initialSpringVelocity: 0.5,
+                                   initialSpringVelocity: 0.4,
                                    options: [], animations: {
                                     
                                     
