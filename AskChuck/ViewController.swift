@@ -136,6 +136,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textPassword.autocorrectionType = .no
         // textPassword.isSecureTextEntry = true
         textPassword.center.x += UIScreen.main.bounds.width
+        
+        // hardcode not preferred
         textPassword.center.y = UIScreen.main.bounds.maxY - 100
         
         self.view.addSubview(textPassword)
@@ -154,28 +156,29 @@ class ViewController: UIViewController, UITextFieldDelegate {
         buttonLegit.titleLabel?.shadowOffset = CGSize(width: 0, height: 1)
 
         buttonLegit.center.x = UIScreen.main.bounds.midX
-        buttonLegit.center.y = UIScreen.main.bounds.maxY - 50
+        
+        // hardcode not preferred
+        buttonLegit.center.y = UIScreen.main.bounds.maxY - 100
         buttonLegit.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
         
           self.view.addSubview(buttonLegit)
         
         // declare vertical spacing constraint between textPassword and buttonLegit
         
+        // Constraints below not working w/ animation
         /*
-        let verticalSpacingConstraintButton = NSLayoutConstraint(item: buttonLegit, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: textPassword, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 5)
+        let verticalSpacingConstraintButton = NSLayoutConstraint(item: textPassword, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: buttonLegit, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 10)
        
-        let verticalSpacingConstraintBottom = NSLayoutConstraint(item: buttonLegit, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: bottomLayoutGuide, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 10)
-        
-        // maybe need this at view level too?
-        buttonLegit.translatesAutoresizingMaskIntoConstraints = false
-        self.view.translatesAutoresizingMaskIntoConstraints = false
-        
-        // remove existing constraints
-        self.buttonLegit.removeConstraints(self.buttonLegit.constraints)
-        self.view.removeConstraint(self.constraintTextPasswordOriginal)
-        
+        let verticalSpacingConstraintBottom = NSLayoutConstraint(item: buttonLegit, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: bottomLayoutGuide, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 20)
         */
         
+        // maybe need this at view level too?
+       // buttonLegit.translatesAutoresizingMaskIntoConstraints = false
+       //  self.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        // remove existing constraints
+        // self.buttonLegit.removeConstraints(self.buttonLegit.constraints)
+       
        
         
         UIView.animate(withDuration: 1.5, delay: 0.5,
@@ -185,15 +188,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
                                     
                                     
                                     // need to do this with constraints for different screen sizes
+                                    // Display name disabled for now
+                                    // self.textName.center.x = UIScreen.main.bounds.midX
                                     
-                                    self.textName.center.x = UIScreen.main.bounds.midX
                                     self.textPassword.center.x = UIScreen.main.bounds.midX
                                     self.buttonLegit.center.y = self.textPassword.frame.maxY + 20
+                                  
+                                    /* constraints below not working
+                                    NSLayoutConstraint.activate([verticalSpacingConstraintButton])
+                                    NSLayoutConstraint.activate([verticalSpacingConstraintBottom])
                                     
-                                    
-                                    
-                                    // NSLayoutConstraint.activate([verticalSpacingConstraintButton])
-                                    
+                                    self.textPassword.center.x = UIScreen.main.bounds.midX
+                                    self.buttonLegit.center.x = UIScreen.main.bounds.midX
+                                    */
                                     
         }, completion: nil)
         
