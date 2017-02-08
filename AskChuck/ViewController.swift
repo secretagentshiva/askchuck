@@ -10,15 +10,14 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var textName: UITextField!
-    @IBOutlet weak var textPassword: UITextField!
+    
     @IBOutlet weak var labelWelcome: UILabel!
     @IBOutlet weak var labelName: UILabel!
-    @IBOutlet weak var imageUnicorn: UIImageView!
-    @IBOutlet weak var constraintTextPasswordOriginal: NSLayoutConstraint!
     
+
+    let textName = UITextField(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
+    let textPassword = UITextField(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
     let buttonLegit = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
-   
     
     var intLoginAttempts: UInt! = 0
     
@@ -35,9 +34,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
         
-    @IBAction func buttonTapped(_ sender: Any) {
+    func buttonTapped(_ sender: Any) {
         
-        
+        // this part will never check for now as I've made textName.alpha always == 0 
+        // textName display and entry eliminated for welcome message
         if textName.alpha == 1 {
             
             
@@ -54,7 +54,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         
         // successful login
-        
         
         
         if textPasswords.contains((textPassword.text?.lowercased())!) {
@@ -93,12 +92,56 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        
-        textName.alpha = 0
+        // hide Name label
         labelName.alpha = 0
         
         
+        // Create username, password text elements and submission button
+        
+        
+        // Create username entry
+        
+        textName.placeholder = "name please"
+        textName.alpha = 0
+        textName.font = UIFont(name: "System", size: 14)
+        textName.adjustsFontSizeToFitWidth = true
+        textName.minimumFontSize = 14
+        textName.backgroundColor = UIColor.white
+        textName.textAlignment = NSTextAlignment.center
+        textName.borderStyle = UITextBorderStyle.roundedRect
+        textName.autocapitalizationType = .none
+        textName.autocorrectionType = .no
+        textName.keyboardType = UIKeyboardType.alphabet
+        textName.autocorrectionType = .no
+        
+        textName.center.x -= UIScreen.main.bounds.width
+        textName.center.y = UIScreen.main.bounds.maxY - 150
+        
+        self.view.addSubview(textName)
+       
+        
+        // Create password entry
+        
+        textPassword.placeholder = "secret word"
+        textPassword.alpha = 1
+        textPassword.font = UIFont(name: "System", size: 14)
+        textPassword.adjustsFontSizeToFitWidth = true
+        textPassword.minimumFontSize = 14
+        textPassword.backgroundColor = UIColor.white
+        textPassword.textAlignment = NSTextAlignment.center
+        textPassword.borderStyle = UITextBorderStyle.roundedRect
+        textPassword.autocapitalizationType = .none
+        textPassword.autocorrectionType = .no
+        textPassword.keyboardType = UIKeyboardType.default
+        textPassword.autocorrectionType = .no
+        // textPassword.isSecureTextEntry = true
+        textPassword.center.x += UIScreen.main.bounds.width
+        textPassword.center.y = UIScreen.main.bounds.maxY - 100
+        
+        self.view.addSubview(textPassword)
+        
+        
+        // Submission Button
         buttonLegit.setTitle("I'M LEGIT", for: UIControlState.normal)
         buttonLegit.titleLabel?.font =  UIFont(name: "System-Bold", size: 19)
         buttonLegit.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
@@ -109,10 +152,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         buttonLegit.setTitleShadowColor(UIColor.orange, for: UIControlState.normal)
         buttonLegit.setTitleShadowColor(UIColor.magenta, for: UIControlState.highlighted)
         buttonLegit.titleLabel?.shadowOffset = CGSize(width: 0, height: 1)
-        self.view.addSubview(buttonLegit)
-        buttonLegit.center.y = UIScreen.main.bounds.maxY + 100
+
         buttonLegit.center.x = UIScreen.main.bounds.midX
+        buttonLegit.center.y = UIScreen.main.bounds.maxY - 50
         buttonLegit.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
+        
+          self.view.addSubview(buttonLegit)
         
         // declare vertical spacing constraint between textPassword and buttonLegit
         
@@ -141,10 +186,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
                                     
                                     // need to do this with constraints for different screen sizes
                                     
-                                   //  UIScreen.main.bounds.maxY - (self.buttonLegit.frame.height + 5)
-                                    
+                                    self.textName.center.x = UIScreen.main.bounds.midX
+                                    self.textPassword.center.x = UIScreen.main.bounds.midX
                                     self.buttonLegit.center.y = self.textPassword.frame.maxY + 20
-                                    self.buttonLegit.center.x = UIScreen.main.bounds.midX
+                                    
                                     
                                     
                                     // NSLayoutConstraint.activate([verticalSpacingConstraintButton])
@@ -163,28 +208,38 @@ class ViewController: UIViewController, UITextFieldDelegate {
             if userMoms.contains(userName)  {
                 
                 labelName.text = "HI MOMMY!"
-                labelName.alpha = 1
+               
+                // hiding labelName for now, too crowded
+                // labelName.alpha = 1
                 
             } else if userDads.contains(userName) {
                 
                 labelName.text = "HI DAD!"
-                labelName.alpha = 1
+                
+                // hiding labelName for now, too crowded
+                // labelName.alpha = 1
                 
             } else if userPoo.contains(userName) {
                 
-                labelName.text = "POO BROTHER!"
-                labelName.alpha = 1
+    
+                labelName.text = "HI POO BROTHER!"
+                
+                // hiding labelName for now, too crowded
+                // labelName.alpha = 1
                 
             }   else {
             
             labelName.text = "HI " + userName.uppercased() + " !"
-            labelName.alpha = 1
+            
+                // hiding labelName for now, too crowded
+                // labelName.alpha = 1
                 
             }
             
         } else {
             
-            textName.alpha = 1
+            // removing need for textName entry for now
+            // textName.alpha = 1
             
         }
         
