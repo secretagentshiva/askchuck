@@ -25,7 +25,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hazelcover3.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ERg-gV-zkc">
                                 <rect key="frame" x="-45.5" y="0.0" width="467" height="667"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HI! I SEE YOU!" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0r-Rl-Dv7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I SEE YOU!" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0r-Rl-Dv7">
                                 <rect key="frame" x="32" y="32" width="237" height="82"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="237" id="8Kz-Ta-GcS"/>
