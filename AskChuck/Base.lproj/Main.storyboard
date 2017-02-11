@@ -25,7 +25,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hazelcover3.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ERg-gV-zkc">
                                 <rect key="frame" x="-45.5" y="0.0" width="467" height="667"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HI! I'M CHUCK. I SEE YOU!" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0r-Rl-Dv7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HI! I SEE YOU!" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0r-Rl-Dv7">
                                 <rect key="frame" x="32" y="32" width="237" height="82"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="237" id="8Kz-Ta-GcS"/>
@@ -48,19 +48,27 @@
                                 <color key="shadowColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1CJ-uS-ziP">
+                                <rect key="frame" x="329" y="632" width="30" height="30"/>
+                                <state key="normal" image="rotateImage.png"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Q0r-Rl-Dv7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="12" id="EEW-Kb-6uq"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1CJ-uS-ziP" secondAttribute="bottom" constant="5" id="Efe-Z1-bRq"/>
                             <constraint firstItem="ERg-gV-zkc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Fvi-b6-8eg"/>
                             <constraint firstItem="ERg-gV-zkc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="GZC-ma-Dqc"/>
                             <constraint firstItem="Q0r-Rl-Dv7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="16" id="HI0-c2-cg4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1CJ-uS-ziP" secondAttribute="trailing" id="dAN-73-hlX"/>
                             <constraint firstItem="ERg-gV-zkc" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="lX5-Hi-per"/>
                             <constraint firstItem="Vxo-EG-qTg" firstAttribute="top" secondItem="Q0r-Rl-Dv7" secondAttribute="bottom" constant="7" id="vjy-ZA-Kr9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Vxo-EG-qTg" secondAttribute="trailing" constant="22" id="z0t-oh-M3I"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttonRotateImage" destination="1CJ-uS-ziP" id="Z7T-fZ-0hS"/>
+                        <outlet property="imageBackground" destination="ERg-gV-zkc" id="xQT-xy-1YI"/>
                         <outlet property="labelName" destination="Vxo-EG-qTg" id="vUp-bH-Rno"/>
                         <outlet property="labelWelcome" destination="Q0r-Rl-Dv7" id="f4R-Ne-l2x"/>
                         <segue destination="VgJ-BW-eDB" kind="show" identifier="goToQuestionsUI" id="RXQ-s9-or8"/>
@@ -106,5 +114,6 @@
     <resources>
         <image name="ChuckAskMeFull.JPG" width="455" height="607"/>
         <image name="hazelcover3.jpg" width="467" height="623"/>
+        <image name="rotateImage.png" width="30" height="30"/>
     </resources>
 </document>

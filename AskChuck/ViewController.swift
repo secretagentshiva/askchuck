@@ -11,10 +11,11 @@ import UIKit
 class ViewController: UIViewController, UITextFieldDelegate {
 
     
+    @IBOutlet weak var imageBackground: UIImageView!
     @IBOutlet weak var labelWelcome: UILabel!
     @IBOutlet weak var labelName: UILabel!
+    @IBOutlet weak var buttonRotateImage: UIButton!
     
-
     let textName = UITextField(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
     let textPassword = UITextField(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
     let buttonLegit = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
@@ -29,12 +30,58 @@ class ViewController: UIViewController, UITextFieldDelegate {
     let userDads: Array = ["andy"]
     let userPoo: Array = ["shiva"]
     
+    // hardcode toggle for switching images
+    // will make dynamic once have array of hazel images
+    var imageChuckToggle = true
+    
+    
     func loadQuestionsUI() {
         self.performSegue(withIdentifier: "goToQuestionsUI", sender: self)
+        
     }
     
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
         
-    func buttonTapped(_ sender: Any) {
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        let imgSize = CGSize(width: newWidth, height: newHeight)
+        let imgRect = CGRect(x: 0, y: 0, width: newWidth, height: newHeight)
+        
+        UIGraphicsBeginImageContext(imgSize)
+        image.draw(in: imgRect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
+    }
+
+    
+    func buttonRotateImageTapped(_ sender: Any) {
+        
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        
+        
+        if imageChuckToggle {
+            // set to alternative chuckImages
+            let imgToSwap = UIImage(named: "chuckLoad.png")
+            
+            imageBackground.image = resizeImage(image: imgToSwap!, newWidth: screenWidth)
+            
+            imageChuckToggle = false
+        } else {
+            
+             // set to standard chuckImage
+            let imgToSwap = UIImage(named: "hazelcover3.jpg")
+            imageBackground.image = resizeImage(image: imgToSwap!, newWidth: screenWidth)
+            imageChuckToggle = true
+            
+        }
+        
+    }
+    
+    
+    func buttonLegitTapped(_ sender: Any) {
         
         // this part will never check for now as I've made textName.alpha always == 0 
         // textName display and entry eliminated for welcome message
@@ -95,10 +142,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // hide Name label
         labelName.alpha = 0
         
+        // set Rotate Image button target
+        // diasabling this rotate image option for now
+        buttonRotateImage.isHidden = true
+        buttonRotateImage.alpha = 0
+        buttonRotateImage.addTarget(self, action: #selector(self.buttonRotateImageTapped), for: .touchUpInside)
         
         // Create username, password text elements and submission button
-        
-        
         // Create username entry
         
         textName.placeholder = "name please"
@@ -159,7 +209,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         // hardcode not preferred
         buttonLegit.center.y = UIScreen.main.bounds.maxY - 100
-        buttonLegit.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
+        buttonLegit.addTarget(self, action: #selector(self.buttonLegitTapped), for: .touchUpInside)
         
           self.view.addSubview(buttonLegit)
         
@@ -193,7 +243,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                                     
                                     self.textPassword.center.x = UIScreen.main.bounds.midX
                                     self.buttonLegit.center.y = self.textPassword.frame.maxY + 20
-                                  
+                                    
                                     /* constraints below not working
                                     NSLayoutConstraint.activate([verticalSpacingConstraintButton])
                                     NSLayoutConstraint.activate([verticalSpacingConstraintBottom])
@@ -205,6 +255,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }, completion: nil)
         
         
+      
         
         // Debug and testing: wipe UserDefaults local storage for username
         // UserDefaults.standard.removeObject(forKey: "name")

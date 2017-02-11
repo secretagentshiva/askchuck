@@ -23,6 +23,7 @@
 		58A3882F1E1A158800E1F289 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A3882E1E1A158800E1F289 /* CloudKit.framework */; };
 		58B5B74C1E4798E9007DEE10 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B5B74B1E4798E9007DEE10 /* ArrayExtensions.swift */; };
 		58B5B7581E47BA6C007DEE10 /* WoodchuckHead.png in Resources */ = {isa = PBXBuildFile; fileRef = 58B5B7571E47BA6C007DEE10 /* WoodchuckHead.png */; };
+		58E1FF661E4EACCC0047708E /* rotateImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E1FF651E4EACCC0047708E /* rotateImage.png */; };
 		58FB5AB91E2586D8009341E8 /* Chuckism.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FB5AB81E2586D8009341E8 /* Chuckism.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		58A3882E1E1A158800E1F289 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		58B5B74B1E4798E9007DEE10 /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		58B5B7571E47BA6C007DEE10 /* WoodchuckHead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WoodchuckHead.png; sourceTree = "<group>"; };
+		58E1FF651E4EACCC0047708E /* rotateImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rotateImage.png; sourceTree = "<group>"; };
 		58FB5AB81E2586D8009341E8 /* Chuckism.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chuckism.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,6 +91,7 @@
 				5887C6C81E2BD4C500D816A3 /* chuckLoad.png */,
 				58A388291E1A05BA00E1F289 /* hazelcover3.jpg */,
 				58583DC71E2AE988003F76A7 /* ChuckAskMe.png */,
+				58E1FF651E4EACCC0047708E /* rotateImage.png */,
 				580BEA481E44453D001920DC /* imagePixelUnicornMedium.png */,
 				58B5B7571E47BA6C007DEE10 /* WoodchuckHead.png */,
 				5887C6CC1E2BFF0600D816A3 /* WoodchuckSpinner.png */,
@@ -189,6 +192,7 @@
 				58A3881D1E1A057100E1F289 /* Main.storyboard in Resources */,
 				580BEA491E44453D001920DC /* imagePixelUnicornMedium.png in Resources */,
 				5887C6CB1E2BD6F000D816A3 /* ChuckAskMeFull.JPG in Resources */,
+				58E1FF661E4EACCC0047708E /* rotateImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
