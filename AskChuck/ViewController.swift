@@ -172,14 +172,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         // Create password entry
         
-        textPassword.placeholder = "secret word"
+       
         textPassword.alpha = 1
         textPassword.font = UIFont(name: "System", size: 14)
         textPassword.adjustsFontSizeToFitWidth = true
         textPassword.minimumFontSize = 14
         textPassword.backgroundColor = UIColor.white
         textPassword.textAlignment = NSTextAlignment.center
+        textPassword.contentVerticalAlignment = UIControlContentVerticalAlignment.center
         textPassword.borderStyle = UITextBorderStyle.roundedRect
+        textPassword.placeholder = "secret word"
         textPassword.autocapitalizationType = .none
         textPassword.autocorrectionType = .no
         textPassword.keyboardType = UIKeyboardType.default
