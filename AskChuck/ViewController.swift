@@ -123,24 +123,34 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // functions to switch position of password / button when keyboard displayed
     func keyboardWillShow(sender: NSNotification) {
         
+        // for some reason this fires multiple times; later needs debugging 
+        // multiple fire means I can't just shift -= and have to position absolute which is annoying
        
        //  self.textPassword.frame.origin.y -= 150
         // self.buttonLegit.frame.origin.y -= 150
         
+        /*
         let userInfo:NSDictionary = sender.userInfo! as NSDictionary
         let keyboardFrame:NSValue = userInfo.value(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
         let keyboardRectangle = keyboardFrame.cgRectValue
         let keyboardHeight = keyboardRectangle.height
+        */
         
+        self.textPassword.frame.origin.y = self.view.center.y - 20
+        self.buttonLegit.center.y = self.textPassword.frame.maxY + 20
         
-        self.textPassword.frame.origin.y -= keyboardHeight
-        self.buttonLegit.frame.origin.y -= keyboardHeight
+        print("origin y changed")
+        print(self.textPassword.frame.origin.y)
+
     }
     
     func keyboardWillHide(sender: NSNotification) {
-        // self.textPassword.frame.origin.y += 150
-        // self.buttonLegit.frame.origin.y += 150
         
+        
+        // for some reason this fires multiple times; later needs debugging
+        // multiple fire means I can't just shift += and have to position absolute which is annoying
+
+        /*
         let userInfo:NSDictionary = sender.userInfo! as NSDictionary
         let keyboardFrame:NSValue = userInfo.value(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
         let keyboardRectangle = keyboardFrame.cgRectValue
@@ -148,7 +158,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         self.textPassword.frame.origin.y += keyboardHeight
         self.buttonLegit.frame.origin.y +=  keyboardHeight
+        */
         
+       // self.buttonLegit.removeConstraints(self.buttonLegit.constraints)
+       // self.textPassword.removeConstraints(self.buttonLegit.constraints)
+        
+        self.textPassword.center.y = self.view.frame.maxY - 100
+        self.buttonLegit.center.y = self.textPassword.frame.maxY + 20
+
+        // self.textPassword.frame.origin.y += 150
+        // self.buttonLegit.frame.origin.y += 150
+        
+        print("origin y changed")
+        print(self.textPassword.frame.origin.y)
         
     }
     
@@ -159,11 +181,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         super.viewDidLoad()
         
-        // Listeners for keyboard to push up password field
-        
-        NotificationCenter.default.addObserver(self, selector:#selector((self.keyboardWillShow(sender:))), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
-        
-        NotificationCenter.default.addObserver(self, selector:#selector((self.keyboardWillHide(sender:))), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
         
         // Do any additional setup after loading the view, typically from a nib.
         // hide Name label
@@ -331,6 +348,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         
         
+        
+        // Listeners for keyboard to push up password field
+        
+        NotificationCenter.default.addObserver(self, selector:#selector((self.keyboardWillShow(sender:))), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
+        
+        NotificationCenter.default.addObserver(self, selector:#selector((self.keyboardWillHide(sender:))), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
+
         
     }
 
