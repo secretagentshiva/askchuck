@@ -120,9 +120,51 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    // functions to switch position of password / button when keyboard displayed
+    func keyboardWillShow(sender: NSNotification) {
+        
+       
+       //  self.textPassword.frame.origin.y -= 150
+        // self.buttonLegit.frame.origin.y -= 150
+        
+        let userInfo:NSDictionary = sender.userInfo! as NSDictionary
+        let keyboardFrame:NSValue = userInfo.value(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
+        let keyboardRectangle = keyboardFrame.cgRectValue
+        let keyboardHeight = keyboardRectangle.height
+        
+        
+        self.textPassword.frame.origin.y -= keyboardHeight
+        self.buttonLegit.frame.origin.y -= keyboardHeight
+    }
+    
+    func keyboardWillHide(sender: NSNotification) {
+        // self.textPassword.frame.origin.y += 150
+        // self.buttonLegit.frame.origin.y += 150
+        
+        let userInfo:NSDictionary = sender.userInfo! as NSDictionary
+        let keyboardFrame:NSValue = userInfo.value(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
+        let keyboardRectangle = keyboardFrame.cgRectValue
+        let keyboardHeight = keyboardRectangle.height
+        
+        self.textPassword.frame.origin.y += keyboardHeight
+        self.buttonLegit.frame.origin.y +=  keyboardHeight
+        
+        
+    }
+    
     
     override func viewDidLoad() {
+        
+        
+        
         super.viewDidLoad()
+        
+        // Listeners for keyboard to push up password field
+        
+        NotificationCenter.default.addObserver(self, selector:#selector((self.keyboardWillShow(sender:))), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
+        
+        NotificationCenter.default.addObserver(self, selector:#selector((self.keyboardWillHide(sender:))), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
+        
         // Do any additional setup after loading the view, typically from a nib.
         // hide Name label
         labelName.alpha = 0
