@@ -526,13 +526,15 @@ class QuestionsViewController: UIViewController {
     
     }
     
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         
-        // Check if user on WiFi.  If not, display alert.  Don't want to eat data plan :)
-        print(currentReachabilityStatus != .notReachable) //true connected
+        
         
 
         
@@ -554,8 +556,15 @@ class QuestionsViewController: UIViewController {
 
         self.imgSpinnerView.alpha = 0
         
+        
+        
+        
         // only proceed if on WiFi connection
-        if currentReachabilityStatus != .reachableViaWiFi {
+        // mock toggle pending having REAL reachability type code
+        let notReachableWiFi = false
+        
+        
+        if notReachableWiFi {
             
             
             print("No WiFi detected")

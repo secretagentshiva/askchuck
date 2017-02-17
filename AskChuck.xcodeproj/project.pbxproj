@@ -11,7 +11,6 @@
 		58106F1D1E2C30030013683A /* UIView+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58106F1C1E2C30030013683A /* UIView+Rotation.swift */; };
 		584A776C1E232CEB002E9D88 /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584A776B1E232CEB002E9D88 /* QuestionsViewController.swift */; };
 		58583DC81E2AE988003F76A7 /* ChuckAskMe.png in Resources */ = {isa = PBXBuildFile; fileRef = 58583DC71E2AE988003F76A7 /* ChuckAskMe.png */; };
-		585DBE011E56C5B500936707 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585DBE001E56C5B500936707 /* Connectivity.swift */; };
 		587459851E5007ED00C2697B /* ResizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587459841E5007ED00C2697B /* ResizeImage.swift */; };
 		5887C6C91E2BD4C500D816A3 /* chuckLoad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5887C6C81E2BD4C500D816A3 /* chuckLoad.png */; };
 		5887C6CB1E2BD6F000D816A3 /* ChuckAskMeFull.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 5887C6CA1E2BD6F000D816A3 /* ChuckAskMeFull.JPG */; };
@@ -34,7 +33,6 @@
 		58106F1C1E2C30030013683A /* UIView+Rotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Rotation.swift"; sourceTree = "<group>"; };
 		584A776B1E232CEB002E9D88 /* QuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
 		58583DC71E2AE988003F76A7 /* ChuckAskMe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChuckAskMe.png; sourceTree = "<group>"; };
-		585DBE001E56C5B500936707 /* Connectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 		587459841E5007ED00C2697B /* ResizeImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizeImage.swift; sourceTree = "<group>"; };
 		5887C6C81E2BD4C500D816A3 /* chuckLoad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chuckLoad.png; sourceTree = "<group>"; };
 		5887C6CA1E2BD6F000D816A3 /* ChuckAskMeFull.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ChuckAskMeFull.JPG; sourceTree = "<group>"; };
@@ -91,7 +89,6 @@
 				58106F1C1E2C30030013683A /* UIView+Rotation.swift */,
 				58B5B74B1E4798E9007DEE10 /* ArrayExtensions.swift */,
 				587459841E5007ED00C2697B /* ResizeImage.swift */,
-				585DBE001E56C5B500936707 /* Connectivity.swift */,
 				58A3882C1E1A158100E1F289 /* AskChuck.entitlements */,
 				5887C6CA1E2BD6F000D816A3 /* ChuckAskMeFull.JPG */,
 				5887C6C81E2BD4C500D816A3 /* chuckLoad.png */,
@@ -213,7 +210,6 @@
 				58B5B74C1E4798E9007DEE10 /* ArrayExtensions.swift in Sources */,
 				58A3881A1E1A057100E1F289 /* ViewController.swift in Sources */,
 				58106F1D1E2C30030013683A /* UIView+Rotation.swift in Sources */,
-				585DBE011E56C5B500936707 /* Connectivity.swift in Sources */,
 				587459851E5007ED00C2697B /* ResizeImage.swift in Sources */,
 				58A388181E1A057100E1F289 /* AppDelegate.swift in Sources */,
 				584A776C1E232CEB002E9D88 /* QuestionsViewController.swift in Sources */,

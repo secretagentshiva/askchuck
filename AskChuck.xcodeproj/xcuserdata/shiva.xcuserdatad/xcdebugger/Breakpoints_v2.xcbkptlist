@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AskChuck/QuestionsViewController.swift"
-            timestampString = "509003542.636"
+            timestampString = "509006563.126443"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "545"
-            endingLineNumber = "545"
+            startingLineNumber = "547"
+            endingLineNumber = "547"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AskChuck/QuestionsViewController.swift"
-            timestampString = "509004591.776655"
+            timestampString = "509006563.126443"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "569"
-            endingLineNumber = "569"
+            startingLineNumber = "578"
+            endingLineNumber = "578"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
