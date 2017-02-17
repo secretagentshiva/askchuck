@@ -3,7 +3,7 @@
 //  AskChuck
 //
 //  Created by Litter Box Labs on 1/1/17.
-//  Copyright © 2017 Chucklet Labs. All rights reserved.
+//  
 //
 
 import UIKit
@@ -139,8 +139,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.textPassword.frame.origin.y = self.view.center.y - 20
         self.buttonLegit.center.y = self.textPassword.frame.maxY + 20
         
-        print("origin y changed")
-        print(self.textPassword.frame.origin.y)
+       // debug position duplicate fires
+       // print("origin y changed")
+       //  print(self.textPassword.frame.origin.y)
 
     }
     
@@ -169,8 +170,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // self.textPassword.frame.origin.y += 150
         // self.buttonLegit.frame.origin.y += 150
         
-        print("origin y changed")
-        print(self.textPassword.frame.origin.y)
+      
         
     }
     

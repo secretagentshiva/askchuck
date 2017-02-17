@@ -3,7 +3,7 @@
 //  AskChuck
 //
 //  Created by Litter Box Labs on 1/10/17.
-//  Copyright © 2017 Chucklet Labs. All rights reserved.
+//  
 //
 
 import UIKit

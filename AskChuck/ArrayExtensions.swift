@@ -2,8 +2,8 @@
 //  ArrayExtensions.swift
 //  AskChuck
 //
-//  Created by Shiva Rajaraman on 2/5/17.
-//  Copyright © 2017 Chucklet Labs. All rights reserved.
+//  Created by Litter Box Labs on 2/5/17.
+//  
 //
 
 import UIKit

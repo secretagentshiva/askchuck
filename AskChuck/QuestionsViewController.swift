@@ -3,13 +3,15 @@
 //  AskChuck
 //
 //  Created by Litter Box Labs on 1/8/17.
-//  Copyright © 2017 Chucklet Labs. All rights reserved.
+//  
 //
 
 import UIKit
 import CloudKit
 import AVKit
 import AVFoundation
+
+
 
 class QuestionsViewController: UIViewController {
 
@@ -529,6 +531,11 @@ class QuestionsViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
+        // Check if user on WiFi.  If not, display alert.  Don't want to eat data plan :)
+        print(currentReachabilityStatus != .notReachable) //true connected
+        
+
+        
         // Resize image
         let imgHeader = UIImage(named: "ChuckAskMeFull.JPG")
         let screenSize = UIScreen.main.bounds
@@ -547,8 +554,25 @@ class QuestionsViewController: UIViewController {
 
         self.imgSpinnerView.alpha = 0
         
-        
-        loadChuckisms()
+        // only proceed if on WiFi connection
+        if currentReachabilityStatus != .reachableViaWiFi {
+            
+            
+            print("No WiFi detected")
+           
+            delayWithSeconds(1) {
+                
+                self.stopSpinning()
+                self.notifyUser("Why no WiFi?", message: "Chuck's wisdom is restricted to WiFi")
+            
+            }
+            
+        } else {
+            
+            // WiFi detected, Chuck FTW!
+            loadChuckisms()
+            
+        }
         
     }
 
