@@ -13,6 +13,7 @@ import AVFoundation
 
 
 
+
 class QuestionsViewController: UIViewController {
 
     
@@ -29,7 +30,6 @@ class QuestionsViewController: UIViewController {
     // spinner image view
     let imgSpinnerView = UIImageView(frame: CGRect(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY, width: 48, height: 48))
     
-
     
     // adding identifier tag for StackView to access later w/ I'm Feeling Chucky
     let tagStackView: Int = 1000
@@ -94,8 +94,6 @@ class QuestionsViewController: UIViewController {
                     
                 }
             }
-           
-            
             
             
             delayWithSeconds(2) {
@@ -406,8 +404,6 @@ class QuestionsViewController: UIViewController {
                    
                     self.animateFeelingChucky()
                    
-                 
-                   
                     
                     
                 } else {
@@ -534,10 +530,41 @@ class QuestionsViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
+        // Setup Reachability to check for network connection type
+        let reachability = Reachability()!
         
         
+        // reachability tests
+        /* BEGIN TESTS
+        reachability.whenReachable = { reachability in
+            // this is called on a background thread, but UI updates must
+            // be on the main thread, like this:
+            DispatchQueue.main.async() {
+                if reachability.isReachableViaWiFi {
+                    print("Reachable via WiFi")
+                } else {
+                    print("Reachable via Cellular")
+                }
+            }
+        }
+        reachability.whenUnreachable = { reachability in
+            // this is called on a background thread, but UI updates must
+            // be on the main thread, like this:
+            DispatchQueue.main.async {
+                self.notifyUser("Why no Internets?", message: "Chuck's wisdom is restricted to WiFi")
 
+            }
+        }
+ 
+        END TESTS */
         
+        do {
+            try reachability.startNotifier()
+        } catch {
+            self.notifyUser("Trouble checking WiFi", message: "Chuck needs to know or Chuck won't talk")
+        }
+    
+       
         // Resize image
         let imgHeader = UIImage(named: "ChuckAskMeFull.JPG")
         let screenSize = UIScreen.main.bounds
@@ -556,30 +583,30 @@ class QuestionsViewController: UIViewController {
 
         self.imgSpinnerView.alpha = 0
         
-        
-        
-        
+
         // only proceed if on WiFi connection
-        // mock toggle pending having REAL reachability type code
-        let notReachableWiFi = false
-        
-        
-        if notReachableWiFi {
+        if reachability.isReachableViaWiFi {
             
             
-            print("No WiFi detected")
+            // print("WiFi detected")
+            
+            // WiFi detected, Chuck FTW!
+            reachability.stopNotifier()
+            loadChuckisms()
            
-            delayWithSeconds(1) {
-                
-                self.stopSpinning()
-                self.notifyUser("Why no WiFi?", message: "Chuck's wisdom is restricted to WiFi")
-            
-            }
             
         } else {
             
-            // WiFi detected, Chuck FTW!
-            loadChuckisms()
+            // No WiFi detected so No Chuck
+            // Note: need a slight delay here to work properly
+            delayWithSeconds(1) {
+                
+                self.stopSpinning()
+                reachability.stopNotifier()
+                self.notifyUser("Why no WiFi?", message: "Chuck's wisdom is restricted to WiFi")
+                
+            }
+
             
         }
         
