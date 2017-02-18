@@ -215,6 +215,35 @@ class QuestionsViewController: UIViewController {
         let publicDB = defaultContainer.publicCloudDatabase
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Chuckisms", predicate: predicate)
+        let operation = CKQueryOperation(query: query)
+        self.totalAvailQuestions = 0
+        operation.desiredKeys = ["QuestionID"]
+        operation.resultsLimit = 5 // capping this during testing
+
+    
+        operation.recordFetchedBlock = { record in
+        
+            self.totalAvailQuestions += 1
+            print(self.totalAvailQuestions)
+        }
+
+        operation.queryCompletionBlock = { [unowned self] (cursor, error) in
+            if (error==nil) {
+                // do nothing
+            } else {
+                
+                self.stopSpinning()
+                
+                let ac = UIAlertController(title: "No Chuckisms!", message: "There was a problem getting Chuck's wisdom; please try again: \(error!.localizedDescription)", preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(ac, animated: true)
+            }
+            
+        }
+    
+        publicDB.add(operation)
+    
+    /* old method which grabbed all fields including Responses which is a heavy package
     
         publicDB.perform(query, inZoneWith: nil) {
         (records, error) -> Void in
@@ -223,11 +252,12 @@ class QuestionsViewController: UIViewController {
             return
             }
         self.totalAvailQuestions = records.count
-        // print("Found \(records.count) records matching query")
+        print("Found \(records.count) records matching query")
      
         }
-     
-        
+     */
+    
+    
     }
  
  
@@ -271,8 +301,6 @@ class QuestionsViewController: UIViewController {
         let query = CKQuery(recordType: "Chuckisms", predicate: predicate)
         let operation = CKQueryOperation(query: query)
         
-        // removed Response here
-        // operation.desiredKeys = ["Question", "Response", "QuestionID"]
         operation.desiredKeys = ["Question", "QuestionID"]
         operation.resultsLimit = 5 // capping this during testing
         
