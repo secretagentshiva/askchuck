@@ -137,7 +137,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         */
         
         self.textPassword.frame.origin.y = self.view.center.y - 20
-        self.buttonLegit.center.y = self.textPassword.frame.maxY + 20
+        self.buttonLegit.center.y = self.textPassword.frame.maxY + 25
         
        // debug position duplicate fires
        // print("origin y changed")
@@ -165,7 +165,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
        // self.textPassword.removeConstraints(self.buttonLegit.constraints)
         
         self.textPassword.center.y = self.view.frame.maxY - 100
-        self.buttonLegit.center.y = self.textPassword.frame.maxY + 20
+        self.buttonLegit.center.y = self.textPassword.frame.maxY + 25
 
         // self.textPassword.frame.origin.y += 150
         // self.buttonLegit.frame.origin.y += 150
@@ -288,7 +288,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                                     // self.textName.center.x = UIScreen.main.bounds.midX
                                     
                                     self.textPassword.center.x = UIScreen.main.bounds.midX
-                                    self.buttonLegit.center.y = self.textPassword.frame.maxY + 20
+                                    self.buttonLegit.center.y = self.textPassword.frame.maxY + 25
                                     
                                     /* constraints below not working
                                     NSLayoutConstraint.activate([verticalSpacingConstraintButton])

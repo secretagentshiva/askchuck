@@ -23,7 +23,12 @@ class QuestionsViewController: UIViewController {
     var indexRecordID: Int = 0
     var selectedQuestionIDs: [Int] = []
     
-    
+    // total questions to pick from
+    // should be total count of questions in PublicDB
+    // hardcoded for now but will eventually be dynamic based on avail questions in Public DB
+    // note: a bit brittle, because if question IDs are not continuous to totalAvailQuestion, you may generate random question IDs that aren't in the DB so # of questions you display will be less than countMaxQuestions
+    var totalAvailQuestions = 5
+
     
     let playerViewController = AVPlayerViewController()
     
@@ -102,11 +107,9 @@ class QuestionsViewController: UIViewController {
             
         }
     
-        indexRecordID = questionID - 1
-    
-        self.chuckism.recordID = self.chuckisms[indexRecordID].recordID
-        self.chuckism.questionID = self.chuckisms[indexRecordID].questionID
-       
+        // lookup record for the chosen Question ID
+        let matchedChuckism = self.chuckisms.filter{ $0.questionID == Int64(questionID) }.first
+        self.chuckism.recordID = matchedChuckism?.recordID
         
          CKContainer.default().publicCloudDatabase.fetch(withRecordID: self.chuckism.recordID) { record, error in
             if error != nil {
@@ -202,9 +205,32 @@ class QuestionsViewController: UIViewController {
             }
          }
     }
-    
 
-      
+   /* Want to count available questions to make totalAvailQuestions dynamic vs hard coded */
+   // may need to rewrite this after testing it to move to .operation framework as this may load all responses and waste bandwidth
+     
+   func countAvailQuestions() {
+        let defaultContainer = CKContainer.default()
+        let publicDB = defaultContainer.publicCloudDatabase
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Chuckisms", predicate: predicate)
+    
+        publicDB.perform(query, inZoneWith: nil) {
+        (records, error) -> Void in
+        guard let records = records else {
+            self.notifyUser("Error counting Chuckisms", message: "Chuck's wisdom has been thwarted")
+            return
+            }
+        self.totalAvailQuestions = records.count
+        print("Found \(records.count) records matching query")
+     
+        }
+     
+        
+    }
+ 
+ 
+    
     func loadChuckisms() {
         
         // Capping questions to display but picking from PublicDB a random set of what is available
@@ -215,12 +241,9 @@ class QuestionsViewController: UIViewController {
         // currently set to be max 3 questions
         let countMaxQuestions = 3
         
-        // total questions to pick from
-        // should be total count of questions in PublicDB
-        // hardcoded for now but will eventually be dynamic based on avail questions in Public DB
-        // note: a bit brittle, because if question IDs are not continuous to totalAvailQuestion, you may generate random question IDs that aren't in the DB so # of questions you display will be less than countMaxQuestions
         
-        let totalAvailQuestions = 3
+        // build array of random question IDs to query later
+        // Note: assumption is question IDs are integers in continuous sequential order
         var count = 1
         var randomQuestionID = 1
         
@@ -248,9 +271,10 @@ class QuestionsViewController: UIViewController {
         let query = CKQuery(recordType: "Chuckisms", predicate: predicate)
         let operation = CKQueryOperation(query: query)
         
-        // remove Response here?
-        operation.desiredKeys = ["Question", "Response", "QuestionID"]
-        operation.resultsLimit = 5 // capping this during testing + removed cursor code; add later
+        // removed Response here
+        // operation.desiredKeys = ["Question", "Response", "QuestionID"]
+        operation.desiredKeys = ["Question", "QuestionID"]
+        operation.resultsLimit = 5 // capping this during testing
         
         var newChuckisms = [Chuckism]()
        
@@ -283,7 +307,7 @@ class QuestionsViewController: UIViewController {
                         
                         // create and format buttons
                         let questionButton = UIButton(frame: CGRect(x: 0, y: 0, width: widthButton, height: 30))
-                        // questionButton.translatesAutoresizingMaskIntoConstraints = false
+                        questionButton.translatesAutoresizingMaskIntoConstraints = false
                        
                         // add to buttons array for stackview
                         buttons.append(questionButton)
@@ -296,7 +320,7 @@ class QuestionsViewController: UIViewController {
                         questionButton.titleLabel?.textAlignment = NSTextAlignment.center
                         questionButton.setTitleColor(UIColor.white, for: UIControlState.normal)
                         questionButton.setTitleColor(UIColor.purple, for: UIControlState.highlighted)
-                        questionButton.setTitleShadowColor(UIColor.red, for: UIControlState.normal)
+                        questionButton.setTitleShadowColor(UIColor.blue, for: UIControlState.normal)
                         questionButton.setTitleShadowColor(UIColor.magenta, for: UIControlState.highlighted)
                         questionButton.titleLabel?.shadowOffset = CGSize(width: 0, height: 1)
                         
@@ -337,7 +361,7 @@ class QuestionsViewController: UIViewController {
                     */ 
                     // MANUAL QUESTION TESTING -- END BLOCK
                     
-                    // Create I'm Feeling Chucky Unicorn buton
+                    // Create "I'm Feeling Chucky" pick random question/answer button
                     
                     let questionButton = UIButton(frame: CGRect(x: 0, y: 0, width: widthButton, height: 30))
                     let imageChuckyButton = UIImage(named: "WoodchuckHead.png") as UIImage?
@@ -356,14 +380,12 @@ class QuestionsViewController: UIViewController {
                     questionButton.titleLabel?.textAlignment = NSTextAlignment.center
                     questionButton.setTitleColor(UIColor.white, for: UIControlState.normal)
                     questionButton.setTitleColor(UIColor.purple, for: UIControlState.highlighted)
-                    questionButton.setTitleShadowColor(UIColor.red, for: UIControlState.normal)
+                    questionButton.setTitleShadowColor(UIColor.blue, for: UIControlState.normal)
                     questionButton.setTitleShadowColor(UIColor.magenta, for: UIControlState.highlighted)
                     questionButton.titleLabel?.shadowOffset = CGSize(width: 0, height: 1)
                     
                     // these are to enable animateFeelingChucky transition effect
                     questionButton.alpha = 0
-
-                   
                     
                     // employ tag property to pass question ID and set target
                     // note for I'm Feeling Chucky action, tag set to 0
