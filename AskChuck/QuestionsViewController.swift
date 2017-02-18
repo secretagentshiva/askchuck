@@ -595,7 +595,7 @@ class QuestionsViewController: UIViewController {
            
         } else {
             
-            // No WiFi detected so No Chuck
+            // No WiFi detected so No Chuck :(
             // Note: need a slight delay here to work properly
             delayWithSeconds(1) {
                 

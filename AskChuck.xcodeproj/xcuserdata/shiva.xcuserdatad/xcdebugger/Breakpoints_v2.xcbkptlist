@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AskChuck/QuestionsViewController.swift"
-            timestampString = "509074123.6622"
+            timestampString = "509074700.087665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "597"
-            endingLineNumber = "597"
+            startingLineNumber = "595"
+            endingLineNumber = "595"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
