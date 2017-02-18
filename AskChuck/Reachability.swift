@@ -21,6 +21,8 @@
  POSSIBILITY OF SUCH DAMAGE.
  */
 
+// Personal note: this library is awesome! Enables not only network access check but also type of connection which is critical for may app given I don't want to make CloudKit calls except on WiFi given it's just a throwaway app
+
 import SystemConfiguration
 import Foundation
 
