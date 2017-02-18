@@ -206,7 +206,10 @@ class QuestionsViewController: UIViewController {
 
    // Function to query and count available questions; sets totalAvailQuestions dynamically
      
-   func countAvailQuestions() {
+   func displayAvailQuestions() {
+    
+    
+        // First need to count the available questions
     
         self.totalAvailQuestions = 0
         let defaultContainer = CKContainer.default()
@@ -214,7 +217,7 @@ class QuestionsViewController: UIViewController {
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Chuckisms", predicate: predicate)
     
-    /*
+    
         let operation = CKQueryOperation(query: query)
 
         operation.desiredKeys = ["QuestionID"]
@@ -232,7 +235,9 @@ class QuestionsViewController: UIViewController {
             DispatchQueue.main.async {
                 if (error==nil) {
                     // print(self.totalAvailQuestions)
-                    // do nothing
+                    
+                    // this function now does the real work to pull required data and render buttons
+                    self.loadChuckisms()
                     
                 } else {
                     
@@ -247,10 +252,10 @@ class QuestionsViewController: UIViewController {
     
     
         publicDB.add(operation)
-    */
+    
     
     //old method which grabbed all fields including Responses which is a heavy package
-   
+    /*
         publicDB.perform(query, inZoneWith: nil) {
         (records, error) -> Void in
         guard let records = records else {
@@ -261,7 +266,7 @@ class QuestionsViewController: UIViewController {
         print("Found \(records.count) records matching query")
      
         }
-   
+   */
     
     
     }
@@ -656,9 +661,10 @@ class QuestionsViewController: UIViewController {
             reachability.stopNotifier()
             
             // disabling count of avail questions - for some reason this wrecks spinner animations
-            // countAvailQuestions()
+            // note: loadChuckisms is nested within it which makes all animations work fine :)
+            displayAvailQuestions()
             
-            loadChuckisms()
+        
            
         } else {
             
