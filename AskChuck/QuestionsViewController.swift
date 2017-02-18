@@ -21,12 +21,9 @@ class QuestionsViewController: UIViewController {
     var selectedQuestionIDs: [Int] = []
     
     
-    // total questions to pick from
-    // should be total count of questions in PublicDB
-    // hardcoded for now but will eventually be dynamic based on avail questions in Public DB
+    // total population of available questions in cloudkit public DB to randomly select from
     // note: a bit brittle, because if question IDs are not continuous to totalAvailQuestion, you may generate random question IDs that aren't in the DB so # of questions you display will be less than countMaxQuestions
-    var totalAvailQuestions = 5
-
+    var totalAvailQuestions = 5 // will be dynamically set later, but setting a default value
     
     let playerViewController = AVPlayerViewController()
     
@@ -207,16 +204,19 @@ class QuestionsViewController: UIViewController {
          }
     }
 
-   /* Want to count available questions to make totalAvailQuestions dynamic vs hard coded */
-   // may need to rewrite this after testing it to move to .operation framework as this may load all responses and waste bandwidth
+   // Function to query and count available questions; sets totalAvailQuestions dynamically
      
    func countAvailQuestions() {
+    
+        self.totalAvailQuestions = 0
         let defaultContainer = CKContainer.default()
         let publicDB = defaultContainer.publicCloudDatabase
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Chuckisms", predicate: predicate)
+    
+    /*
         let operation = CKQueryOperation(query: query)
-        self.totalAvailQuestions = 0
+
         operation.desiredKeys = ["QuestionID"]
         operation.resultsLimit = 5 // capping this during testing
 
@@ -224,27 +224,33 @@ class QuestionsViewController: UIViewController {
         operation.recordFetchedBlock = { record in
         
             self.totalAvailQuestions += 1
-            print(self.totalAvailQuestions)
+           
         }
 
         operation.queryCompletionBlock = { [unowned self] (cursor, error) in
-            if (error==nil) {
-                // do nothing
-            } else {
-                
-                self.stopSpinning()
-                
-                let ac = UIAlertController(title: "Can't count today!", message: "There was a problem counting Chuck's wisdom; please try again: \(error!.localizedDescription)", preferredStyle: .alert)
-                ac.addAction(UIAlertAction(title: "OK", style: .default))
-                self.present(ac, animated: true)
+           
+            DispatchQueue.main.async {
+                if (error==nil) {
+                    // print(self.totalAvailQuestions)
+                    // do nothing
+                    
+                } else {
+                    
+                    self.stopSpinning()
+                    
+                    let ac = UIAlertController(title: "Can't count today!", message: "There was a problem counting Chuck's wisdom; please try again: \(error!.localizedDescription)", preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(ac, animated: true)
+                }
             }
-            
         }
     
+    
         publicDB.add(operation)
+    */
     
-    /* old method which grabbed all fields including Responses which is a heavy package
-    
+    //old method which grabbed all fields including Responses which is a heavy package
+   
         publicDB.perform(query, inZoneWith: nil) {
         (records, error) -> Void in
         guard let records = records else {
@@ -255,7 +261,7 @@ class QuestionsViewController: UIViewController {
         print("Found \(records.count) records matching query")
      
         }
-     */
+   
     
     
     }
@@ -648,7 +654,10 @@ class QuestionsViewController: UIViewController {
             
             // WiFi detected, Chuck FTW!
             reachability.stopNotifier()
-            countAvailQuestions()
+            
+            // disabling count of avail questions - for some reason this wrecks spinner animations
+            // countAvailQuestions()
+            
             loadChuckisms()
            
         } else {
