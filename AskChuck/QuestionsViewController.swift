@@ -11,9 +11,6 @@ import CloudKit
 import AVKit
 import AVFoundation
 
-
-
-
 class QuestionsViewController: UIViewController {
 
     
@@ -22,6 +19,7 @@ class QuestionsViewController: UIViewController {
     var chuckismPlayer: AVAudioPlayer!
     var indexRecordID: Int = 0
     var selectedQuestionIDs: [Int] = []
+    
     
     // total questions to pick from
     // should be total count of questions in PublicDB
@@ -38,6 +36,9 @@ class QuestionsViewController: UIViewController {
     
     // adding identifier tag for StackView to access later w/ I'm Feeling Chucky
     let tagStackView: Int = 1000
+    
+    // adding identifier tag for I'm Feeling Chucky Button
+    let tagChuckyButton: Int = 0
     
     // boolean in case we need to expose all buttons again in case I'm Feeling Chucky selected
     // given that will hide some questions
@@ -67,7 +68,7 @@ class QuestionsViewController: UIViewController {
         // for correct array indexing, substracting 1; however, special I'm Feeling Chucky, already handled above
         // I'm Feeling Chucky action will instead just be assigned to a random available Question ID
 
-        if questionID == 0 {
+        if questionID == tagChuckyButton {
             
             // need to reset view with questions given I'm Feeling Chucky will hide some questions
             resetQuestionsView = true
@@ -222,7 +223,7 @@ class QuestionsViewController: UIViewController {
             return
             }
         self.totalAvailQuestions = records.count
-        print("Found \(records.count) records matching query")
+        // print("Found \(records.count) records matching query")
      
         }
      
@@ -390,7 +391,7 @@ class QuestionsViewController: UIViewController {
                     // employ tag property to pass question ID and set target
                     // note for I'm Feeling Chucky action, tag set to 0
                     // make sure Question ID != 0 for any question
-                    questionButton.tag = 0
+                    questionButton.tag = self.tagChuckyButton
                     questionButton.addTarget(self, action: #selector(self.downloadplayTapped), for: .touchUpInside)
                 
                     
@@ -479,6 +480,7 @@ class QuestionsViewController: UIViewController {
     func animateFeelingChucky() {
         
         
+       
         // animate Chuck Spinner to I'm Feeling Chucky button (middle to bottom left)
         // and
         // animate I'm Feeling Chucky button in UIStackView
@@ -494,7 +496,8 @@ class QuestionsViewController: UIViewController {
         // Identify I'm Feeling chucky button to fade in
         for button in (stackViewButtons?.subviews)! {
             
-            if button.alpha == 0 {
+            // I'm feeling chuck button is one with tag == 0 (tagChuckyButton)
+            if button.tag == self.tagChuckyButton {
                 
                 
                 let destX = UIScreen.main.bounds.minX + 30
@@ -510,12 +513,14 @@ class QuestionsViewController: UIViewController {
                    // button.alpha = 1
                     
                 }) {_ in
-                    // closure called post-animation
-                    // not using but animation sync choppy so may use later.
+                    // this closure should be called post-animation
+                    // however not using this approach now b/c of some errors
+                    // that said, animation sync choppy so would like to figure this out
                     // button.alpha = 1
                 
                 }
                 
+                // given above closure not working well, doing separate animation sequence to make this work
                 UIView.animate(withDuration: 1.0, animations: {
                     
                     // reveal I'm Feeling Chucky Button
@@ -613,6 +618,7 @@ class QuestionsViewController: UIViewController {
             
             // WiFi detected, Chuck FTW!
             reachability.stopNotifier()
+            countAvailQuestions()
             loadChuckisms()
            
         } else {
@@ -631,13 +637,16 @@ class QuestionsViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        if self.isBeingPresented || self.isMovingToParentViewController {
        
-            // Spinner during initial CK load
-            startSpinning()
-            
-        }
+        
+            if self.isBeingPresented || self.isMovingToParentViewController {
+                print("view is being presented")
+                
+                // Spinner during initial CK load
+                    startSpinning()
+               
+               
+            }
         
     }
     
