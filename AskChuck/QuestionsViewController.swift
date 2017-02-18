@@ -260,7 +260,6 @@ class QuestionsViewController: UIViewController {
                 
                     count += 1
                     
-                    
                 }
         }
         
@@ -517,7 +516,7 @@ class QuestionsViewController: UIViewController {
                     // however not using this approach now b/c of some errors
                     // that said, animation sync choppy so would like to figure this out
                     // button.alpha = 1
-                   // imgAnimatingSpinnerView.removeFromSuperview()
+                    
                 
                 }
                 
@@ -533,9 +532,7 @@ class QuestionsViewController: UIViewController {
             }
         
         }
-        
     }
-    
     
     func startSpinning() {
         
@@ -614,6 +611,7 @@ class QuestionsViewController: UIViewController {
 
         self.imgSpinnerView.alpha = 0
         
+        
 
         // only proceed if on WiFi connection
         if reachability.isReachableViaWiFi {
@@ -647,7 +645,7 @@ class QuestionsViewController: UIViewController {
                 // print("view is being presented")
                 
                 // Spinner during initial CK load
-                    startSpinning()
+                startSpinning()
                
                
             }
