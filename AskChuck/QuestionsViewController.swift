@@ -587,14 +587,12 @@ class QuestionsViewController: UIViewController {
         // only proceed if on WiFi connection
         if reachability.isReachableViaWiFi {
             
-            
             // print("WiFi detected")
             
             // WiFi detected, Chuck FTW!
             reachability.stopNotifier()
             loadChuckisms()
            
-            
         } else {
             
             // No WiFi detected so No Chuck
@@ -606,10 +604,7 @@ class QuestionsViewController: UIViewController {
                 self.notifyUser("Why no WiFi?", message: "Chuck's wisdom is restricted to WiFi")
                 
             }
-
-            
         }
-        
     }
 
     override func viewDidAppear(_ animated: Bool) {
