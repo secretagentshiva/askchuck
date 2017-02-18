@@ -517,6 +517,7 @@ class QuestionsViewController: UIViewController {
                     // however not using this approach now b/c of some errors
                     // that said, animation sync choppy so would like to figure this out
                     // button.alpha = 1
+                   // imgAnimatingSpinnerView.removeFromSuperview()
                 
                 }
                 
@@ -538,14 +539,17 @@ class QuestionsViewController: UIViewController {
     
     func startSpinning() {
         
+        
         self.imgSpinnerView.alpha = 1
         self.imgSpinnerView.startRotating(duration: 1)
     }
     
     func stopSpinning() {
         
+       
         self.imgSpinnerView.stopRotating()
         self.imgSpinnerView.alpha = 0
+        self.imgSpinnerView.removeFromSuperview()
     
     }
     
@@ -640,7 +644,7 @@ class QuestionsViewController: UIViewController {
        
         
             if self.isBeingPresented || self.isMovingToParentViewController {
-                print("view is being presented")
+                // print("view is being presented")
                 
                 // Spinner during initial CK load
                     startSpinning()
@@ -650,7 +654,7 @@ class QuestionsViewController: UIViewController {
         
     }
     
-    
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
