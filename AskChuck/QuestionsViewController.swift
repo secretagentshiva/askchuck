@@ -238,7 +238,7 @@ class QuestionsViewController: UIViewController {
         
         var questionIDArray: [Int] = []
         
-        // max questions on screen
+        // max questions displayed on screen (in addition to I'm Feeling Chucky)
         // currently set to be max 3 questions
         let countMaxQuestions = 4
         
