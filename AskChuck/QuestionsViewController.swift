@@ -234,7 +234,7 @@ class QuestionsViewController: UIViewController {
                 
                 self.stopSpinning()
                 
-                let ac = UIAlertController(title: "No Chuckisms!", message: "There was a problem getting Chuck's wisdom; please try again: \(error!.localizedDescription)", preferredStyle: .alert)
+                let ac = UIAlertController(title: "Can't count today!", message: "There was a problem counting Chuck's wisdom; please try again: \(error!.localizedDescription)", preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(ac, animated: true)
             }
