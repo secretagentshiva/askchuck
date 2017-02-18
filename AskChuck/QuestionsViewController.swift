@@ -240,7 +240,7 @@ class QuestionsViewController: UIViewController {
         
         // max questions on screen
         // currently set to be max 3 questions
-        let countMaxQuestions = 3
+        let countMaxQuestions = 4
         
         
         // build array of random question IDs to query later
