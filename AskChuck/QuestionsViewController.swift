@@ -205,8 +205,9 @@ class QuestionsViewController: UIViewController {
     }
 
    // Function to query and count available questions; sets totalAvailQuestions dynamically
+   // Next this function calls loadChuckisms to actually get all question data and paint UI
      
-   func displayAvailQuestions() {
+   func displayQuestions() {
     
     
         // First need to count the available questions
@@ -662,7 +663,7 @@ class QuestionsViewController: UIViewController {
             
             // disabling count of avail questions - for some reason this wrecks spinner animations
             // note: loadChuckisms is nested within it which makes all animations work fine :)
-            displayAvailQuestions()
+            displayQuestions()
             
         
            
