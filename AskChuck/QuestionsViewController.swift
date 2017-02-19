@@ -59,7 +59,10 @@ class QuestionsViewController: UIViewController {
     
     func downloadplayTapped(sender:UIButton) {
         
+        sender.isUserInteractionEnabled = false
+        
         var questionID = sender.tag
+        
         
         // questionIDs start at 1 with the exception of the I'm Feeling Chucky special questionID==0
         // for correct array indexing, substracting 1; however, special I'm Feeling Chucky, already handled above
@@ -92,6 +95,10 @@ class QuestionsViewController: UIViewController {
                         if let button = view as? UIButton {
                             button.setTitleColor(UIColor.purple, for: UIControlState.highlighted)
                             button.setTitleShadowColor(UIColor.magenta, for: UIControlState.highlighted)
+                            
+                            // disable button so user can't click on it (can crash app w/ double request)
+                            button.isUserInteractionEnabled = false
+
                             //      print("I'm Feeling Chucky Highlighted!")
                     }
                     
@@ -100,7 +107,7 @@ class QuestionsViewController: UIViewController {
             
             
             delayWithSeconds(2) {
-                // just hanging out for 2 second so you can see altered questions
+                // just hanging out for 2 seconds so you can see altered questions
             }
             
         }
@@ -109,12 +116,14 @@ class QuestionsViewController: UIViewController {
         let matchedChuckism = self.chuckisms.filter{ $0.questionID == Int64(questionID) }.first
         self.chuckism.recordID = matchedChuckism?.recordID
         
+        
+        
          CKContainer.default().publicCloudDatabase.fetch(withRecordID: self.chuckism.recordID) { record, error in
             if error != nil {
                 
                 DispatchQueue.main.async {
          
-         
+                    
                     //copy and pasted this error message to see if it works.
                     let ac = UIAlertController(title: "Chuck's not at home.", message: "There was a problem reaching Chuck; please try again later.", preferredStyle: .alert)
                     ac.addAction(UIAlertAction(title: "OK", style: .default))
@@ -160,7 +169,13 @@ class QuestionsViewController: UIViewController {
 
                                     self.playerViewController.videoGravity = AVLayerVideoGravityResizeAspectFill
                                     
+                                    
                                     self.playerViewController.player!.play()
+                                    
+                                    // reenable button for clicking
+                                    sender.isUserInteractionEnabled = true
+                                    
+                                   
                                     
                                     
                                     if self.resetQuestionsView == true {
@@ -172,6 +187,10 @@ class QuestionsViewController: UIViewController {
                                             
                                             view.isHidden = false
                                             
+                                            // re-enable interactivity (need to do this again for I'm Feeling Chucky use case
+                                            if (view.tag == questionID) {
+                                                view.isUserInteractionEnabled = true
+                                            }
                                         }
                                         
                                         self.resetQuestionsView = false
@@ -509,6 +528,7 @@ class QuestionsViewController: UIViewController {
       
         // Dismiss AVPlayerViewController given video finished
         self.playerViewController.dismiss(animated: true, completion: nil)
+        
         
         // remove observer waiting for AVPlayer to finish
         NotificationCenter.default.removeObserver(self)
