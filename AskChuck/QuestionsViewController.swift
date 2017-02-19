@@ -23,8 +23,8 @@ class QuestionsViewController: UIViewController {
     // bool needed to Spin again given we are removing view from superView when we stop spinning to prevent some rendering bugs
     var recreateImgSpinnerView = false
     
-    // toggle this so we know we've loaded questions once (and thus prevent startSpinning() for weird edge case where after force dismiss and app relaunch, spinner is still there
-    var boolSpunAlready = false
+    // toggle this so we know we've loaded questions once (and thus prevent startSpinning() for weird edge case where after force dismiss and app relaunch, spinner is still there in Simulator
+    // var boolSpunAlready = false
     
     // total population of available questions in cloudkit public DB to randomly select from
     // note: a bit brittle, because if question IDs are not continuous to totalAvailQuestion, you may generate random question IDs that aren't in the DB so # of questions you display will be less than countMaxQuestions
@@ -271,7 +271,7 @@ class QuestionsViewController: UIViewController {
                     // print(self.totalAvailQuestions)
                     
                     // setting toggle to true so we don't spin again after force quit and relaunch (weird bug)
-                    self.boolSpunAlready = true
+                    // self.boolSpunAlready = true
                     
                     // this function now does the real work to pull required data and render buttons
                     self.loadChuckisms()
@@ -640,6 +640,7 @@ class QuestionsViewController: UIViewController {
     
     }
     
+    /* only used if we setup observer which we are not using in this build
     func appMovedToBackground() {
         // Doesn't do anything now but trying to use this to deal with error where force quit fails to reset state in Simulator
         // print("App moved to background!")
@@ -648,7 +649,7 @@ class QuestionsViewController: UIViewController {
        
         
     }
-    
+    */
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -656,8 +657,8 @@ class QuestionsViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         // Setup observer for app moving to background
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: Notification.Name.UIApplicationWillResignActive, object: nil)
+        // let notificationCenter = NotificationCenter.default
+        // notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: Notification.Name.UIApplicationWillResignActive, object: nil)
         
         // Setup Reachability to check for network connection type
         let reachability = Reachability()!
@@ -747,12 +748,17 @@ class QuestionsViewController: UIViewController {
         
             if self.isBeingPresented || self.isMovingToParentViewController {
                 // print("view is being presented")
-              
+                startSpinning()
+                
+                
                 // hacky garbage as force quite app doesn't seem to fully kill state 
                 // need to learn how to ensure force quit and restart is clean wipe
-                // or perhaps this is only in xcode simulator
+                // appears to be only in xcode simulator :(
+                // can clean out all this junk later ;)
                
-               
+            
+                
+                /* removing this logic as it is only required for some wack simulator bug where force quite doesn't appear to reset state
                 if self.boolSpunAlready {
                 
                     delayWithSeconds(1) {
@@ -764,7 +770,7 @@ class QuestionsViewController: UIViewController {
                     // print("initial spin")
                     startSpinning()
                 }
-               
+               */
                 
             }
         
