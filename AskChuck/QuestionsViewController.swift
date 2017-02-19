@@ -232,6 +232,7 @@ class QuestionsViewController: UIViewController {
         // First need to count the available questions
     
         self.totalAvailQuestions = 0
+    
         let defaultContainer = CKContainer.default()
         let publicDB = defaultContainer.publicCloudDatabase
         let predicate = NSPredicate(value: true)
@@ -725,7 +726,7 @@ class QuestionsViewController: UIViewController {
 
 }
 
-/* Cheat Sheets
+/* Cheat Sheets for Constraints
  
  Constraints 
  
