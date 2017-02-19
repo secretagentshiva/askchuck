@@ -20,6 +20,11 @@ class QuestionsViewController: UIViewController {
     var indexRecordID: Int = 0
     var selectedQuestionIDs: [Int] = []
     
+    // bool needed to Spin again given we are removing view from superView when we stop spinning to prevent some rendering bugs
+    var recreateImgSpinnerView = false
+    
+    // toggle this so we know we've loaded questions once (and thus prevent startSpinning() for weird edge case where after force dismiss and app relaunch, spinner is still there
+    var boolSpunAlready = false
     
     // total population of available questions in cloudkit public DB to randomly select from
     // note: a bit brittle, because if question IDs are not continuous to totalAvailQuestion, you may generate random question IDs that aren't in the DB so # of questions you display will be less than countMaxQuestions
@@ -41,7 +46,6 @@ class QuestionsViewController: UIViewController {
     // given that will hide some questions
     var resetQuestionsView = false
     
-    
     // Debug single question for testing end to end
     // var questionID: Int64 = 1
     
@@ -60,6 +64,8 @@ class QuestionsViewController: UIViewController {
     func downloadplayTapped(sender:UIButton) {
         
         sender.isUserInteractionEnabled = false
+        
+        self.startSpinning()
         
         var questionID = sender.tag
         
@@ -123,6 +129,7 @@ class QuestionsViewController: UIViewController {
                 
                 DispatchQueue.main.async {
          
+                    self.stopSpinning()
                     
                     //copy and pasted this error message to see if it works.
                     let ac = UIAlertController(title: "Chuck's not at home.", message: "There was a problem reaching Chuck; please try again later.", preferredStyle: .alert)
@@ -153,7 +160,9 @@ class QuestionsViewController: UIViewController {
                                         try fileManager.linkItem(at: realURL, to: linkedURL)
                                 
                                         } catch {
-                                    
+                                            
+                                            self.stopSpinning()
+                                            
                                             let ac = UIAlertController(title: "Having trouble saving Chuck's wisdom for your viewing pleasure", message: "Please try again later.", preferredStyle: .alert)
                                             ac.addAction(UIAlertAction(title: "OK", style: .default))
                                             self.present(ac, animated: true)
@@ -169,8 +178,11 @@ class QuestionsViewController: UIViewController {
 
                                     self.playerViewController.videoGravity = AVLayerVideoGravityResizeAspectFill
                                     
+                                    self.stopSpinning()
                                     
                                     self.playerViewController.player!.play()
+                                    
+                                    
                                     
                                     // reenable button for clicking
                                     sender.isUserInteractionEnabled = true
@@ -229,6 +241,7 @@ class QuestionsViewController: UIViewController {
    func displayQuestions() {
     
     
+    
         // First need to count the available questions
     
         self.totalAvailQuestions = 0
@@ -256,6 +269,9 @@ class QuestionsViewController: UIViewController {
             DispatchQueue.main.async {
                 if (error==nil) {
                     // print(self.totalAvailQuestions)
+                    
+                    // setting toggle to true so we don't spin again after force quit and relaunch (weird bug)
+                    self.boolSpunAlready = true
                     
                     // this function now does the real work to pull required data and render buttons
                     self.loadChuckisms()
@@ -597,6 +613,18 @@ class QuestionsViewController: UIViewController {
     
     func startSpinning() {
         
+        // we are removing spinner from the view at end of stopSpinning so need to recreate it in case we invoke it again
+        
+        if self.recreateImgSpinnerView {
+            // Render imgSpinner view
+            self.imgSpinnerView.image = UIImage(named: "WoodchuckSpinner.png")
+            self.view.addSubview(imgSpinnerView)
+            self.imgSpinnerView.translatesAutoresizingMaskIntoConstraints = false
+            self.imgSpinnerView.widthAnchor.constraint(equalToConstant: 48).isActive = true
+            self.imgSpinnerView.heightAnchor.constraint(equalToConstant: 48).isActive = true
+            self.imgSpinnerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            self.imgSpinnerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        }
         
         self.imgSpinnerView.alpha = 1
         self.imgSpinnerView.startRotating(duration: 1)
@@ -608,16 +636,28 @@ class QuestionsViewController: UIViewController {
         self.imgSpinnerView.stopRotating()
         self.imgSpinnerView.alpha = 0
         self.imgSpinnerView.removeFromSuperview()
+        self.recreateImgSpinnerView = true
     
     }
     
-    
+    func appMovedToBackground() {
+        // Doesn't do anything now but trying to use this to deal with error where force quit fails to reset state in Simulator
+        // print("App moved to background!")
+        // remove observer
+        NotificationCenter.default.removeObserver(self)
+       
+        
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+        // Setup observer for app moving to background
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: Notification.Name.UIApplicationWillResignActive, object: nil)
         
         // Setup Reachability to check for network connection type
         let reachability = Reachability()!
@@ -669,7 +709,6 @@ class QuestionsViewController: UIViewController {
         self.imgSpinnerView.heightAnchor.constraint(equalToConstant: 48).isActive = true
         self.imgSpinnerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         self.imgSpinnerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-
         self.imgSpinnerView.alpha = 0
         
         
@@ -682,7 +721,7 @@ class QuestionsViewController: UIViewController {
             // WiFi detected, Chuck FTW!
             reachability.stopNotifier()
             
-            // disabling count of avail questions - for some reason this wrecks spinner animations
+            // Look up and display questions
             // note: loadChuckisms is nested within it which makes all animations work fine :)
             displayQuestions()
             
@@ -708,11 +747,25 @@ class QuestionsViewController: UIViewController {
         
             if self.isBeingPresented || self.isMovingToParentViewController {
                 // print("view is being presented")
+              
+                // hacky garbage as force quite app doesn't seem to fully kill state 
+                // need to learn how to ensure force quit and restart is clean wipe
+                // or perhaps this is only in xcode simulator
+               
+               
+                if self.boolSpunAlready {
                 
-                // Spinner during initial CK load
-                startSpinning()
+                    delayWithSeconds(1) {
+                      // do nothing
+                    }
+                        
+                } else {
+                    // Spinner during initial CK load
+                    // print("initial spin")
+                    startSpinning()
+                }
                
-               
+                
             }
         
     }

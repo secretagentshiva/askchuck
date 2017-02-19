@@ -108,8 +108,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         else {
             intLoginAttempts = intLoginAttempts + 1
             
-            if intLoginAttempts > 1 {
+            if intLoginAttempts == 2 {
                 labelWelcome.text = "POO ON YOU!"
+            }
+            
+            else if (intLoginAttempts > 2) {
+                
+                labelWelcome.text = "MUCH 💩💩💩 ON YOU!"
+                
             }
                 
             else {
