@@ -20,6 +20,9 @@ class QuestionsViewController: UIViewController {
     var indexRecordID: Int = 0
     var selectedQuestionIDs: [Int] = []
     
+    // Note if there are more questions in the Public DB than 50, this needs to be increased
+    let maxRecordsToFetch = 100
+    
     // bool needed to Spin again given we are removing view from superView when we stop spinning to prevent some rendering bugs
     var recreateImgSpinnerView = false
     
@@ -255,8 +258,9 @@ class QuestionsViewController: UIViewController {
         let operation = CKQueryOperation(query: query)
 
         operation.desiredKeys = ["QuestionID"]
-        operation.resultsLimit = 5 // capping this during testing
-
+    
+        // capping on records to fetch. if more questions in Public DB than 50, need to expand this
+        operation.resultsLimit = maxRecordsToFetch
     
         operation.recordFetchedBlock = { record in
         
@@ -268,8 +272,8 @@ class QuestionsViewController: UIViewController {
            
             DispatchQueue.main.async {
                 if (error==nil) {
-                    // print(self.totalAvailQuestions)
-                    
+                    // Debug
+                    // print("total questions in Cloud: ", self.totalAvailQuestions)
                     // setting toggle to true so we don't spin again after force quit and relaunch (weird bug)
                     // self.boolSpunAlready = true
                     
