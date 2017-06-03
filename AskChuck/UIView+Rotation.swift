@@ -22,7 +22,7 @@ extension UIView {
             animationRotate.duration = duration
             animationRotate.repeatCount = Float.infinity
             animationRotate.fromValue = 0.0
-            animationRotate.toValue = Float(M_PI * 2.0)
+            animationRotate.toValue = Float(Double.pi * 2.0)
             self.layer.add(animationRotate, forKey: kAnimationKey)
         }
     }
