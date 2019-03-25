@@ -35,13 +35,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var imageChuckToggle = true
     
     
-    func loadQuestionsUI() {
+    @objc func loadQuestionsUI() {
         self.performSegue(withIdentifier: "goToQuestionsUI", sender: self)
         
     }
     
         
-    func buttonRotateImageTapped(_ sender: Any) {
+    @objc func buttonRotateImageTapped(_ sender: Any) {
         
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
@@ -66,7 +66,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    func buttonLegitTapped(_ sender: Any) {
+    @objc func buttonLegitTapped(_ sender: Any) {
         
         // this part will never check for now as I've made textName.alpha always == 0 
         // textName display and entry eliminated for welcome message
@@ -106,7 +106,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
             
         else {
-            intLoginAttempts = intLoginAttempts + 1
+            intLoginAttempts = intLoginAttempts.advanced(by: 1)
             
             if intLoginAttempts == 2 {
                 labelWelcome.text = "POO ON YOU!"
@@ -127,7 +127,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     // functions to switch position of password / button when keyboard displayed
-    func keyboardWillShow(sender: NSNotification) {
+    @objc func keyboardWillShow(sender: NSNotification) {
         
         // for some reason this fires multiple times; later needs debugging 
         // multiple fire means I can't just shift -= and have to position absolute which is annoying
@@ -151,7 +151,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     }
     
-    func keyboardWillHide(sender: NSNotification) {
+    @objc func keyboardWillHide(sender: NSNotification) {
         
         
         // for some reason this fires multiple times; later needs debugging
@@ -208,7 +208,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textName.minimumFontSize = 14
         textName.backgroundColor = UIColor.white
         textName.textAlignment = NSTextAlignment.center
-        textName.borderStyle = UITextBorderStyle.roundedRect
+        textName.borderStyle = UITextField.BorderStyle.roundedRect
         textName.autocapitalizationType = .none
         textName.autocorrectionType = .no
         textName.keyboardType = UIKeyboardType.alphabet
@@ -229,8 +229,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textPassword.minimumFontSize = 14
         textPassword.backgroundColor = UIColor.white
         textPassword.textAlignment = NSTextAlignment.center
-        textPassword.contentVerticalAlignment = UIControlContentVerticalAlignment.center
-        textPassword.borderStyle = UITextBorderStyle.roundedRect
+        textPassword.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+        textPassword.borderStyle = UITextField.BorderStyle.roundedRect
         textPassword.placeholder = "secret word"
         textPassword.autocapitalizationType = .none
         textPassword.autocorrectionType = .no
@@ -246,15 +246,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         
         // Submission Button
-        buttonLegit.setTitle("I'M LEGIT", for: UIControlState.normal)
+        buttonLegit.setTitle("I'M LEGIT", for: UIControl.State.normal)
         buttonLegit.titleLabel?.font =  UIFont(name: "System-Bold", size: 19)
         buttonLegit.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         buttonLegit.titleLabel?.numberOfLines = 2
         buttonLegit.titleLabel?.textAlignment = NSTextAlignment.center
-        buttonLegit.setTitleColor(UIColor.yellow, for: UIControlState.normal)
-        buttonLegit.setTitleColor(UIColor.purple, for: UIControlState.highlighted)
-        buttonLegit.setTitleShadowColor(UIColor.orange, for: UIControlState.normal)
-        buttonLegit.setTitleShadowColor(UIColor.magenta, for: UIControlState.highlighted)
+        buttonLegit.setTitleColor(UIColor.yellow, for: UIControl.State.normal)
+        buttonLegit.setTitleColor(UIColor.purple, for: UIControl.State.highlighted)
+        buttonLegit.setTitleShadowColor(UIColor.orange, for: UIControl.State.normal)
+        buttonLegit.setTitleShadowColor(UIColor.magenta, for: UIControl.State.highlighted)
         buttonLegit.titleLabel?.shadowOffset = CGSize(width: 0, height: 1)
 
         buttonLegit.center.x = UIScreen.main.bounds.midX
@@ -357,9 +357,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         // Listeners for keyboard to push up password field
         
-        NotificationCenter.default.addObserver(self, selector:#selector((self.keyboardWillShow(sender:))), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
+        NotificationCenter.default.addObserver(self, selector:#selector((self.keyboardWillShow(sender:))), name:UIResponder.keyboardWillShowNotification, object: nil);
         
-        NotificationCenter.default.addObserver(self, selector:#selector((self.keyboardWillHide(sender:))), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
+        NotificationCenter.default.addObserver(self, selector:#selector((self.keyboardWillHide(sender:))), name:UIResponder.keyboardWillHideNotification, object: nil);
 
         
     }

@@ -11,7 +11,7 @@ import CloudKit
 
 class Chuckism: NSObject {
 
-    var recordID: CKRecordID!
+    var recordID: CKRecord.ID!
     var question: String!
     var questionID: Int64!
     var response: URL!

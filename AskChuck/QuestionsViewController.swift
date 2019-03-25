@@ -64,7 +64,7 @@ class QuestionsViewController: UIViewController {
     }
     
     
-    func downloadplayTapped(sender:UIButton) {
+    @objc func downloadplayTapped(sender:UIButton) {
         
         sender.isUserInteractionEnabled = false
         
@@ -102,8 +102,8 @@ class QuestionsViewController: UIViewController {
                     
                         // set random question chosen to selected color scheme
                         if let button = view as? UIButton {
-                            button.setTitleColor(UIColor.purple, for: UIControlState.highlighted)
-                            button.setTitleShadowColor(UIColor.magenta, for: UIControlState.highlighted)
+                            button.setTitleColor(UIColor.purple, for: UIControl.State.highlighted)
+                            button.setTitleShadowColor(UIColor.magenta, for: UIControl.State.highlighted)
                             
                             // disable button so user can't click on it (can crash app w/ double request)
                             button.isUserInteractionEnabled = false
@@ -154,7 +154,7 @@ class QuestionsViewController: UIViewController {
                                 // debug hardcode localfile
                                 // self.chuckism.response = NSURL(string: "file:///Users/shiva/Desktop/filepath.mov") as URL!
                             
-                                let realURL: URL = self.chuckism.response as URL!
+                                let realURL: URL = self.chuckism.response as URL
                                 let linkedURL = self.chuckism.response.appendingPathExtension("mov")
                             
                             
@@ -172,14 +172,14 @@ class QuestionsViewController: UIViewController {
                                 }
                             
 
-                                self.chuckism.response = linkedURL as URL!
+                                self.chuckism.response = linkedURL as URL
                                 let player = AVPlayer(url: self.chuckism.response! as URL)
                             
                                 self.playerViewController.player = player
                                 self.present(self.playerViewController, animated: true) {
                                     
 
-                                    self.playerViewController.videoGravity = AVLayerVideoGravityResizeAspectFill
+                                    self.playerViewController.videoGravity = AVLayerVideoGravity.resizeAspectFill
                                     
                                     self.stopSpinning()
                                     
@@ -365,8 +365,8 @@ class QuestionsViewController: UIViewController {
             
             let tmpChuckism = Chuckism()
             tmpChuckism.recordID = record.recordID
-            tmpChuckism.question = record["Question"] as! String
-            tmpChuckism.questionID = record["QuestionID"] as! Int64!
+            tmpChuckism.question = record["Question"] as? String
+            tmpChuckism.questionID = record["QuestionID"] as? Int64
     
             newChuckisms.append(tmpChuckism)
             
@@ -393,15 +393,15 @@ class QuestionsViewController: UIViewController {
                         buttons.append(questionButton)
                 
                         // format buttons
-                        questionButton.setTitle("\(chuckQuestion.question!.uppercased())",for: UIControlState.normal)
+                        questionButton.setTitle("\(chuckQuestion.question!.uppercased())",for: UIControl.State.normal)
                         questionButton.titleLabel?.font =  UIFont(name: "AvenirNext-Heavy", size: 16)
                         questionButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
                         questionButton.titleLabel?.numberOfLines = 2
                         questionButton.titleLabel?.textAlignment = NSTextAlignment.center
-                        questionButton.setTitleColor(UIColor.white, for: UIControlState.normal)
-                        questionButton.setTitleColor(UIColor.purple, for: UIControlState.highlighted)
-                        questionButton.setTitleShadowColor(UIColor.blue, for: UIControlState.normal)
-                        questionButton.setTitleShadowColor(UIColor.magenta, for: UIControlState.highlighted)
+                        questionButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
+                        questionButton.setTitleColor(UIColor.purple, for: UIControl.State.highlighted)
+                        questionButton.setTitleShadowColor(UIColor.blue, for: UIControl.State.normal)
+                        questionButton.setTitleShadowColor(UIColor.magenta, for: UIControl.State.highlighted)
                         questionButton.titleLabel?.shadowOffset = CGSize(width: 0, height: 1)
                         
                         
@@ -453,15 +453,15 @@ class QuestionsViewController: UIViewController {
                     questionButton.translatesAutoresizingMaskIntoConstraints = false
                     questionButton.setImage(imageChuckyButton, for: .normal)
                     questionButton.setImage(imageChuckyButtonSelected, for: .highlighted)
-                    questionButton.setTitle(String("I'm feeling chucky!")?.uppercased(), for:UIControlState.normal)
+                    questionButton.setTitle(String("I'm feeling chucky!").uppercased(), for:UIControl.State.normal)
                     questionButton.titleLabel?.font =  UIFont(name: "AvenirNext-Heavy", size: 16)
                     questionButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
                     questionButton.titleLabel?.numberOfLines = 2
                     questionButton.titleLabel?.textAlignment = NSTextAlignment.center
-                    questionButton.setTitleColor(UIColor.white, for: UIControlState.normal)
-                    questionButton.setTitleColor(UIColor.purple, for: UIControlState.highlighted)
-                    questionButton.setTitleShadowColor(UIColor.blue, for: UIControlState.normal)
-                    questionButton.setTitleShadowColor(UIColor.magenta, for: UIControlState.highlighted)
+                    questionButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
+                    questionButton.setTitleColor(UIColor.purple, for: UIControl.State.highlighted)
+                    questionButton.setTitleShadowColor(UIColor.blue, for: UIControl.State.normal)
+                    questionButton.setTitleShadowColor(UIColor.magenta, for: UIControl.State.highlighted)
                     questionButton.titleLabel?.shadowOffset = CGSize(width: 0, height: 1)
                     
                     // these are to enable animateFeelingChucky transition effect
@@ -491,13 +491,13 @@ class QuestionsViewController: UIViewController {
                     let viewsDictionary = ["stackView":stackView]
                     let stackView_H = NSLayoutConstraint.constraints(
                         withVisualFormat: "H:|-10-[stackView]-10-|",  //horizontal constraint 10 points from left and right side
-                        options: NSLayoutFormatOptions(rawValue: 0),
+                        options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                         metrics: nil,
                         views: viewsDictionary)
                     
                     // need to play with this constraint - hardcoded setting ideal as will need to vary w/ number of questions but also don't want <3 question edge case to break
                     
-                    let stackView_V = NSLayoutConstraint.constraints(withVisualFormat: "V:|[stackView]-0-|",                   options: NSLayoutFormatOptions(rawValue:0),metrics: nil, views: viewsDictionary)
+                    let stackView_V = NSLayoutConstraint.constraints(withVisualFormat: "V:|[stackView]-0-|",                   options: NSLayoutConstraint.FormatOptions(rawValue:0),metrics: nil, views: viewsDictionary)
                     self.view.addConstraints(stackView_H)
                     self.view.addConstraints(stackView_V)
                     stackView.isHidden = false
@@ -543,7 +543,7 @@ class QuestionsViewController: UIViewController {
     
        
     
-    func playerDidFinishPlaying(note: NSNotification){
+    @objc func playerDidFinishPlaying(note: NSNotification){
         //Called when player finished playing
         
       
@@ -750,7 +750,7 @@ class QuestionsViewController: UIViewController {
         super.viewDidAppear(animated)
        
         
-            if self.isBeingPresented || self.isMovingToParentViewController {
+            if self.isBeingPresented || self.isMovingToParent {
                 // print("view is being presented")
                 startSpinning()
                 
