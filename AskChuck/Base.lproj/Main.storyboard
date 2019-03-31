@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hazelcover3.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ERg-gV-zkc">
-                                <rect key="frame" x="-46" y="0.0" width="467" height="667"/>
+                                <rect key="frame" x="-46" y="0.0" width="467" height="717"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I SEE YOU!" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0r-Rl-Dv7">
                                 <rect key="frame" x="32" y="32" width="237" height="82"/>
@@ -57,7 +57,7 @@
                             <constraint firstItem="ERg-gV-zkc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="GZC-ma-Dqc"/>
                             <constraint firstItem="Q0r-Rl-Dv7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="16" id="HI0-c2-cg4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1CJ-uS-ziP" secondAttribute="trailing" id="dAN-73-hlX"/>
-                            <constraint firstItem="ERg-gV-zkc" firstAttribute="bottom" secondItem="5xJ-fJ-g6p" secondAttribute="bottom" id="lX5-Hi-per"/>
+                            <constraint firstItem="ERg-gV-zkc" firstAttribute="bottom" secondItem="5xJ-fJ-g6p" secondAttribute="bottom" constant="50" id="lX5-Hi-per"/>
                             <constraint firstItem="Vxo-EG-qTg" firstAttribute="top" secondItem="Q0r-Rl-Dv7" secondAttribute="bottom" constant="7" id="vjy-ZA-Kr9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Vxo-EG-qTg" secondAttribute="trailing" constant="22" id="z0t-oh-M3I"/>
                         </constraints>
