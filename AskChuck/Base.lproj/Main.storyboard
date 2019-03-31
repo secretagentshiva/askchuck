@@ -84,13 +84,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ChuckAskMeFull.JPG" translatesAutoresizingMaskIntoConstraints="NO" id="0ox-DH-6uH">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="674"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="702"/>
                             </imageView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="0ox-DH-6uH" firstAttribute="centerX" secondItem="hxz-dd-685" secondAttribute="centerX" id="8N4-yz-oRo"/>
                             <constraint firstItem="hxz-dd-685" firstAttribute="trailing" secondItem="0ox-DH-6uH" secondAttribute="trailing" id="HbA-d4-gcI"/>
-                            <constraint firstItem="hxz-dd-685" firstAttribute="bottom" secondItem="0ox-DH-6uH" secondAttribute="bottom" constant="-7" id="Lsg-NG-IbR"/>
+                            <constraint firstItem="hxz-dd-685" firstAttribute="bottom" secondItem="0ox-DH-6uH" secondAttribute="bottom" constant="-35" id="Lsg-NG-IbR"/>
                             <constraint firstItem="0ox-DH-6uH" firstAttribute="top" secondItem="Feh-Cg-bri" secondAttribute="top" id="eNf-4J-u1y"/>
                             <constraint firstItem="0ox-DH-6uH" firstAttribute="leading" secondItem="hxz-dd-685" secondAttribute="leading" id="yJB-DL-FHK"/>
                         </constraints>
